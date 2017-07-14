@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpTicketDao">
+	<select id="queryObject" resultType="MpTicketEntity">
+		select * from
+		mp_tickets
+		where
+		id
+		= #{value}
+	</select>
+
+	<select id="queryList" resultType="MpTicketEntity">
+		select * from mp_tickets
+		<where>
+			<if test="status != null and status != 0"> and `status` = #{status}</if>
+			<if test="ticketName != null and ticketName.trim() != ''">
+				and `ticket_name` like concat('%',#{ticketName},'%')
+			</if>
+			<if test="minPrice != null ">
+				AND `price` >= #{minPrice}
+			</if>
+			<if test="maxPrice != null ">
+				AND `price` &lt;= #{maxPrice}
+			</if>
+			<if test="saleDate!=null">
+				AND sale_date &lt; #{saleDate}
+			</if>
+			<if test="endBuyDate!=null">
+				AND end_buy_date > #{endBuyDate}
+			</if>
+			<if test="nowTime!=null">
+				AND end_buy_date > #{nowTime}-86400 and sale_date &lt; #{nowTime} 
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_tickets
+		<where>
+			<if test="status != null and status != 0"> and `status` = #{status}</if>
+			<if test="ticketName != null and ticketName.trim() != ''">
+				and `ticket_name` like concat('%',#{ticketName},'%')
+			</if>
+			<if test="minPrice != null ">
+				AND `price` >= #{minPrice}
+			</if>
+			<if test="maxPrice != null ">
+				AND `price` &lt;= #{maxPrice}
+			</if>
+			<if test="saleDate!=null">
+				AND sale_date &lt; #{saleDate}
+			</if>
+			<if test="endBuyDate!=null">
+				AND end_buy_date > #{endBuyDate}
+			</if>
+			<if test="nowTime!=null">
+				AND end_buy_date > #{nowTime}-86400 and sale_date &lt; #{nowTime} 
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteBatch">
+		DELETE FROM mp_tickets where `id` in
+		<foreach item="parkingIds" collection="array" open="("
+			separator="," close=")">
+			#{parkingIds}
+		</foreach>
+	</delete>
+
+</mapper>

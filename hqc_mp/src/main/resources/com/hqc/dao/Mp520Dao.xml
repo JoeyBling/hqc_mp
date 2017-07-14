@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.Mp520Dao">
+	<select id="queryObject" resultType="Mp520Entity">
+		select * from mp_520
+		where
+		id
+		= #{value}
+	</select>
+
+	<select id="getByNum" resultType="Mp520Entity">
+		select * from mp_520
+		where
+		random_number
+		=#{value}
+	</select>
+
+	<select id="queryByOpenId" resultType="Mp520Entity">
+		select * from mp_520
+		<if test="sex==1">
+			where
+			man_open_id
+			=#{value}
+		</if>
+		<if test="sex==2">
+			where
+			woman_open_id
+			=#{value}
+		</if>
+	</select>
+
+	<select id="queryByOpenIdAny" resultType="Mp520Entity">
+		select * from mp_520
+		WHERE woman_open_id = #{value} OR man_open_id = #{value}
+	</select>
+
+	<select id="queryList" resultType="Mp520Entity">
+		select * from mp_520
+		<where>
+			<if test="randomNumber !=null">
+				and random_number like concat('%',#{randomNumber},'%')
+			</if>
+			<if test="manNickName !=null">
+				and man_nick_name like concat('%',#{manNickName},'%')
+			</if>
+			<if test="womanNickName !=null">
+				and woman_nick_name like concat('%',#{womanNickName},'%')
+			</if>
+			<!-- 显示已配对的用户 -->
+			<if test="notNull">
+				and (woman_open_id IS NOT null and man_open_id IS NOT
+				null)
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_520
+		<where>
+			<if test="randomNumber !=null">
+				and random_number like concat('%',#{randomNumber},'%')
+			</if>
+			<if test="manNickName !=null">
+				and man_nick_name like concat('%',#{manNickName},'%')
+			</if>
+			<if test="womanNickName !=null">
+				and woman_nick_name like concat('%',#{womanNickName},'%')
+			</if>
+			<!-- 显示已配对的用户 -->
+			<if test="notNull">
+				and (woman_open_id IS NOT null and man_open_id IS NOT
+				null)
+			</if>
+		</where>
+	</select>
+
+	<select id="queryMatchTotal" resultType="int">
+		select count(*) from mp_520
+		<if test="value==0">
+			WHERE woman_open_id IS NULL
+			OR man_open_id IS NULL
+		</if>
+		<if test="value==1">
+			WHERE (man_open_id IS NULL and woman_open_id IS NOT NULL)
+		</if>
+		<if test="value==2">
+			WHERE (woman_open_id IS NULL and man_open_id IS NOT NULL)
+		</if>
+	</select>
+
+	<select id="getRandomByOne" resultType="Mp520Entity">
+		SELECT * FROM mp_520
+		<where>
+			<if test="value==0">
+				and (woman_open_id IS NULL
+				OR man_open_id IS NULL)
+			</if>
+			<if test="value==1">
+				and (man_open_id IS NULL
+				and woman_open_id IS NOT NULL)
+			</if>
+			<if test="value==2">
+				and (woman_open_id IS NULL and man_open_id IS NOT NULL)
+			</if>
+		</where>
+		ORDER BY RAND()
+		LIMIT 1
+	</select>
+
+</mapper>

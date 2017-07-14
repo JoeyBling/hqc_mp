@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.MpVipLevelDao">
+
+	<select id="queryMpVipLevelInfoId" resultType="MpVipLevelEntity">
+		select * from
+		mp_vip_level where
+		id = #{value}
+	</select>
+
+	<select id="getMinOrMax" resultType="MpVipLevelEntity">
+		SELECT * FROM mp_vip_level
+		ORDER BY ${type} ASC LIMIT 1
+	</select>
+
+	<select id="queryMpVipLevelName" resultType="MpVipLevelEntity">
+		select * from
+		mp_vip_level where `vip_name` = #{value}
+	</select>
+
+	<select id="queryAllList" resultType="MpVipLevelEntity">
+		select * from mp_vip_level
+		<where>
+			<if test="vipName != null and vipName != ''">
+				and vip_name like concat('%',#{vipName},'%')
+			</if>
+		</where>
+		ORDER BY id asc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		mp_vip_level
+	</select>
+
+	<select id="queryMaxIntegral" resultType="long">
+		select
+		Max(`max_integral`) from
+		mp_vip_level
+	</select>
+	<select id="queryVipLevel" resultType="MpVipLevelEntity">
+		select * from mp_vip_level where `vip_name`=#{vipName}
+	</select>
+
+	<insert id="save" parameterType="MpVipLevelEntity">
+		insert into mp_vip_level
+		(
+		`vip_name`,
+		`min_integral`,
+		`max_integral`,
+		`about`,
+		`normal_integral_rule`,
+		`special_integral_rule`,
+		`integral_coefficient`,
+		`icon_url`
+		)
+		values
+		(
+		#{vipName},
+		#{minIntegral},
+		#{maxIntegral},
+		#{about},
+		#{normalIntegralRule},
+		#{specialIntegralRule},
+		#{integralCoefficient},
+		#{iconUrl}
+		)
+	</insert>
+
+	<update id="update" parameterType="MpVipLevelEntity">
+		update mp_vip_level
+		<set>
+			<if test="id != null">`id` = #{id}, </if>
+			<if test="vipName != null">`vip_name` = #{vipName}, </if>
+			<if test="minIntegral != null">`min_integral` = #{minIntegral}, </if>
+			<if test="maxIntegral != null">`max_integral` = #{maxIntegral}, </if>
+			<if test="normalIntegralRule != null">`normal_integral_rule` = #{normalIntegralRule}, </if>
+			<if test="specialIntegralRule != null">`special_integral_rule` = #{specialIntegralRule}, </if>
+			<if test="integralCoefficient != null">`integral_coefficient` = #{integralCoefficient}, </if>
+			<if test="about != null">`about` = #{about}, </if>
+			<if test="normalIntegralRule != null">`normal_integral_rule` = #{normalIntegralRule}, </if>
+			<if test="specialIntegralRule != null">`special_integral_rule` = #{specialIntegralRule}, </if>
+			<if test="integralCoefficient != null">`integral_coefficient` = #{integralCoefficient}, </if>
+			<if test="iconUrl != null">`icon_url` = #{iconUrl}, </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteBatch">
+		delete from mp_vip_level where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<select id="queryLevel" resultType="MpVipLevelEntity">
+		select * from mp_vip_level where #{value}>=min_integral and  max_integral>=#{value} limit 0,1
+	</select>
+</mapper>

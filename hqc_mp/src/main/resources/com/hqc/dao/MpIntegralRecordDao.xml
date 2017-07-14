@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpIntegralRecordDao">
+
+	<resultMap id="MpIntegralRecordEntity" type="com.hqc.entity.MpIntegralRecordEntity">
+		<id property="id" column="id" />
+		<result property="memberId" column="member_id" />
+		<result property="integral" column="integral" />
+		<result property="integralType" column="integral_type" />
+		<result property="about" column="about" />
+		<result property="createTime" column="create_time" />
+		<association property="memberEntity" javaType="com.hqc.entity.MpMemberEntity">
+			<id property="id" column="member_id" />
+			<result property="phone" column="phone" />
+			<result property="cardNo" column="card_no" />
+			<result property="trueName" column="true_name" />
+			<result property="nickName" column="nick_name" />
+			<result property="openId" column="open_id" />
+			<result property="unionid" column="unionid" />
+			<result property="avatar" column="avatar" />
+			<result property="password" column="password" />
+			<result property="lastYearIntegral" column="last_year_integral" />
+			<result property="currentYearIntegral" column="current_year_integral"></result>
+			<result property="integral" column="integral"></result>
+			<result property="createTime" column="create_time"></result>
+			<result property="updateTime" column="update_time"></result>
+			<result property="status" column="status"></result>
+			<result property="vipLevel" column="vip_level"></result>
+		</association>
+	</resultMap>
+
+	<insert id="save" parameterType="MpIntegralRecordEntity">
+		insert into mp_integral_record
+		(
+		`id`,
+		`member_id`,
+		`integral`,
+		`integral_type`,
+		`about`,
+		`create_time`
+		)
+		values
+		(
+		#{id},
+		#{memberId},
+		#{integral},
+		#{integralType},
+		#{about},
+		#{createTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="MpIntegralRecordEntity">
+		update mp_integral_record
+		<set>
+			<if test="id != null">`id` = #{id}, </if>
+			<if test="memberId != null">`member_id` = #{memberId}, </if>
+			<if test="integral != null">`integral` = #{integral}, </if>
+			<if test="integralType != null">`integral_type` = #{integralType}, </if>
+			<if test="about != null">`about` = #{about}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteBatch">
+		delete from mp_integral_record where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="getAllList" resultMap="MpIntegralRecordEntity">
+		select m.*,l.*
+		from
+		mp_integral_record m
+		left join mp_member
+		l on
+		m.`member_id`=l.`id`
+		<where>
+			<if test="integralType != null and integralType != ''">
+				and m.integral_type = #{integralType}
+			</if>
+		</where>
+		ORDER BY m.id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		mp_integral_record m
+		left join mp_member
+		l on
+		m.`member_id`=l.`id`
+	</select>
+
+	<select id="querympIntegralRecordInfoId" resultType="MpIntegralRecordEntity">
+		select
+		m.*,l.phone,l.true_name
+		from
+		mp_integral_record m
+		left join mp_member
+		l on
+		m.`member_id`=l.`id`where m.id=#{value}
+	</select>
+</mapper>

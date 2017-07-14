@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.WxMemberIntegerRecordDao">
+<select id="queryList" resultType="MpIntegralRecordEntity">
+	    select * from mp_integral_record a
+		<where>
+			<if test="memberId !=null">
+				a.member_id=#{memberId}
+			</if>
+			
+		</where>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+	<select id="queryTotal" resultType="int">
+			 select count(*) from mp_integral_record a
+		<where>
+			<if test="memberId !=null">
+				a.member_id=#{memberId}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,34 @@
+﻿body{background:#F7F4F6;}
+a,a:hover{text-decoration:none;}
+ul, li {margin:0px;padding:0px;list-style:none;}
+
+.container{padding-left:0px;padding-right:0px;}
+
+/** 页面头部，会员信息展示区域 */
+.banner { height:160px;background:url(../../../images/wx/user/background.jpg) no-repeat;background-size:100% 100%;color:#FFFFFF;font-family:"黑体"; }
+.banner .leftContainer{width:60%;float:left;margin-top:20px;}
+.banner .leftContainer .userInfo{margin-left:15px;width:100%;}
+.userInfo .avatar{width:65px;float:left;}
+.userInfo .content{float:left;font-size:16px;}
+.userInfo .content .userIntegral{margin-top:24px;}
+.userInfo .avatar-img{width:60px;height:60px;}
+.banner .leftContainer .sign{font-size:16px;background:url(../../../images/wx/user/icon/sign.png) no-repeat 15px;height:50px;line-height:52px;text-indent:50px;margin-top:10px;}
+.banner .rightContainer{width:40%;float:left;margin-top:20px;}
+.banner .rightContainer .memberLevel{background-color:#CCF3EE;border-radius:10px;color:#666666;text-indent:5px;width:92%;height:32px;line-height:32px;font-size:18px;}
+.banner .rightContainer .memberCard{margin-top:14px;font-size:16px;}
+
+#divCtrl{background:#FFF;height:60px;}
+#divCtrl div {width:50%;text-indent:70px;line-height:60px;float:left;color:#909290;font-size:18px;font-family:"黑体";}
+#divCtrl .myOrder {background:url(../../../images/wx/user/icon/myOrder.png) no-repeat 15px;border-right:solid 1px #C3C3C3;}
+#divCtrl .integralMall{background:url(../../../images/wx/user/icon/integralMall.png) no-repeat 15px;}
+
+/** 菜单列表 */
+.menuList{background:#FFF;margin-top:15px;padding-left:15px;}
+.menuList li{height:60px;line-height:60px;font-size:18px;color:#282828;font-family:"黑体";}
+.menuList li .title{margin-left:43px;border-bottom:solid 1px #C3C3C3;background:url(../../../images/wx/user/icon/jiantou.png) no-repeat 95%;}
+.menuList .integralBg{background:url(../../../images/wx/user/icon/item-integral.png) no-repeat 0px;}
+.menuList .parkingBg{background:url(../../../images/wx/user/icon/item-parking.png) no-repeat 0px;}
+.menuList .tourBg{background:url(../../../images/wx/user/icon/item-tour.png) no-repeat 0px;}
+.menuList .personBg{background:url(../../../images/wx/user/icon/item-person.png) no-repeat 0px;}
+.menuList .aboutBg{background:url(../../../images/wx/user/icon/item-about.png) no-repeat 0px;}
+.menuList .logout{background:url(../../../images/wx/user/icon/item-logout.png) no-repeat 0px;}

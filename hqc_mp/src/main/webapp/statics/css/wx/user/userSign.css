@@ -1,0 +1,15 @@
+.usersign .on {background: url(../../../images/wx/user/sign_have.png) no-repeat center;}
+.singer_r_img{display:block;width:114px;height:52px;line-height:45px;background:url(../../../images/wx/user/sign_calendar.png) right 2px no-repeat;vertical-align:middle;*margin-bottom:-10px;text-decoration:none;}
+.singer_r_img:hover{background-position:right -53px;text-decoration:none;}
+.singer_r_img span{margin-left:14px;font-size:16px;font-family:'Hiragino Sans GB','Microsoft YaHei',sans-serif !important;font-weight:700;color:#165379;}
+.singer_r_img.current{background:url(../../../images/wx/user/sign_calendar.png) no-repeat 0 2px;border:0;text-decoration:none;}
+.usersign table{margin-right:0px;border-collapse: collapse;border-spacing: 0;width:100%;}
+.usersign th,.usersign td {width: 45px;height: 5px;text-align: center;line-height: 40px;border:1px solid #e3e3e3;}
+.usersign th {font-size: 16px;}
+.usersign td {color: #404040;vertical-align: middle;}      
+.calendar_month_next,.calendar_month_prev{width: 34px;height: 40px;cursor: pointer;}
+.calendar_month_next {float: right;background-position:-42px -6px;}
+.calendar_month_span {display: inline;line-height: 40px;font-size: 16px;color: #656565;letter-spacing: 2px;font-weight: bold;}
+.calendar_month_prev {float: left;background-position:-5px -6px;}
+.sign_succ_calendar_title {text-align: center;width:300px;border-left:1px solid #e3e3e3;border-right:1px solid #e3e3e3;background:#fff;}
+.sign_main {width: 330px;/**background-color: #FBFEFE;**/border-top:1px solid #e3e3e3;font-family: "Microsoft YaHei",SimHei;}

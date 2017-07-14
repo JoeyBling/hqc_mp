@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 定时器开关 -->
+	<task:annotation-driven />
+
+	<!-- 定时器 -->
+	<bean id="MpStoreTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="mpStoreTask" />
+		<property name="arguments">
+			<value type="boolean">false</value>
+		</property>
+		<property name="targetMethod" value="autoTask" />
+		<property name="concurrent" value="false" /> <!-- 是否支持并发 -->
+	</bean>
+
+	<!-- 定时器：Redis任务 -->
+	<bean id="RedisTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="redisTask" />
+		<property name="targetMethod" value="autoTask" />
+		<property name="concurrent" value="false" /> <!-- 是否支持并发 -->
+	</bean>
+    
+    <!-- 修改会员积分定时器 -->
+    <bean id="UpdateMemberIntegerTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="updateMemberIntegerTask" />
+		<property name="targetMethod" value="updateIntegerTask" />
+		<property name="concurrent" value="false" /> <!-- 是否支持并发 -->
+	</bean>
+	<!-- 触发器：定义触发器执行的脚本的时间 -->
+	<bean id="triggerMemberIntegerTask"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="UpdateMemberIntegerTask" />
+		<property name="cronExpression">
+			<value>0 00 17 31 12 ? </value><!-- 每年的12月31号触发 -->
+		</property>
+	</bean>
+	<!-- 定时器 WiFi设备 -->
+	<bean id="MpWiFiTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="mpWifiTask" />
+		<property name="targetMethod" value="autoTask" />
+		<property name="concurrent" value="false" /> <!-- 是否支持并发 -->
+	</bean>
+
+	<!-- 触发器：定义触发器执行的脚本的时间 -->
+	<bean id="triggerMpStoreTask"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="MpStoreTask" />
+		<property name="cronExpression">
+			<value>0 0 1 * * ? </value><!-- 每日凌晨1点 -->
+		</property>
+	</bean>
+
+	<!-- 触发器：定义触发器执行的脚本的时间 -->
+	<bean id="triggerMpWiFiTask"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="MpWiFiTask" />
+		<property name="cronExpression">
+			<value>0 0 1 * * ? </value><!-- 每日凌晨1点 -->
+		</property>
+	</bean>
+
+	<!-- 触发器：定义触发器执行的脚本的时间 -->
+	<bean id="triggerRedisTask"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="RedisTask" />
+		<property name="cronExpression">
+			<value>0 0 0 * * ? </value><!-- 每日凌晨0点 -->
+		</property>
+	</bean>
+
+	<!-- 配置项目启动后任务就执行一次 -->
+	<bean id="rsh_simpleTrigger1"
+		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="MpStoreTask" />
+		<property name="startDelay" value="500" />
+		<property name="repeatInterval" value="0" />
+		<property name="repeatCount" value="0" />
+	</bean>
+
+	<!-- 配置项目启动后任务就执行一次 -->
+	<bean id="rsh_simpleTrigger2"
+		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="RedisTask" />
+		<property name="startDelay" value="500" />
+		<property name="repeatInterval" value="0" />
+		<property name="repeatCount" value="0" />
+	</bean>
+
+	<!-- 配置项目启动后任务就执行一次 -->
+	<bean id="rsh_simpleTrigger3"
+		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="MpWiFiTask" />
+		<property name="startDelay" value="500" />
+		<property name="repeatInterval" value="0" />
+		<property name="repeatCount" value="0" />
+	</bean>
+
+	<!-- 总管理类,启动触发器的配置, 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<bean id="schedulerFactory" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="triggerMpStoreTask" />
+				<!-- 暂时项目启动的时候不启动微信门店定时任务 -->
+				<!-- <ref bean="rsh_simpleTrigger1" /> -->
+				<ref bean="triggerMemberIntegerTask" />
+				<ref bean="triggerRedisTask" />
+				<ref bean="rsh_simpleTrigger2" />
+				<ref bean="triggerMpWiFiTask" />
+				<!-- 暂时项目启动的时候不启动微信WiFi同步定时任务 -->
+				<!-- <ref bean="rsh_simpleTrigger3" /> -->
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />
+		<!-- <property name="startupDelay" value="1" /> --><!-- 1秒后开始运行 -->
+	</bean>
+
+</beans>

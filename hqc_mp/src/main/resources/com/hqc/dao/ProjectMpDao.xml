@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.ProjectMpDao">
+	<resultMap type="com.hqc.entity.MpProjectEntity" id="projectMap">
+		<id column="id" property="id"/>
+		<result column="about" property="about"/>
+		<result column="thumb_url" property="thumbUrl"/>
+		<result column="status" property="status"/>
+		<result column="scenery_id" property="sceneryId"/>
+		<result column="lat" property="lat"/>
+		<result column="lng" property="lng"/>
+		<result column="project_content" property="projectContent"/>
+		<result column="project_name" property="projectName"/>
+		<result column="category_id" property="categoryId"/>
+		<association property="mpScenerySpotEntity" javaType="MpScenerySpotEntity">
+			<id column="scen_id" property="id" />
+			<result column="scen_about" property="about"/>
+			<result column="scen_create_time" property="createTime"/>
+			<result column="scen_scenery_content" property="sceneryContent"/>
+			<result column="scen_scenery_name" property="sceneryName"/>
+			<result column="scen_thumb_url" property="thumbUrl"/>
+			<result column="scen_update_time" property="updateTime"/>
+			<result column="scen_scenic_id" property="scenicId"/>
+		</association>
+		<association property="mpProjectCategoryEntity" javaType="MpProjectCategoryEntity">
+			<id column="pro_id" property="id"/>
+			<result column="pro_category_name" property="categoryName"/>
+			<result column="pro_is_system" property="isSystem"/>
+			<result column="pro_parent_id" property="parentId"/>
+		</association>	
+	</resultMap>
+	
+	<select id="queryList" resultMap="projectMap">
+		select m.*,
+			ms.id  scen_id,
+			ms.about  scen_about,
+			ms.create_time  scen_create_time,
+			ms.scenery_content  scen_scenery_content,
+			ms.scenery_name  scen_scenery_name,
+			ms.thumb_url  scen_thumb_url,
+			ms.update_time  scen_update_time,
+			ms.scenic_id  scen_scenic_id,
+			mpc.id pro_id,
+			mpc.category_name pro_category_name,
+			mpc.is_system pro_is_system,
+			mpc.parent_id pro_parent_id
+		
+			from mp_project m
+			left join mp_scenery_spot ms 
+			on m.scenery_id = ms.id
+			left join mp_project_category mpc
+			on m.category_id = mpc.id
+		<where>
+			<if test="projectName != null and  projectName.trim() != ''">
+				and m.project_name like concat('%',#{projectName},'%')
+			</if>
+			<if test="status != null and status.trim() != ''">
+				and m.status like concat('%',#{status},'%')
+			</if>
+		</where>	
+					
+		<if test="offset != null and limit != null"> limit #{offset}, #{limit} </if>		
+			
+	</select>
+	
+	<select id="queryLists" resultType="MpProjectEntity">
+		select * from mp_project where id in
+				<foreach item="id" collection="array" open="(" separator="," close=")">
+					#{id}
+				</foreach>
+	
+	</select>
+	
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_project m
+		left join mp_scenery_spot ms on m.scenery_id = ms.id
+		left join mp_project_category mpc on m.category_id = mpc.id	
+		<where>
+			<if test="projectName != null and  projectName.trim() != ''">
+				and m.project_name like concat('%',#{projectName},'%')
+			</if>
+			<if test="status != null and status.trim() != ''">
+				and m.status like concat('%',#{status},'%')
+			</if>
+		</where>
+						
+	</select>
+	
+	<select id="queryListCategory" resultType="MpProjectCategoryEntity">
+		select * from mp_project_category  
+	</select>
+	
+	<select id="queryListScenery" resultType="MpScenerySpotEntity">
+		select * from mp_scenery_spot  
+	</select>
+
+	<insert id="save" parameterType="MpProjectEntity">
+		insert into mp_project
+		(
+		project_name,
+		about,
+		project_content,
+		thumb_url,
+		lat,
+		lng,
+		status,
+		category_id,
+		scenery_id	
+		)
+		values
+		(
+		#{projectName},
+		#{about},
+		#{projectContent},
+		#{thumbUrl},
+		#{lat},
+		#{lng},
+		#{status},
+		#{categoryId},
+		#{sceneryId}
+		)
+	</insert>
+	
+	<update id="update" parameterType="MpProjectEntity">
+		update mp_project set
+		project_name = #{projectName},
+		about = #{about},
+		project_content = #{projectContent},
+		thumb_url = #{thumbUrl},
+		lat = #{lat},
+		lng = #{lng},
+		status = #{status},
+		category_id = #{categoryId},
+		scenery_id = #{sceneryId}		
+		where id = #{id}
+	</update>
+	
+	<select id="queryObject" resultType="MpProjectEntity">
+		select * from mp_project where id =#{id}
+	</select>
+	
+	<select id="querysceneryById" resultType="MpScenerySpotEntity">
+		select * from mp_scenery_spot where id =#{sceneryId}
+	</select>
+	
+	<select id="querycategoryById" resultType="MpProjectCategoryEntity">
+		select * from mp_project_category  where id =#{categoryId}
+	</select>
+
+	<delete id="deleteBatch">
+		delete from mp_project  where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>		
+		
+	<select id="queryByName" resultType="Integer">
+		select count(*) from mp_project where project_name = #{projectName}									 
+	</select>
+	
+	<select id="queryObjectAll" resultType="int">
+		select count(*) from mp_project where scenery_id in					
+			<foreach item="ids" collection="array" open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</select>
+	
+	<select id="queryCategorytAll" resultType="int">
+		select count(*) from mp_project where category_id in					
+			<foreach item="categoryIds" collection="array" open="(" separator="," close=")">
+				#{categoryIds}
+			</foreach>
+	</select>
+	
+	<select id="queryListBywhere" resultMap="projectMap">
+		SELECT m.*,p.`category_name` pro_category_name  FROM `mp_project` m LEFT JOIN `mp_project_category` p ON m.`category_id`=p.`id` WHERE p.`id`=#{value}
+	</select>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpArticleCategoryDao">
+
+	<select id="queryList" resultType="MpArticleCategoryEntity">
+		SELECT ac.*,pac.category_name AS parentName FROM mp_article_category
+		ac
+		LEFT JOIN mp_article_category pac ON ac.parent_id = pac.id
+		<where>
+		</where>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_article_category
+		<where>
+		</where>
+	</select>
+
+	<select id="queryObject" resultType="MpArticleCategoryEntity">
+		select * from
+		mp_article_category
+		where
+		id = #{value}
+	</select>
+
+	<select id="queryByCategoryName" resultType="MpArticleCategoryEntity">
+		select * from
+		mp_article_category
+		where
+		category_name = #{value}
+	</select>
+
+	<select id="querybyparent" resultType="MpArticleCategoryEntity">
+		SELECT id,category_name
+		FROM mp_article_category WHERE parent_id=0
+	</select>
+
+	<delete id="deleteBatch">
+		delete from mp_article_category where is_system=0 and id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		;
+		delete from mp_article_category where is_system=0 and parent_id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		;
+	</delete>
+	<update id="update" parameterType="MpArticleCategoryEntity">
+		update mp_article_category
+		<set>
+			<if test="categoryName != null">`category_name` = #{categoryName}, </if>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="categoryType != null">`category_type` = #{categoryType}, </if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 查询父目录下是否有子目录信息，有则不可删除，无则可删除 -->
+	<select id="queryChild" resultType="int">
+		SELECT COUNT(*) FROM
+		mp_article a INNER JOIN mp_article_category b ON b.id=a.category_id
+		WHERE b.id=#{id}
+	</select>
+	<!-- ID查询PARENTID看是否存在子类菜单 -->
+	<select id="queryExist" resultType="int">
+		SELECT COUNT(id) FROM
+		mp_article_category WHERE parent_id =#{parent_id}
+	</select>
+
+	<select id="queryByName" resultType="int">
+		SELECT COUNT(*) FROM
+		mp_article_category WHERE category_name LIKE #{category_name}
+	</select>
+</mapper>

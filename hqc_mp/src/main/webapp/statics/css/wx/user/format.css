@@ -1,0 +1,25 @@
+﻿/* 重设样式 */
+body{font:12px/1.5 '微软雅黑', \5b8b\4f53,arial,georgia,verdana,helvetica,sans-serif;font-style: normal;font-variant:normal;color:#454545; background:#FFF;}
+* {box-sizing: border-box;}  
+img,object,select,input,textarea,button{vertical-align:middle}
+ins,s,u,del{text-decoration:none}
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+fieldset,img{border:none}
+table{border-collapse:collapse;border-spacing:0;table-layout:fixed}
+caption,th{text-align:left}
+address, caption, cite, code, dfn, em, i, th, var {font-style:normal;font-weight:normal;}
+ul,ol,menu,li{list-style:none}
+h1,h2,h3,h4,h5,h6,input,textarea,select,address,caption,cite,code,dfn,em,i,b,strong,small,th,var,abbr{font-size:100%;font-style:normal}
+abbr, acronym {border:0;}
+a {color:#666;cursor:pointer; text-decoration:none; -moz-transition:all .3s ease-in;
+-webkit-transition:all .3s ease-in;
+-o-transition:all .3s ease-in;
+-ms-transition:all .3s ease-in;
+transition:all .3s ease-in;}
+a:hover{text-decoration:none;}
+a.img:hover img,a.img:active img{ opacity:0.9;}
+.clr{clear:both;font-size:0;height:0;line-height:0;overflow:hidden;margin:0; padding:0; width:0; border:none;}*/
+.clearfix:after{content:"\0020";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{clear:both;zoom:1}
+a, button, input, select, textarea, a:focus, button:focus, input:focus, select:focus, textarea:focus, [onclick] {outline: 0 none;}
+input, button, textarea, select {background: none;border: 0 none;font-family: inherit;font-size: inherit;font-weight: inherit;outline: 0 none;text-decoration: none;}

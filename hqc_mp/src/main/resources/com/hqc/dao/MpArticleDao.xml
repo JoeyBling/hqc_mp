@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.MpArticleDao">
+	<resultMap type="com.hqc.entity.MpArticleEntity" id="MpArticleEntity">
+		<id column="id" property="id"></id>
+		<result property="title" column="title" />
+		<result property="thumb" column="thumb" />
+		<result property="categoryId" column="category_id" />
+		<result property="likeCount" column="like_count" />
+		<result property="content" column="content" />
+		<result property="createTime" column="create_time" />
+		<result property="readCount" column="read_count" />
+		<result property="comeFrom" column="come_from" />
+		<result property="author" column="author" />
+		<result property="userId" column="user_id" />
+		<result property="status" column="status" />
+		<association property="mpArticleCategoryEntity"
+			javaType="com.hqc.entity.MpArticleCategoryEntity">
+			<id column="id" property="id"></id>
+			<result property="categoryName" column="category_name" />
+			<result property="parentId" column="parent_id" />
+			<result property="categoryType" column="category_type" />
+			<result property="isSystem" column="is_system" />
+		</association>
+	</resultMap>
+
+	<select id="queryByCategoryId" resultMap="MpArticleEntity">
+		select a.*,b.* from
+		mp_article a left join mp_article_category b on a.category_id=b.id
+		where
+		a.category_id = #{value}
+	</select>
+
+	<select id="queryObject" resultMap="MpArticleEntity">
+		select a.*,b.* from
+		mp_article a left join mp_article_category b on a.category_id=b.id
+		where
+		a.id = #{value}
+	</select>
+	<select id="queryCategoryName" resultMap="MpArticleEntity">
+		select a.*,b.* from
+		mp_article a left join mp_article_category b on a.category_id=b.id
+		where
+		a.title =#{value}
+	</select>
+
+	<!-- 查询所有信息，分页显示 -->
+	<select id="queryList" resultMap="MpArticleEntity">
+		SELECT a.*,b.is_system,b.category_name FROM mp_article a LEFT JOIN
+		mp_article_category
+		b ON a.category_id=b.id
+		<where>
+			<if test="author != null and author.trim() != ''">
+				and a.author like concat('%',#{author},'%')
+			</if>
+			<if test="title != null and title.trim() != ''">
+				and a.title like concat('%',#{title},'%')
+			</if>
+			<if test="categoryName != null and categoryName.trim() != ''">
+				and b.category_Name like concat('%',#{categoryName},'%')
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryAll" resultType="MpArticleEntity">
+		SELECT m.* FROM mp_article m WHERE m.category_id IN
+		( SELECT a.id FROM mp_article_category a WHERE a.parent_id =
+		(SELECT a.id FROM mp_article_category a WHERE a.category_name = #{categoryName}) OR
+		a.category_name = #{categoryName}) order by m.create_time desc
+		limit #{offset}, #{limit}
+	</select>
+
+	<select id="queryTotalByCategoryName" resultType="int">
+		SELECT count(*) FROM mp_article WHERE category_id IN
+		( SELECT id FROM mp_article_category WHERE parent_id =
+		(SELECT id FROM mp_article_category WHERE category_name = #{value}) OR
+		category_name = #{value})
+	</select>
+
+	<!-- 查询所有信息条数 -->
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_article
+		<where>
+		</where>
+	</select>
+
+	<!-- 根据ID删除信息 -->
+	<delete id="deleteBatch">
+		delete from mp_article where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<!-- 根据主表ID查询从表category_id(关联图文信息分类表) -->
+	<select id="queryById" resultType="int">
+		SELECT category_id FROM
+		mp_article WHERE id=#{id}
+	</select>
+
+	<!-- 根据主表category_id查询主表图文信息分类 中是否属于内置系统对象 -->
+	<select id="querySys" resultType="int">
+		SELECT COUNT(b.is_system) FROM
+		mp_article a LEFT JOIN mp_article_category b
+		ON
+		a.category_id=b.parent_id WHERE category_id=#{category_id} AND
+		a.id=#{id}
+	</select>
+	<update id="update" parameterType="MpGoodsEntity">
+		update mp_article
+		<set>
+			<if test="title != null">title = #{title}, </if>
+			<if test="thumb != null">thumb = #{thumb}, </if>
+			<if test="categoryId != null">category_id = #{categoryId}, </if>
+			<if test="content != null">content = #{content}, </if>
+			<if test="createTime != null">create_time = #{createTime}, </if>
+			<if test="readCount != null">read_count = #{readCount}, </if>
+			<if test="likeCount != null">like_count = #{likeCount}, </if>
+			<if test="comeFrom != null">come_from = #{comeFrom}, </if>
+			<if test="author != null">author = #{author}, </if>
+			<if test="userId != null">user_id = #{userId}, </if>
+			<if test="status != null">status = #{status} </if>
+
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 查询图文信息分类 -->
+	<select id="queryArticleCategory" resultType="MpArticleCategoryEntity">
+		SELECT * FROM
+		mp_article_category
+	</select>
+
+	<!-- 查询该类文章下的总数 -->
+	<select id="queryArticleTotalByCategory" resultType="int">
+		select
+		count(a.id) as total from mp_article a
+		, mp_article_category b where
+		a.category_id=b.id AND b.category_type=2 and b.id=#{id}
+	</select>
+
+	<select id="queryentity" resultMap="MpArticleEntity">
+		SELECT
+		a.*,b.is_system,b.category_name FROM mp_article a LEFT JOIN
+		mp_article_category
+		b ON a.category_id=b.id where b.category_name =
+		#{title}
+	</select>
+	
+	<!-- 根据类别名称做查询 -->
+	<select id="queryTitle" resultMap="MpArticleEntity">
+		SELECT * FROM mp_article WHERE
+		category_id IN
+		( SELECT id FROM mp_article_category WHERE parent_id =
+		(SELECT id FROM mp_article_category WHERE category_name = #{value}) OR
+		category_name = #{value})
+	</select>
+
+	<select id="queryNewById" resultMap="MpArticleEntity">
+		SELECT
+		a.*,b.is_system,b.category_name FROM mp_article a LEFT JOIN
+		mp_article_category
+		b ON a.category_id=b.id where a.category_id =
+		#{categoryId}
+	</select>
+
+	<update id="updateRead" parameterType="MpArticleEntity">
+		update mp_article set
+		read_count = read_count + 1 where id=#{value}
+	</update>
+
+	<update id="updateLike" parameterType="MpArticleEntity">
+		update mp_article set
+		like_count = like_count + 1 where id=#{value}
+	</update>
+
+</mapper>

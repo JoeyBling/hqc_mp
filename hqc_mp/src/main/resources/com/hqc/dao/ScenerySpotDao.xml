@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.ScenerySpotDao">	
+	<resultMap type="com.hqc.entity.MpScenerySpotEntity" id="scenerySpotMap">
+		<id property="id" column="id"/>
+		<result column="about" property="about"/>
+		<result column="create_time" property="createTime"/>
+		<result column="scenery_content" property="sceneryContent"/>
+		<result column="scenery_name" property="sceneryName"/>
+		<result column="thumb_url" property="thumbUrl"/>
+		<result column="update_time" property="updateTime"/>
+		<result column="scenic_id" property="scenicId"/>
+		<association property="mpScenicSpotEntity" javaType="MpScenicSpotEntity">
+			<id column="nic_id" property="id"/>
+			<result column="nic_about" property="about"/>
+			<result column="nic_create_time" property="createTime"/>
+			<result column="nic_content" property="content"/>
+			<result column="nic_scenic_name" property="scenicName"/>
+			<result column="nic_thumb_url" property="thumbUrl"/>
+			<result column="nic_update_time" property="updateTime"/>			
+		</association>	
+	</resultMap>
+	
+	<select id="queryList" resultMap="scenerySpotMap">
+		select s.*,
+				c.id nic_id,
+				c.about nic_about, 
+				c.scenic_name nic_scenic_name,
+				c.thumb_url nic_thumb_url,
+				c.content nic_content,
+				c.update_time nic_update_time,
+				c.create_time nic_create_time
+				FROM mp_scenery_spot s 
+				LEFT JOIN mp_scenic_spot c 
+				ON s.scenic_id=c.id
+		<where>
+			<if test="sceneryName != null and  sceneryName.trim() != ''">
+				and s.scenery_name like concat('%',#{sceneryName},'%')
+			</if>
+			<if test="scenicName != null and scenicName.trim() != ''">
+				and c.scenic_name like concat('%',#{scenicName},'%')
+			</if>
+		</where>		
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null"> limit #{offset}, #{limit} </if>		
+	
+	</select>
+
+	<delete id="deleteBatch">
+		delete from mp_scenery_spot where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>	
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_scenery_spot s 
+				LEFT JOIN mp_scenic_spot c 
+				ON s.scenic_id=c.id
+		<where>
+			<if test="sceneryName != null and  sceneryName != ''">
+				and s.scenery_name like concat('%',#{sceneryName},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryscenicById" resultType="MpScenicSpotEntity">
+		select * from mp_scenic_spot where id = #{scenicId}
+	</select>
+	
+	<select id="queryListscenic" resultType="MpScenicSpotEntity">
+		select * from mp_scenic_spot 
+	</select>
+	
+	
+	<insert id="save" parameterType="MpScenerySpotEntity">
+		insert into mp_scenery_spot
+		(
+		scenery_name,
+		about,
+		scenery_content,
+		thumb_url,
+		scenic_id,
+		create_time,
+		update_time	
+		)
+		values
+		(
+		#{sceneryName},
+		#{about},
+		#{sceneryContent},
+		#{thumbUrl},
+		#{scenicId},
+		#{createTime},
+		#{updateTime}
+		)
+	</insert>
+
+	<select id="queryObject" resultType="MpScenerySpotEntity">
+		select * from mp_scenery_spot where id = #{id}								 
+	</select>
+	
+	<select id="queryObjectList" resultType="MpScenerySpotEntity">
+		select * from mp_scenery_spot where scenic_id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+	
+	<update id="update" parameterType="MpScenerySpotEntity">
+		update mp_scenery_spot set
+		scenery_name = #{sceneryName},
+		about = #{about},
+		scenery_content = #{sceneryContent},
+		thumb_url = #{thumbUrl},
+		update_time = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<select id="queryByName" resultType="int">
+		select count(*) from mp_scenery_spot where scenery_name = #{sceneryName}									 
+	</select>
+
+	<select id="queryObjectAll" resultType="int">
+		select count(*) from mp_scenery_spot where scenic_id in					
+			<foreach item="ids" collection="array" open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</select>
+
+</mapper>

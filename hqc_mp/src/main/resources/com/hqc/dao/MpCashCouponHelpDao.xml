@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpCashCouponHelpDao">
+	<!-- 通过用户查询优惠卷集合（可用的），暂时写死 -->
+	<select id="queryList" resultType="MpCashCouponHelpEntity">
+		SELECT ger.id, 
+						cc.cash_coupon_name,
+						cc.face_value,
+						ger.create_time 
+	FROM mp_goods_exchange_record ger
+			LEFT JOIN mp_cash_coupon cc ON ger.goods_id = cc.id
+				WHERE ger.member_id = #{memberId}
+								AND ger.goods_type = 1
+								AND ger.use_status = 0
+								AND ger.create_time+2592000 >#{nowTime}
+				order by ger.create_time
+	</select>
+</mapper>

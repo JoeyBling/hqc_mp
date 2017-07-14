@@ -1,0 +1,1058 @@
+/**********************************************
+    Author: Geek.Yu
+	Create time:  2017-03-18 11:34
+	Application: new framework7css frame style and cover part of the style
+
+	作者：喻文强
+	创建时间： 2017-03-18 11:34
+	主要用途： 订单也和支付页公用的样式表
+
+************************************************/
+
+
+/* ==========================================================================
+   基础样式
+   ========================================================================== */
+@charset "utf-8";
+
+html {
+    line-height: 1.4;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html * {
+    outline: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}  
+html,
+body,
+input {
+    font-family: Arial,Helvetica,sans-serif,"Hiragino Sans GB";
+    color: #313536;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+/* 去掉各 Table  cell 的边距并让其边重合 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* 去除默认边框 */
+fieldset,
+img {
+  border: 0;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol,
+ul {
+  list-style: none;
+}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,
+th {
+  text-align: left;
+}
+/* 来自 yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500;
+}
+q:before,
+q:after {
+  content: '';
+}
+/* 统一上标和下标 */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+/* 默认不显示下划线，保持页面简洁 */
+ins,
+a {
+  text-decoration: none;
+}
+
+/*快捷边框线类*/
+.border-top-solid{
+    border-top: 1px solid #f0f0f0;
+}
+.border-right-solid{
+    border-right: 1px solid #f0f0f0;
+}
+.border-bottom-solid{
+    border-bottom: 1px solid #f0f0f0;
+}
+.border-left-solid{
+    border-left: 1px solid #f0f0f0;
+}
+
+/*
+ * 对齐及浮动
+ */
+.clearfix{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.clearfix:after {
+    clear: both;
+}
+
+.top,
+.left,
+.bottom,
+.right{
+    position: absolute;
+} 
+.top{
+    top: 0;
+}
+.left{
+    left: 0;
+}
+.bottom{
+    left: 0;
+}
+.right{
+    right: 0;
+}
+
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+
+
+/*
+ * 垂直布局 和 完全居中布局
+ */
+.vertical-layout{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.complete-center{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+/*
+ * 禁止用户选中文字
+ */
+.user-unselect{
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+
+
+/* ==========================================================================
+   熊猫旅行移动端的主要样式
+   ========================================================================== */
+
+html,body {
+    display: block;
+    font-size: 12px;
+    color: #313536;
+}
+
+a{
+	color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+p,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+button{
+    cursor: pointer;
+}
+button,input{ 
+    outline: none; 
+}
+ul,li{
+    margin: 0; 
+    padding: 0; 
+    list-style: none;
+}
+section,div,span,em,i,p,h1,h2,h3,h4,h5,h6{
+    cursor: default;
+}
+a,a *{
+    cursor: pointer;
+}
+em,i{
+    font-style: normal;
+}
+em{ margin: 0 3px; }
+
+.imgWrap img{
+    width: 100%;
+    height: 100%;
+}
+.unit-money em::before{
+    content: "￥";
+    font-size: .8em;
+    color: inherit;
+}
+em.unit-money::before{
+    content: "￥";
+}
+
+
+/*盒子布局，border-box移动端精准布局模式*/
+.box-sizing,
+.box-sizing *{
+    box-sizing: border-box;
+}
+
+/*正常的页面*/
+.natural-page{
+    background: #fff;
+}
+
+/*支付成功*/
+.prompt-title-box{
+    height: 4.2rem;
+    background-color: #349039;
+    color: #f5f5f5;
+    text-align: center;
+}
+.prompt-title-box > *{
+    display: block;
+}
+.prompt-title-box i{
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    margin-top: 1rem;
+}
+.prompt-title-box .slogan{
+    line-height: .8rem;
+    height: .8rem;
+    font-size: 17px;
+    letter-spacing: 3px;
+    text-indent: 3px;
+    margin-top: .1rem;
+}
+.prompt-info-content{
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+.content-inner{
+    padding: .25rem .35rem;
+}
+.prompt-info-content .info-list{
+    margin-bottom: 1rem;
+    margin-top: .25rem;
+}
+.info-list section.info-item{
+    height: .8rem;
+    line-height: .8rem;
+}
+.info-list section.info-item > *{
+    display: inline-block;
+    letter-spacing: 1px;
+    text-indent: 1px;
+}
+.info-list section.info-item span{
+    width: 72px;
+    text-align: right;
+    font-size: 12px;
+    color: #959595;
+}
+.info-list section.info-item p.value{
+    font-size: 14px;
+}
+.info-list em{
+    margin: 0;
+}
+.prompt-info-content .botton-box{
+    padding: 0 .2rem;
+    margin-bottom: .4rem;
+}
+.botton-box a.col-50{
+    width: 50%;
+    width: -webkit-calc((100% - 0.35rem*1)/ 2);
+    width: calc((100% - .35rem*1)/ 2);
+    height: 1.1rem;
+    line-height: 1.1rem;
+    border: 1px solid #e2e2e2;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-indent: 4px;
+    -webkit-transition: all .08s;
+    transition: all .08s;
+}
+.botton-box a.btn-01{
+    border: 1px solid rgba(52,144,57,.35);
+    color: #349039;
+}
+.botton-box a.btn-01:active{
+    border: 1px solid #349039;
+    color: #fff;
+    background-color: #349039;
+}
+.botton-box a.btn-02{
+    color: #777;
+}
+.botton-box a.btn-02:active{
+    color: #313536;
+}
+
+/*温馨提示*/
+.warm-tips-box{
+    position: relative;
+    padding-left: .75rem; 
+}
+.warm-tips-box .content-inner{
+    padding-top: .4rem;
+}
+
+.warm-tips-box i.icon{
+    position: absolute;
+    left: .35rem;
+    top: .35rem;
+    font-size: .55rem;
+    color: #349039;
+}
+.warm-tips-box section.info{
+    line-height: .5rem;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+/*系统提示*/
+.sys-prompt-info{
+    line-height: 1rem;
+    height: 1rem;
+    font-size: 11px;
+    color: #777;
+    padding: 0 .25rem;
+    overflow: hidden;
+}
+
+.sys-prompt-info em{
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-indent: 1px;
+    color: #f43;
+    margin: 0 3px;
+}
+
+/*支付信息框*/
+.fold-group-box{
+    background-color: #fff;
+}
+.fold-group-box .group-head{
+    height: 1.4rem;
+    line-height: 1.3rem;
+    padding: 0 .45rem;
+    position: relative;
+    overflow: hidden;
+}
+.group-head .info{
+    color: #313536;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.25rem;
+}
+.group-head .info span{
+    display: inline-block;
+    font-size: 21px;
+    margin-left: .2rem;
+    color: #f43;
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+}
+.group-head span.unit-money em::before{
+    font-size: .6em;
+}
+.group-head >i{
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    font-size: 20px;
+    right: .4rem;
+    position: absolute;
+    color: #b8b8b8;
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transition: .15s cubic-bezier(0, 0, 0.09, 0.64);
+    transition: .15s cubic-bezier(0, 0, 0.09, 0.64);
+}
+.fold-group-box.active .group-head >i{
+    -webkit-transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
+}
+
+/*选择支付方式*/
+.checked-list-content{
+    margin-top: 0.25rem;
+    background: #fff;
+}
+.checked-list-content .item-list{
+    padding: .15rem;
+}
+.item-list .info-item{
+    line-height: .95rem;
+    height: .95rem;
+    position: relative;
+    padding-right: .8rem;
+}
+.item-list .info-item:not(:last-child){
+    margin-bottom: .1rem;
+}
+.item-list section.info-title{
+    position: relative;
+    padding-left: .85rem;
+}
+.item-list section.info-title i{
+    position: absolute;
+    left: 0;
+    font-size: 25px;
+}
+.item-list section.info-title span{
+    font-size: 13px;
+    color: #313536;
+    letter-spacing: 1px;
+}
+.item-list .alipay i{
+    color: #01aaef;
+}
+.item-list .wechat i{
+    color: #00cd0c;
+}
+.item-list .balance i{
+    color: #f2bd4c;
+}
+.info-item i.radio{
+    width: 21px;
+    height: 21px;
+    line-height: 21px;
+    font-size: 21px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: #b2b2b2;
+}
+.item-list i.radio:before{
+    content: "\e6e4";
+}
+.info-item.active i.radio{
+    color: #349039;
+}
+.info-item.active i.radio:before{
+    content: "\e6e1";
+}
+.checked-list-content .more{
+    text-align: center;
+    line-height: .75rem;
+    height: .75rem;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-indent: 1px;
+}
+.checked-list-content .more i{
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 3px;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+}
+/*熊猫旅行--门票预订*/
+.head-info-content{
+    background: #fff;
+}
+.head-info-content h3.subtitle{
+    margin: .1rem 0 .2rem 0;
+    line-height: .7rem;
+    font-size: 14px;
+    letter-spacing: 1px;
+    max-height: 2.1rem;
+    overflow: hidden;
+}
+.head-info-content p.info{
+    color: #959595;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 18px;
+    height: 22px;
+}
+.head-info-content span.unit-money{
+    margin-right: .2rem;
+}
+.head-info-content span.unit-money em{
+    font-size: 22px;
+    color: #f43;
+    display: inline-block;
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+}
+.head-info-content span.unit-money em::before{
+    font-size: 11px;
+}
+.head-info-content p.info a >i.icon{
+    font-size: 15px;
+}
+.form-group.mb-10{
+    margin-bottom: .25rem;
+}
+
+/*列表信息*/
+.form-group{
+    background: #fff;
+}
+.form-group .content-inner{
+    padding: .1rem .35rem;
+}
+.form-group .group-item{
+    height: 1.3rem;
+    line-height: 1.3rem;
+    width: 100%;
+    position: relative;
+    padding-left: 1.9rem;
+}
+.form-group .group-item span.subtitle{
+    left: .1rem;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+.form-group .group-item section{
+    right: .1rem;
+}
+.form-group em{ margin: 0; }
+.form-group section.time-selection-box{
+    height: 1rem;
+}
+/* 时间选择容器 */
+section.time-selection-box div.time-block{
+    display: block;
+    width: 1.5rem;
+    position: relative;
+    text-align: center;
+    -webkit-border-radius: .1rem;
+    border-radius: .1rem;
+    color: #959595;
+}
+section.time-selection-box div.time-block.active{
+    color: #f43;
+    border: 1px solid rgba(255,68,51,.35);
+}
+section.time-selection-box div.time-block:not(.more){
+    margin-right: .15rem;      
+}
+section.time-selection-box div.time-block:not(.more) > *{
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    height: 14px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+section.time-selection-box div.time-block:not(.more) > span{
+    top: 50%;
+    margin-top: -12px;
+}
+section.time-selection-box div.time-block:not(.more) > em{
+    bottom: 50%;
+    margin-bottom: -15px;
+}
+section.time-selection-box div.more{
+    position: relative;
+}
+section.time-selection-box div.more > *{
+    top: 2px;
+}
+section.time-selection-box div.more span{
+    width: 28px;
+    height: 28px;
+    letter-spacing: 2px;
+    line-height: 14px;
+    font-size: 12px;
+    right: 50%;
+    margin-right: -0.25rem;
+}
+section.time-selection-box div.more i{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    display: block;
+    left: 50%;
+    margin-left: .15rem;
+    font-size: 17px;
+}
+/* 时间选择容器 */
+section.adder-subtractor{
+    width: 2.2rem;
+    height: .7rem;
+    line-height: .7rem;
+    padding: 0 .7rem;
+}
+section.adder-subtractor em.number{
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-indent: 2px;
+}
+section.adder-subtractor span{
+    width: .7rem;
+    height: .7rem;
+    line-height: .7rem;
+    text-align: center;
+    border-radius: 50%;
+}
+section.adder-subtractor span >i.icon{
+    height: .45rem;
+    line-height: .45rem;
+    width: .45rem;
+    font-size: .45rem;
+    color: inherit;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+section.adder-subtractor span.subtract{
+    left: 0;
+    border: 1px solid #b2b2b2;
+    color: #959595;
+}
+section.adder-subtractor span.add{
+    right: 0;
+    background: #349039;
+    color: #fff;
+}
+
+.form-group .group-item section.item-info{
+    width: 100%;
+    right: auto;
+    position: relative;
+    padding-right: .6rem;
+}
+.form-group input::webkit-input-placeholder{
+    color: #b2b2b2;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.form-group .group-item section.item-info input{
+    height: 1.1rem;
+    line-height: 1.1rem;
+    width: 100%;
+    border: none;
+    color: #313536;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.form-group .group-item section.item-info i.extra{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    color: #959595;
+}
+
+/*底部支付信息栏*/
+.page-content.toolbar-fixed{
+    padding-bottom: 46px;
+}
+.foot-box{
+    width: 100%;
+    height: 46px;
+    position: fixed;
+    background: #fff;
+    bottom: 0;
+    padding-right: 3.35rem;
+    z-index: 999;
+}
+.foot-box .box-info{
+    padding-left: .35rem;
+    line-height: 45px;
+    font-size: 14px;
+    position: relative;
+}
+.foot-box .box-info em{
+    margin: 0 4px;
+    font-size: 16px;
+    color: #f43;
+}
+.foot-box .agree-btn{
+    width: 3.2rem;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    background: #349039;
+    color: #fff;
+    letter-spacing: 3px;
+    text-indent: 3px;
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -1px;
+    -webkit-transition: all .05s;
+    transition: all .05s; 
+}
+.foot-box .agree-btn:active{
+    background: #48ad4e;
+}
+
+
+/*日期选择插件的模态层*/
+.calendar-modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    z-index: 9999;
+}
+.calendar-mask{
+    background: rgba(49,53,54,.5);
+}
+.calendar-content{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 64px;
+    background: #fff;
+}
+.calendar-modal,
+.calendar-mask,
+.calendar-content{
+    display: none;
+}
+
+/* 页头 */
+.calendar-content .box-header-navbar{
+    height: 41px;
+    line-height: 41px;
+    width: 100%;
+    color: #313536;
+    background-color: #fff;
+    font-size: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.box-header-navbar h3.center{
+    text-align: center;
+    line-height: 42px;
+    letter-spacing: 1px;
+    text-indent: 1px;
+}
+.box-header-navbar div.left,
+.box-header-navbar div.right{
+    position: absolute;
+    z-index: 2px;
+    top: 0;
+    letter-spacing: 2px;
+    color: #47c54e;
+}
+.box-header-navbar div.left{
+    left: .25rem;
+}
+.box-header-navbar div.icon,
+.box-header-navbar div.icon i{
+    font-size: 22px;
+}
+.box-header-navbar div.right{
+    right: .25rem;
+}
+.box-header-navbar div.right span.link-title{
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+/* 日历信息 */
+.calendar-content .calendar-title{
+    height: 22px;
+    line-height: 22px;
+    width: 100%;
+    color: #313536;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    position: fixed;
+    top: 42px;
+    left: 0;
+    z-index: 2;
+}
+.calendar-title section{
+    width: 14.28%;
+    float: left;
+    text-align: center;
+    font-size: 11px;
+    color: #777;
+}
+/* 日历列表 */
+.calendar-content .calendar-box{
+    background-color: #fff;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+/* 日历相关css */
+.cal-wrap{
+    background-color: #FFFFFF;
+    position: relative;
+    top: 0;
+    color: #777;
+}
+.cal-wrap:last-child{
+    margin-bottom: .25rem;
+}
+.cal-wrap h2 {
+    text-align: center;
+    font-size: 19px;
+    height: 1.95rem;
+    line-height: 1.95rem;
+    background: #fff;
+    color: #47c54e;
+}
+.cal-wrap:first-child{
+    padding-top: .25rem;
+}
+.cal-wrap ul.week {
+    height: 24px;
+    line-height: 24px;
+    background-color: #fff;
+    border-bottom: 1px solid #F5F0F0;
+    margin: 3px 0 5px;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.cal-wrap ul.week li {
+    float: left;
+    box-sizing: border-box;
+    width: 14.28%;
+    text-align: center;
+}
+
+.cal-wrap ul.week li.wk {
+    color: #FF902D;
+}
+
+.cal-wrap ul.day {
+    overflow: hidden;
+}
+
+.cal-wrap ul.day li {
+    float: left;
+    box-sizing: border-box;
+    width: 14.28%;
+    text-align: center;
+    height: 60px;
+    padding: 2px 0;
+    position: relative;
+    border-top: 1px solid transparent;
+}
+.cal-wrap ul.day li:not(.ept){
+    border-top: 1px solid #f0f0f0;
+}
+
+.cal-wrap ul.day li i {
+    font-style: normal;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.cal-wrap ul.day li i.w_day,
+.cal-wrap ul.day li i.w_title{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+.cal-wrap ul.day li i.w_day{
+    font-size: 17px;
+}
+.cal-wrap ul.day li i.w_title{
+    font-size: 12px;
+}
+.cal-wrap ul.day li em.w_price{
+    color: #777;
+    display: block;
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    bottom: 4px;
+    margin: auto;
+}
+.cal-wrap ul.day li:not(.iv) em span.no-ticket{
+    color: #f59193;
+    font-size: 11px;
+}
+
+/* 多行 */
+.cal-wrap ul.day li.dl {
+    line-height: 20px;
+    padding-top: 2px;
+    font-size: 13px;
+    font-weight: 300;
+}
+.cal-wrap ul.day li.dl i.w_day{
+    display: none;
+}
+.cal-wrap ul.day li.dl i.w_title{
+    display: block;
+}
+
+/* 节日 */
+.cal-wrap ul.day li.jr {
+    color: #f99a55;
+}
+
+/* 双休 */
+.cal-wrap ul.day li.wk {
+    color: #f99a55;
+}
+
+/* 不可点状态 */
+.cal-wrap ul.day li.iv,
+.cal-wrap ul.day li.iv em.w_price{
+    color: #b8b8b8!important;
+}
+
+/* 当前选中态 */
+.cal-wrap ul.day li.cur {
+}
+
+.cal-wrap ul.day li.cur i.w_day{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #47c54e;
+    color: #f5f5f5;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+}
+.cal-wrap ul.day li.cur i.w_title{
+    display: none;
+    
+}

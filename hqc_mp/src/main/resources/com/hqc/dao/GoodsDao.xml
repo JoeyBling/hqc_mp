@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.GoodsDao">
+    <resultMap type="com.hqc.entity.MpGoodsEntity" id="MpGoodsEntity">
+       <id column="id" property="id"></id>
+       <result property="goodsName" column="goods_name"/>
+       <result property="goodsThumb" column="goods_thumb"/>
+       <result property="goodsNo" column="goods_no"/>
+       <result property="categoryId" column="category_id"/>
+       <result property="daysLimit" column="days_limit"/>
+       <result property="endTime" column="end_time"/>
+       <result property="repertory" column="repertory"/>
+       <result property="marketPrice" column="market_price"/>
+       <result property="price" column="price"/>
+       <result property="integral" column="integral"/>
+       <result property="about" column="about"/>
+       <result property="notice" column="notice"/>
+       <result property="maxExchange" column="max_exchange"/>
+       <result property="dayExchange" column="day_exchange"/>
+       <result property="status" column="status"/>
+       <result property="userId" column="userId"/>
+       <association property="mpGoodsCategoryEntity" javaType="com.hqc.entity.MpGoodsCategoryEntity">
+           <id column="id" property="id"></id>
+           <result property="categoryName" column="category_name"/>
+           <result property="parentId" column="parent_id"/>
+           <result property="about" column="about"/>
+       
+       </association>
+    </resultMap>
+	<select id="queryObject" resultType="MpGoodsEntity">
+		select a.*, b.category_name from mp_goods a 
+		left join mp_goods_category b on a.category_id=b.id
+		where
+		a.id = #{value}
+	</select>
+
+	<select id="queryList" resultMap="MpGoodsEntity">
+		select a.*, b.category_name from mp_goods a 
+		left join mp_goods_category b on a.category_id=b.id
+		<where>
+			<if test="categoryName != null and  categoryName.trim() != ''">
+				and b.category_name like concat('%',#{categoryName},'%')
+			</if>
+			<if test="goodsName!=null and goodsName.trim()!=''">
+			   and a.goods_name like concat('%',#{goodsName},'%')
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_goods a 
+		left join mp_goods_category b on a.category_id=b.id
+		<where>
+			<if test="categoryName != null and  categoryName.trim() != ''">
+				and b.category_name like concat('%',#{categoryName},'%')
+			</if>
+			<if test="goodsName!=null and goodsName.trim()!=''">
+			   and a.goods_name like concat('%',#{goodsName},'%')
+			</if>
+		</where>
+	</select>
+	<select id="queryAllGategory" resultType="com.hqc.entity.MpGoodsCategoryEntity">
+	   select * from  mp_goods_category
+	</select>
+    <insert id="save" parameterType="MpGoodsEntity">
+		insert into mp_goods
+		(
+		`id`,
+		`goods_name`,
+		`goods_thumb`,
+		`category_id`,
+		`days_limit`,
+		`end_time`,
+		`repertory`,
+		`market_price`,
+		`price`,
+		`integral`,
+		`about`,
+		`notice`,
+		`max_exchange`,
+		`day_exchange`,
+		`status`,
+		`user_id`
+		)
+		values
+		(
+		#{id},
+		#{goodsName},
+		#{goodsThumb},
+		#{categoryId},
+		#{daysLimit},
+		#{endTime},
+		#{repertory},
+		#{marketPrice},
+		#{price},
+		#{integral},
+		#{about},
+		#{notice},
+		#{maxExchange},
+		#{dayExchange},
+		#{status},
+		#{userId}
+		)
+	</insert>
+	<select id="queryCategoryById" resultType="com.hqc.entity.MpGoodsCategoryEntity">
+	   select * from  mp_goods_category where id  = #{value}
+	</select>
+	<update id="update" parameterType="MpGoodsEntity">
+		update mp_goods
+		<set>
+			<if test="goodsName != null">goods_name = #{goodsName}, </if>
+			<if test="goodsThumb != null">goods_thumb = #{goodsThumb}, </if>
+			<if test="categoryId != null">category_id = #{categoryId}, </if>
+			<if test="daysLimit != null">days_limit = #{daysLimit}, </if>
+			<if test="endTime != null">end_time = #{endTime}, </if>
+			<if test="repertory != null">repertory = #{repertory}, </if>
+			<if test="marketPrice != null">market_price = #{marketPrice}, </if>
+			<if test="price != null">price = #{price}, </if>
+			<if test="integral != null">integral = #{integral}, </if>
+			<if test="about != null">about = #{about}, </if>
+			<if test="notice != null">notice = #{notice}, </if>
+			<if test="maxExchange != null">max_exchange = #{maxExchange}, </if>
+			<if test="dayExchange != null">day_exchange = #{dayExchange}, </if>
+			<if test="status != null">status = #{status}, </if>
+			<if test="userId != null">user_id = #{userId} </if>
+		</set>
+		where id = #{id}
+	</update>
+	<delete id="deleteBatch">
+		   delete from mp_goods where id in
+		   <foreach item="id" collection="array" open="(" separator=","
+			  close=")">
+			  #{id}
+		   </foreach>
+	
+	</delete>
+	<update id="auitStatus"  parameterType="MpGoodsEntity">
+		update mp_goods
+		<set>
+			<if test="status != null">`status` = #{status} </if>
+		</set>
+		where id = #{id}
+	</update>
+	<select id="queryGoodsByName" resultType="int">
+	     select count(*) from mp_goods a where a.goods_name=#{goodsName}
+	</select>
+	 <select id="queryUsingGoods" resultType="int">
+         SELECT
+	       count(b.id)
+         FROM
+	       mp_goods a,
+	       mp_goods_exchange_record b
+         WHERE
+	       a.id = b.goods_id
+	       and b.goods_type=2
+           and a.id=#{id}
+    </select>
+</mapper>

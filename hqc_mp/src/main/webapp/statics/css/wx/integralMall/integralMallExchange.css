@@ -1,0 +1,119 @@
+body{background:#F7F4F6;color:#909290;}
+a,a:hover{text-decoration:none;}
+ul, li {margin:0px;padding:0px;list-style:none;}
+.wrap-box{background-color:#fff;padding:0 1.4rem;margin-bottom:1.1rem}
+.container{padding-left:0px;padding-right:0px; padding-top:0px; width:100%;margin-bottom: 100px}
+.container .goodsInfoDiv{background:#FFFFFF;font-size:20px;padding-top:20px;padding-left:20px}
+.container .goodsInfoNames{
+	text-align: left;flex: 1;
+    font-size: 1.9rem;
+    height: 1.6rem;
+    line-height: 2.1rem;
+    color: #333;}
+    .container .chooseTime{
+    	    color: #333;
+    font-size: 1.4rem;
+    }
+.container .topborder{border-bottom:0.5px solid #f2f2f2;margin-top:50px;width:90%;margin-left:2%}
+.container .integralInfo{text-align: center;font-family:SimSun;color:#fc7700;font-weight:bold}
+.dateDiv{margin-bottom:20px;overflow:hidden; position:relative; line-height: 18px; text-align: center}
+.date-item{display:-moz-inline-stack;display:inline-block;font-size:1rem;
+ 		color:#333;border:1px solid #d4d4d4;border-radius:.2rem;
+ 		margin-left:.2rem;width:auto;box-sizing:border-box;height:30px;leight-height:30px;text-align:center;padding-top:5px}
+ 			.date-item.active{background-color:#fc7700;color:#fff;border:1px solid transparent}
+.dateDiv .morroInfo{font-size:8px; border:1px #000000}
+.dateDiv .morroDate{font-size:8px;color:#000000; border:1px #000000}
+.dateDiv ul{overflow:hidden; line-height: 18px;}
+.dateUl li button {padding:8px 6px;background:#1db1ff;font-weight:bold;color:#fff;font-size:20px;text-align:center;
+  }
+.datefont{color:white}
+.dateUl li{float:left}
+.container .miniuteCountInfo{background:url(../../../images/wx/integralMall/icon/miniuteInfo.png) no-repeat; }
+.container .addCountInfo{background:url(../../../images/wx/integralMall/icon/addInfo.png) no-repeat;}
+.container .addOrminiuteInfo{text-align: center;height:50px;leight-height:50px}
+
+.margingT {   margin-bottom: 80px; }
+.bottomAD { -webkit-box-sizing: border-box;height: 100px;position: fixed; bottom: 0;  left: 0; z-index: 1000; overflow: hidden; width: 100%;
+         }
+.bottom-pic {  position: absolute; top: 10px; width: 100%; height: 40px; overflow: hidden; background: rgba(0, 0, 0, .8); text-align: left;padding-left: 15px;padding-top:10px }
+.bottom-pic img {width: 100%; height: 100%;}
+.bottom-text {   position: absolute; top: 50px;  height: 60px; line-height: 60px; width:50%;
+         background-color: #FFFFFF;   text-align: center;font-size: 24px;padding: 0 5px; font-weight: bold; }
+.bottom-btn {  position: absolute; top: 50px; right: 0px;  height: 60px; line-height: 60px; color: #fff;width:50%;
+         background-color: #00dd00;  text-align: center;font-size: 24px;padding: 0 5px; font-weight: bold;
+         }
+
+.bottomAD a {position: absolute;top: 0;right: 0; bottom: 0;left: 0;}
+
+.tabbed_content{background-color:none;max-width:100%;padding-top:10px}
+
+
+.tabs{width:100%;height:45px;line-height:45px;position:relative;background:#F3F3F3;border-bottom:solid 1px #CCC;overflow:hidden;}
+
+.tabs h2{padding-left:10px;float:left;}
+
+.tabs .moving_bg{width:50%;_width:15%;height:43px;border-bottom:solid 2px #B52232;background-color:#FFF;position:absolute;z-index:190;left:0;background-position:bottom left;background-repeat:no-repeat;font-weight:bold;overflow:hidden;}
+
+.tabs2 .moving_bg{width:50%}
+
+.tabs3 .moving_bg{width:16.6666666%;}
+
+.tabs .tab_item{display:block;float:left;width:50%;color:#ffffff;text-align:center;z-index:200;position:relative;cursor:pointer;color:#000;font-weight:bold;overflow:hidden;}
+
+.tabs2 .tab_item{width:50%;}
+
+
+
+.tabs3 .tab_item{width:16.6666666%;}
+
+.tabs .tab_item:hover{color:#B52232;font-weight:bold;}
+
+.tabbed_content .slide_content{overflow:hidden;background-color:none;position:relative;width:100%;}
+
+.tabslider{width:400%}
+
+.tabslider2{width:500%}
+
+.tabslider3{width:600%}
+
+ .tabslider ul{float:left;margin:0px;width:25%;text-align:left;-ms-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding和border被包含在定义的width和height之内background:none;}
+
+.tabslider2 ul{width:20%}
+
+.tabslider3 ul{width:16.6666666%;}
+
+.tabslider ul a{margin-bottom:10px;display:block;color:#000;text-decoration:none;}
+
+.tabslider ul a:hover{color:#00;text-decoration:underline;}
+
+.tabslider .hidden div{padding:10px 10px;_padding:10px 0;*padding:10px 0;font-size:16px;}
+
+.tabslider ul li span,.tabslider .hidden div span{display:block;width:100%;color:#C5C5C5;text-align:right;font-size:0.875em;}
+
+.tabslider ul li span em,.tabslider .hidden div em{float:left;font-style:normal;}
+
+.tabslider ul li{padding:10px;border-bottom:solid 1px #EFEFEF;} 
+
+.nav{margin-top:5px;overflow:hidden;width:100%;height:100px;font-weight: 300;font-size: 20px;line-height: 45px;position:relative;}
+.nav .line{ position:absolute;height:60px;left:0;line-height:60px;text-align:center;/* background:#2c63a6; */cursor:pointer;}
+.nav .line li{float:left;height:45px;}
+.nav .line li:first-child{ background:none;}
+.nav .line li a{ color:#fff;text-decoration:none;}
+.nav .line .lineSpan{border:1px solid #d4d4d4;border-radius:.2rem;display:-moz-inline-stack;display:inline-block;
+ 		width:auto;box-sizing:border-box;height:45px;leight-height:45px;margin-right:12px;background: white}
+.nav .line  .lineSpanInfo{
+	
+}
+
+
+.info {    margin-top: 10px;   position:relative;height:80px;     background:#ffffff;   box-shadow:1px 2px 3px #E9D985;   border:1px solid #DACE7C;   border-radius:4px;   text-align:center;   color:red;   }
+.info   
+.nav1 {    position:absolute;   right: 380px;    overflow:hidden;   width:0;   height:0;    border-width:10px;   border-style:solid dashed dashed dashed;  }   
+.nav-border1 {    top:-20px;   border-color:transparent transparent #ffffff transparent;  }  
+.nav-background1 {   top:-19px;   border-color:transparent transparent #2c63a6 transparent;  } 
+.info .morAndmorBtn{text-align: right;width:100%;font-size:10px;z-index: 99}
+
+.count-item{display:-moz-inline-stack;display:inline-block;font-size:1rem;
+ 		color:#333;border:1px solid #d4d4d4;border-radius:.2rem;
+ 		margin-left:.2rem;width:20px;box-sizing:border-box;height:18px;leight-height:18px;text-align:center;}
+

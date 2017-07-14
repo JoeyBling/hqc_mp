@@ -1,0 +1,22 @@
+积分商品兑换记录表(mp_goods_exchange_record)   新增  订单号字段   order_no
+
+
+   
+商品订单记录表(mp_order_records)		新增
+						ticket_id 关联门票id(对应购票订单)
+						coupon_id 关联代金券ID(对应积分商城代金卷订单)
+						type 订单类型(1购票订单 2积分商城门票订单 3积分商城代金卷订单)
+
+
+景区门票表(mp_tickets)   		新增
+						advance 是否需要提前购票(0否1是)
+						discount 折扣
+						sale_date 开售时间
+						start_buy_date 开始购票日期
+						end_buy_date 结束购票日期
+						weekend_type 周末票价是否另算(0否1是)
+						weekend_price 周末票价
+
+购票订单记录表(mp_ticket_order) 		新增
+						del 删除状态(0正常1已删除)
+						open_id 改为 unionid

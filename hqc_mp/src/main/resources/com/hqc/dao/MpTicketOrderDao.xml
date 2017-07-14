@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpTicketOrderDao">
+
+	<resultMap id="flag" type="com.hqc.entity.MpTicketOrderEntity">
+		<id property="id" column="id" />
+		<id property="del" column="del" />
+		<result property="orderNo" column="order_no" />
+		<result property="orderTitle" column="order_title" />
+		<result property="ticketId" column="ticket_id" />
+		<result property="ticketCount" column="ticket_count" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+		<result property="orderPhone" column="order_phone" />
+		<result property="unionid" column="unionid" />
+		<result property="memberId" column="member_id" />
+		<result property="totalFee" column="total_fee" />
+		<result property="status" column="status" />
+		<result property="updateTime" column="update_time" />
+		<result property="createTime" column="create_time" />
+		<association property="mpMemberEntity" javaType="com.hqc.entity.MpMemberEntity">
+			<id property="id" column="m_id" />
+			<result property="phone" column="m_phone" />
+			<result property="birthday" column="m_birthday" />
+			<result property="cardNo" column="m_cardNo" />
+			<result property="trueName" column="m_trueName" />
+			<result property="nickName" column="m_nickName" />
+			<result property="openId" column="m_openId" />
+			<result property="unionid" column="m_unionid" />
+			<result property="avatar" column="m_avatar" />
+			<result property="password" column="m_password" />
+			<result property="lastYearIntegral" column="m_lastYearIntegral" />
+			<result property="currentYearIntegral" column="m_currentYearIntegral"></result>
+			<result property="integral" column="m_integral"></result>
+			<result property="createTime" column="m_createTime"></result>
+			<result property="updateTime" column="m_updateTime"></result>
+			<result property="status" column="m_status"></result>
+			<result property="vipLevel" column="m_vipLevel"></result>
+		</association>
+		<association property="mpTicketEntity" javaType="com.hqc.entity.MpTicketEntity">
+			<id property="id" column="t_id" />
+			<result property="ticketName" column="t_tickerName" />
+			<result property="thumbUrl" column="t_thumbUrl" />
+			<result property="ticketNo" column="t_ticketNo" />
+			<result property="price" column="t_price" />
+			<result property="marketPrice" column="t_marketPrice" />
+			<result property="advance" column="t_advance" />
+			
+			<result property="saleDate" column="t_saleDate" />
+			<result property="startBuyDate" column="t_startBuyDate" />
+			<result property="endBuyDate" column="t_endBuyDate" />
+			<result property="weekendType" column="t_weekendType" />
+			<result property="weekendPrice" column="t_weekendPrice" />
+			
+			<result property="discount" column="t_discount" />
+			<result property="about" column="t_about" />
+			<result property="ticketContent" column="t_tickerContent" />
+			<result property="saleCount" column="t_saleCount" />
+			<result property="status" column="t_status" />
+			<result property="updateTime" column="t_updateTime" />
+			<result property="createTime" column="t_createTime"></result>
+		</association>
+	</resultMap>
+
+	<select id="queryObject" resultMap="flag">
+		SELECT o.*,
+		t.`about`
+		t_about,
+		t.`sale_date` t_saleDate,
+		t.`start_buy_date` t_startBuyDate,
+		t.`end_buy_date` t_endBuyDate,
+		t.`weekend_type` t_weekendType,
+		t.`weekend_price` t_weekendPrice,
+		t.`create_time` t_createTime,
+		t.`id` t_id,
+		t.`market_price`
+		t_marketPrice,
+		t.`price` t_price,
+		t.`sale_count` t_saleCount,
+		t.`status`
+		t_status,
+		t.`ticket_content` t_tickerContent,
+		t.`ticket_name`
+		t_tickerName,
+		t.`ticket_no` t_ticketNo,
+		t.`advance` t_advance,
+		t.`discount` t_discount,
+		t.`update_time` t_updateTime,
+		t.`thumb_url`
+		t_thumbUrl,
+		m.`avatar` m_avatar,
+		m.`birthday` m_birthday,
+		m.`card_no`
+		m_cardNo,
+		m.`create_time` m_createTime,
+		m.`current_year_integral`
+		m_currentYearIntegral,
+		m.`id` m_id,
+		m.`integral` m_integral,
+		m.`last_year_integral` m_lastYearIntegral,
+		m.`unionid` m_unionid,
+		m.`nick_name` m_nickName,
+		m.`open_id`
+		m_openId,
+		m.`password` m_password,
+		m.`phone` m_phone,
+		m.`status`
+		m_status,
+		m.`true_name` m_trueName,
+		m.`update_time` m_updateTime,
+		m.`vip_level` m_vipLevel
+		FROM
+		mp_ticket_order o
+		LEFT JOIN mp_tickets t
+		ON t.`id` = o.`ticket_id`
+		LEFT
+		JOIN mp_member m ON m.`id` =
+		o.`member_id`
+		where
+		o.id
+		=
+		#{value}
+	</select>
+
+
+	<select id="queryByOrderNo" resultMap="flag">
+		SELECT o.*,
+		t.`about`
+		t_about,
+		t.`sale_date` t_saleDate,
+		t.`start_buy_date` t_startBuyDate,
+		t.`end_buy_date` t_endBuyDate,
+		t.`weekend_type` t_weekendType,
+		t.`weekend_price` t_weekendPrice,
+		t.`create_time` t_createTime,
+		t.`id` t_id,
+		t.`market_price`
+		t_marketPrice,
+		t.`price` t_price,
+		t.`sale_count` t_saleCount,
+		t.`status`
+		t_status,
+		t.`ticket_content` t_tickerContent,
+		t.`ticket_name`
+		t_tickerName,
+		t.`ticket_no` t_ticketNo,
+		t.`advance` t_advance,
+		t.`discount` t_discount,
+		t.`update_time` t_updateTime,
+		t.`thumb_url`
+		t_thumbUrl,
+		m.`avatar` m_avatar,
+		m.`birthday` m_birthday,
+		m.`card_no`
+		m_cardNo,
+		m.`create_time` m_createTime,
+		m.`current_year_integral`
+		m_currentYearIntegral,
+		m.`id` m_id,
+		m.`integral` m_integral,
+		m.`last_year_integral` m_lastYearIntegral,
+		m.`unionid` m_unionid,
+		m.`nick_name` m_nickName,
+		m.`open_id`
+		m_openId,
+		m.`password` m_password,
+		m.`phone` m_phone,
+		m.`status`
+		m_status,
+		m.`true_name` m_trueName,
+		m.`update_time` m_updateTime,
+		m.`vip_level`
+		m_vipLevel
+		FROM
+		mp_ticket_order o
+		LEFT JOIN mp_tickets t
+		ON t.`id` =
+		o.`ticket_id`
+		LEFT
+		JOIN mp_member m ON m.`id` =
+		o.`member_id`
+		where
+		o.`order_no`
+		=
+		#{orderNo}
+		<if test="unionid!=null">
+			and o.`unionid` = #{unionid}
+		</if>
+	</select>
+
+	<select id="queryList" resultMap="flag">
+		SELECT o.*,
+		t.`about`
+		t_about,
+		t.`sale_date` t_saleDate,
+		t.`start_buy_date` t_startBuyDate,
+		t.`end_buy_date` t_endBuyDate,
+		t.`weekend_type` t_weekendType,
+		t.`weekend_price` t_weekendPrice,
+		t.`create_time` t_createTime,
+		t.`id` t_id,
+		t.`market_price`
+		t_marketPrice,
+		t.`price` t_price,
+		t.`sale_count` t_saleCount,
+		t.`status`
+		t_status,
+		t.`ticket_content` t_tickerContent,
+		t.`ticket_name`
+		t_tickerName,
+		t.`ticket_no` t_ticketNo,
+		t.`advance` t_advance,
+		t.`discount` t_discount,
+		t.`update_time` t_updateTime,
+		t.`thumb_url`
+		t_thumbUrl,
+		m.`avatar` m_avatar,
+		m.`birthday` m_birthday,
+		m.`card_no` m_cardNo,
+		m.`create_time`
+		m_createTime,
+		m.`current_year_integral` m_currentYearIntegral,
+		m.`id`
+		m_id,
+		m.`integral` m_integral,
+		m.`last_year_integral`
+		m_lastYearIntegral,
+		m.`unionid` m_unionid,
+		m.`nick_name`
+		m_nickName,
+		m.`open_id` m_openId,
+		m.`password` m_password,
+		m.`phone`
+		m_phone,
+		m.`status` m_status,
+		m.`true_name` m_trueName,
+		m.`update_time`
+		m_updateTime,
+		m.`vip_level`
+		m_vipLevel
+		FROM mp_ticket_order o
+		LEFT JOIN
+		mp_tickets t ON t.`id` =
+		o.`ticket_id`
+		LEFT JOIN mp_member m ON m.`id`
+		= o.`member_id`
+		<where>
+			<if test="memberId!=null">
+				and o.`member_id` = #{memberId}
+			</if>
+			<if test="type!=null">
+				and o.`status` = #{type}
+			</if>
+			<if test="unionid!=null">
+				and o.`unionid` = #{unionid}
+			</if>
+			<if test="del!=null">
+				and o.`del` = #{del}
+			</if>
+			<if test="orderNo != null and orderNo.trim() != ''">
+				and o.order_no like concat('%',#{orderNo},'%')
+			</if>
+			<if test="ticketName != null and ticketName.trim() != ''">
+				and t.ticket_name like concat('%',#{ticketName},'%')
+			</if>
+			<if test="orderPhone != null and orderPhone.trim() != ''">
+				and o.order_phone like concat('%',#{orderPhone},'%')
+			</if>
+			<if test="startTime != null ">
+				AND o.create_time >= #{startTime}
+			</if>
+			<if test="endTime != null ">
+				AND o.create_time &lt;= #{endTime}
+			</if>
+			<if test="status != null and status != 0">
+				and o.`status` =
+				#{status}
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		SELECT count(o.id) FROM mp_ticket_order o
+		LEFT JOIN mp_tickets t
+		ON
+		t.`id` =
+		o.`ticket_id`
+		LEFT JOIN mp_member m ON m.`id` =
+		o.`member_id`
+		<where>
+			<if test="memberId!=null">
+				and o.`member_id` = #{memberId}
+			</if>
+			<if test="type!=null">
+				and o.`status` = #{type}
+			</if>
+			<if test="unionid!=null">
+				and o.`unionid` = #{unionid}
+			</if>
+			<if test="del!=null">
+				and o.`del` = #{del}
+			</if>
+			<if test="orderNo != null and orderNo.trim() != ''">
+				and o.order_no like concat('%',#{orderNo},'%')
+			</if>
+			<if test="ticketName != null and ticketName.trim() != ''">
+				and t.ticket_name like concat('%',#{ticketName},'%')
+			</if>
+			<if test="orderPhone != null and orderPhone.trim() != ''">
+				and o.order_phone like concat('%',#{orderPhone},'%')
+			</if>
+			<if test="startTime != null ">
+				AND o.create_time >= #{startTime}
+			</if>
+			<if test="endTime != null ">
+				AND o.create_time &lt;= #{endTime}
+			</if>
+			<if test="status != null and status != 0">
+				and o.`status` =
+				#{status}
+			</if>
+			and o.del = 0
+		</where>
+	</select>
+
+	<update id="updateByWhere">
+		update mp_ticket_order o
+		LEFT JOIN mp_member m ON m.`id` =
+		o.`member_id`
+		set o.`status` = #{status}
+		<where>
+			<if test="orderNo!=null">
+				and o.`order_no` = #{orderNo}
+			</if>
+			<if test="unionid!=null">
+				and o.`unionid` = #{unionid}
+			</if>
+		</where>
+	</update>
+
+	<update id="deleteByWhere">
+		update mp_ticket_order o
+		LEFT JOIN mp_member m ON m.`id` =
+		o.`member_id`
+		set o.`del` = 1
+		<where>
+			<if test="orderNo!=null">
+				and o.`order_no` = #{orderNo}
+			</if>
+			<if test="unionid!=null">
+				and o.`unionid` = #{unionid}
+			</if>
+		</where>
+	</update>
+
+	<update id="deleteBatch">
+		update mp_ticket_order
+		set `del`=1
+		where `id` in
+		<foreach item="ids" collection="array" open="(" separator=","
+			close=")">
+			#{ids}
+		</foreach>
+		and `status` IN (2,4)
+	</update>
+
+	<select id="findDelCount" resultType="int">
+		select count(*) from mp_ticket_order
+		where `id` in
+		<foreach item="ids" collection="array" open="(" separator=","
+			close=")">
+			#{ids}
+		</foreach>
+		and `status` IN (2,4)
+	</select>
+
+	<update id="deleteById">
+		update mp_ticket_order o
+		LEFT JOIN mp_member m ON
+		m.`id` =
+		o.`member_id`
+		set o.`del` = 1
+		where o.id=#{value}
+	</update>
+
+	<update id="delByWhere">
+		update mp_ticket_order o
+		LEFT JOIN mp_member m ON
+		m.`id` =
+		o.`member_id`
+		set o.`del` = #{status}
+		where o.id=#{orderId} and
+		o.`member_id`=#{memberId}
+	</update>
+
+	<update id="updateStatusByWhere">
+		update mp_ticket_order o
+		LEFT JOIN mp_member m ON
+		m.`id` =
+		o.`member_id`
+		set o.`status` = #{status}
+		where o.id=#{orderId}
+		and
+		o.`member_id`=#{memberId}
+	</update>
+
+</mapper>

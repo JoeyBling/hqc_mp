@@ -1,0 +1,74 @@
+/* CSS Document */
+body{ background:#ececec;}
+
+.sp{ display:block; border-right:1px solid #e1e1e1; padding-right:0.714em;}
+.sp img{ width:107px; height:107px; margin:0 auto 0.571em; display:block;}
+.sp p,.sp_1 p{ font-size:0.857em; color:#333; height:2.857em; overflow:hidden;}
+.sp span,.sp_1 span{ color:#fe6e12; font-size:0.857em; display:block; font-family:'微软雅黑';}
+.sp span em,.sp_1 span em{ font-style:normal!important; font-size:1.667em;}
+.sp_1 img{ width:70px; height:70px; margin:0 0.714em; float:left;}
+.sp_1{ overflow:hidden; border-bottom:1px solid #ececec; padding-bottom:1em;}
+.sp_1 p,.sp_1 span{ text-align:right;}
+
+.nav_s{ background:#fff; height:2.786em; width:100%; overflow:hidden; position:relative;}
+.pos{ position:fixed; left:0; top:3em; border-bottom:1px solid #ececec; z-index:18; width:100%; background:#fff;}
+.scroll a{ font-size:1.143em; display:block; color:#555; line-height:2.241em;margin:0 1em; float:left;}
+.scroll a.currer{ color:#246fc0; border-bottom:2px solid #246fc0;}
+
+.product{ background:#fff; margin-top:1.423em; margin-bottom:5.571em;}
+.sp_pr{ padding:0.65em; border-bottom:1px solid #ececec; overflow:hidden;background:#f8f3f7;}
+.sp_pr img{ width:72px; height:71px; margin-right:1em; float:left;}
+.text_p{ float:left;}
+.text_p p{ font-size:1.3em; color:#333; margin-bottom:0; font-weight:700;}
+.text_p span{ font-size:0.857em; margin-bottom:0;}
+.xing{ overflow:hidden;}
+.xing span{ font-size:0.857em; color:#fe6e12; margin-right:0.286em;}
+.yue{ font-size:0.857em; color:#888; display:block; }
+.yue em{ color:#333; font-style:normal; margin-left:0.366em;}
+.jul{ float:right; font-size:1em; color:#246fc0; margin-top:2em;}
+.em_s{ margin-right:0.286em;}
+
+.footer{ background:#fff; border-top:1px solid #ccc; height:3.857em; position:fixed; bottom:0; left:0; z-index:24; width:100%;}
+.footer .col-xs-3{ margin:0; padding:0;}
+.dao{ display:block; color:#7b7b7b; text-align:center; text-decoration:none;}
+.dao span{ display:block; font-size:0.857em; text-align:center;}
+.dao i{ display:block; font-size:1.571em; color:#7b7b7b; margin-top:2px; text-align:center;}
+.top_c{height:3em; position:fixed; top:0; left:0; width:100%; z-index:20; background:#fff; border-bottom:1px solid #ccc;}
+.ss_c{ overflow:hidden; background:#f1f1f1; border-radius:4px; height:2em; margin-top:0.5em;}
+.titi{ font-size:1.286em; color:#333; line-height:2.3em; margin:0; text-align:center; font-weight:600;}
+.titll .col-xs-4,.titll .col-xs-2{ margin:0.571em 0; padding:0; border-right:1px solid #ececec; text-align:center; font-size:1em; color:#666;}
+.one p em{ float:right; font-size:1.714em; color:#999; margin-right:0.571em;}
+.ding_d{ margin-top:5.6em; margin-bottom:1.143em;}
+.on_d{ background:#fff; margin-top:1em;}
+.bh{ font-size:0.857em; line-height:2.857em; color:#666; padding:0 1em; border-bottom:1px solid #ececec; margin-bottom:0;}
+.bh span{ float:right; font-size:1.33em; color:#fe6e12;}
+.button{font-size: 1em; overflow:hidden; border-top:1px solid #ececec; padding:0.571em 0 0.571em 10px;}
+.button a{ display:block; float:right; width:6em; height:2.143em; font-size:1em; text-align:center; line-height:2.143em; border-radius:6px; margin-right:1em;} 
+.button span{font-size: 1em;color: #fe6e12;}
+.button .liji{ background:#246fc0; color:#fff;}
+.button .qu{ color:#333; border:1px solid #666;}
+.button .lip{ background:#fe6e12; color:#fff;}color:#333; font-style:normal; margin-left:0.366em;}
+.jul{ float:right; font-size:1em; color:#246fc0; margin-top:2em;}
+.em_s{ margin-right:0.286em;}
+
+.footer{ background:#fff; border-top:1px solid #ccc; height:3.857em; position:fixed; bottom:0; left:0; z-index:24; width:100%;}
+.footer .col-xs-3{ margin:0; padding:0;}
+.dao{ display:block; color:#7b7b7b; text-align:center; text-decoration:none;}
+.dao span{ display:block; font-size:0.857em; text-align:center;}
+.dao i{ display:block; font-size:1.571em; color:#7b7b7b; margin-top:2px; text-align:center;}
+.top_c{height:3em; position:fixed; top:0; left:0; width:100%; z-index:20; background:#fff; border-bottom:1px solid #ccc;}
+.ss_c{ overflow:hidden; background:#f1f1f1; border-radius:4px; height:2em; margin-top:0.5em;}
+.titi{ font-size:1.286em; color:#333; line-height:2.3em; margin:0; text-align:center; font-weight:600;}
+.titll .col-xs-4,.titll .col-xs-2{ margin:0.571em 0; padding:0; border-right:1px solid #ececec; text-align:center; font-size:1em; color:#666;}
+.one p em{ float:right; font-size:1.714em; color:#999; margin-right:0.571em;}
+.ding_d{  margin-top:5.6em; margin-bottom:1.143em}
+.on_d{ background:#fff; margin-top:1em;}
+.bh{ font-size:0.907em; line-height:2.857em; color:#666; padding:0 1em; border-bottom:1px solid #ececec; margin-bottom:0;}
+.bh span{ float:right; font-size:1.33em; color:#fe6e12;}
+.button{font-size: 1em; overflow:hidden; border-top:1px solid #ececec; padding:0.571em 0 0.571em 10px;}
+.button a{ display:block; float:right; width:6em; height:2.143em; font-size:1em; text-align:center; line-height:2.143em; border-radius:6px; margin-right:1em;} 
+.button span{font-size: 1em;color: #fe6e12;}
+.button .liji{ background:#246fc0; color:#fff;}
+.button .qu{ color:#333; border:1px solid #666;}
+.button .lip{ background:#fe6e12; color:#fff;}
+.button .del{ background:red; color:#fff;}

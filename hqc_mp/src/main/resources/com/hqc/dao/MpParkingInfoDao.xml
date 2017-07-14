@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpParkingInfoDao">
+
+	<!-- 查询列表 -->
+	<select id="queryList" resultType="MpParkingcChargeEntity">
+		SELECT * FROM
+		mp_parking_charge
+		<where>
+			<if test="memberId!=null">
+				and member_id=#{memberId}
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		SELECT count(*) FROM
+		mp_parking_charge
+		<where>
+			<if test="memberId!=null">
+				and member_id=#{memberId}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

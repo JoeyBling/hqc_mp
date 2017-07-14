@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.IntegralMallWxDao">
+    <!-- 查询所有商品-->
+	<select id="getAllGoods" resultType="java.util.Map">
+		SELECT * FROM (
+		   SELECT
+			a.id,
+			a.goods_name,
+			a.goods_thumb,
+			a.about,
+			a.notice,
+			2 as type,a.integral,a.repertory
+		   FROM
+			mp_goods a
+		   WHERE
+			a.`status` = 1
+	   	   UNION ALL
+			SELECT
+				b.id,
+				b.cash_coupon_name,
+				b.cash_thumb,
+				'',
+				b.about,
+				1 as type,b.integral,b.repertory
+			FROM
+				mp_cash_coupon b
+			WHERE
+				b.`status` = 1
+	      ) h ORDER BY h.id DESC
+	</select>
+	<!-- 查询单个商品或代金卷 -->
+	<select id="queryObject" resultType="MpGoodsEntity">
+	   select a.* from mp_goods a where a.id=#{id}
+	</select>
+	<!-- 查询客户单日兑换总量 -->
+	<select id="getTotalGoodsExchangeByNow" resultType="int">
+	   SELECT
+	     COUNT(a.id)
+       FROM
+	     mp_goods_exchange_record a
+       WHERE
+	     a.goods_id =#{goodsId}
+         AND a.member_id =#{memberId}
+         AND a.goods_type =#{goodsType}
+         and a.create_time=#{createTime}
+	</select>
+	<!-- 查询代金卷 -->
+	<select id="queryCashCouponEntity" resultType="com.hqc.entity.MpCashCouponEntity">
+	   select * from mp_cash_coupon where id=#{id} ;
+	</select>
+	<!-- 查询会员 -->
+	<select id="getMemberEntity" resultType="com.hqc.entity.MpMemberEntity">
+	   select * from mp_member where id=#{id}
+	</select>
+</mapper>

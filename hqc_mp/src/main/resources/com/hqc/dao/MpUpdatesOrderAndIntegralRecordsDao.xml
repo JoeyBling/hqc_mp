@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpUpdatesOrderAndIntegralRecordsDao">
+    <!-- 查询数据 -->
+	<select id="queryOrderyList" resultType="java.util.Map">
+		
+     SELECT * from (
+       SELECT 
+	     a.id,a.goods_id,b.goods_name, a.item_code, a.phone,a.create_time,
+         a.`status`,a.member_id,c.phone as memberPhone, c.nick_name,
+         c.true_name,a.price, a.integral,a.type,a.order_no,d.use_time
+       FROM
+	     mp_order_records a,mp_goods b, mp_member c,mp_goods_exchange_record d
+       WHERE
+	     a.goods_id = b.id and a.member_id=c.id and a.order_no=d.order_no
+       UNION ALL
+       select 
+         a.id,a.coupon_id, b.cash_coupon_name,a.item_code, a.phone, a.create_time,
+         a.`status`,a.member_id, c.phone as memberPhone, c.nick_name,
+         c.true_name,a.price,a.integral,a.type,a.order_no,d.use_time
+       from 
+	     mp_order_records a, mp_cash_coupon b,mp_member c,mp_goods_exchange_record d
+       where 
+         a.coupon_id=b.id and a.member_id=c.id and a.order_no=d.order_no
+       UNION ALL
+       select 
+         a.id,a.ticket_id,b.ticket_name,a.item_code,a.phone,a.create_time,a.`status`,
+         a.member_id,c.phone as memberPhone,c.nick_name,c.true_name,
+         a.price, a.integral,a.type,a.order_no,d.end_time
+      from  	
+        mp_order_records a, mp_tickets b,mp_member c ,mp_ticket_order d
+        where a.ticket_id=b.id and a.member_id=c.id and a.order_no=d.order_no
+        ) h  where 1=1
+        <if test="itemCode!=null and itemCode.trim()!=''">
+			   and h.item_code =#{itemCode}
+		</if>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryOrderTotal" resultType="int">
+		SELECT count(h.id) from (
+       SELECT 
+	     a.id,a.goods_id,b.goods_name, a.item_code, a.phone,a.create_time,
+         a.`status`,a.member_id,c.phone as memberPhone, c.nick_name,
+         c.true_name,a.price, a.integral,a.type,a.order_no,d.use_time
+       FROM
+	     mp_order_records a,mp_goods b, mp_member c,mp_goods_exchange_record d
+       WHERE
+	     a.goods_id = b.id and a.member_id=c.id and a.order_no=d.order_no
+       UNION ALL
+       select 
+         a.id,a.coupon_id, b.cash_coupon_name,a.item_code, a.phone, a.create_time,
+         a.`status`,a.member_id, c.phone as memberPhone, c.nick_name,
+         c.true_name,a.price,a.integral,a.type,a.order_no,d.use_time
+       from 
+	     mp_order_records a, mp_cash_coupon b,mp_member c,mp_goods_exchange_record d
+       where 
+         a.coupon_id=b.id and a.member_id=c.id and a.order_no=d.order_no
+       UNION ALL
+       select 
+         a.id,a.ticket_id,b.ticket_name,a.item_code,a.phone,a.create_time,a.`status`,
+         a.member_id,c.phone as memberPhone,c.nick_name,c.true_name,
+         a.price, a.integral,a.type,a.order_no,d.end_time
+      from  	
+        mp_order_records a, mp_tickets b,mp_member c ,mp_ticket_order d
+        where a.ticket_id=b.id and a.member_id=c.id and a.order_no=d.order_no
+        ) h  where 1=1
+         <if test="itemCode!=null and itemCode.trim()!=''">
+			   and h.item_code =#{itemCode}
+		</if>
+	</select>
+	 <!-- 修改订单状态 -->
+	<update id="updateOrderStatus" parameterType="MpOrderRecordsEntity">
+		update mp_order_records 
+		<set>
+			<if test="status != null">status = #{status} </if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 修改记录状态 -->
+	
+	<update id="updateExchangeRecords"  parameterType="java.util.Map">
+	  update mp_goods_exchange_record 
+		<set>
+			<if test="useStatus != null">use_status = #{useStatus} </if>
+		</set>
+		where order_no = (select a.order_no from mp_order_records a where a.id=#{id} )
+	</update>
+
+</mapper>

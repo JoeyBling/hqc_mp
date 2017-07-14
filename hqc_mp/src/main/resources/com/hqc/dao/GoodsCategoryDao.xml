@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.GoodsCategoryDao">
+
+	<select id="queryObject" resultType="MpGoodsCategoryEntity">
+		select * from
+		mp_goods_category
+		where
+		id = #{value}
+	</select>
+
+	<select id="queryList" resultType="MpGoodsCategoryEntity">
+		select * from mp_goods_category
+		<where>
+			<if test="categoryName != null and  categoryName.trim() != ''">
+				and `category_name` like concat('%',#{categoryName},'%')
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from mp_goods_category
+		<where>
+			<if test="categoryName != null and categoryName.trim() != ''">
+				and `category_name` like concat('%',#{categoryName},'%')
+			</if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="MpGoodsCategoryEntity">
+		insert into mp_goods_category
+		(
+		`id`,
+		`category_name`,
+		`about`
+		)
+		values
+		(
+		#{id},
+		#{categoryName},
+		#{about}
+		)
+	</insert>
+
+	<update id="update" parameterType="MpGoodsCategoryEntity">
+		update mp_goods_category
+		<set>
+			<if test="categoryName != null">`category_name` = #{categoryName}, </if>
+			<if test="about != null">`about` = #{about} </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteBatch">
+		delete from mp_goods_category where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+        
+	</delete>
+	<select id="queryTotalByName" parameterType="MpGoodsCategoryEntity"
+		resultType="int">
+		select count(*) from mp_goods_category
+		where
+		category_name=#{categoryName}
+	</select>
+    <select id="queryUsingCategory" resultType="int">
+        SELECT
+	     count(c.id)
+        FROM
+	     mp_goods_category a,
+	     mp_goods b,
+	     mp_goods_exchange_record c
+        WHERE
+	     a.id = b.category_id
+         AND b.id = c.goods_id
+         and c.goods_type=2
+         and a.id=#{id}
+    </select>
+    <delete id="deleteGoodsByCategory">
+         delete from mp_goods where category_id =#{categoryId}
+    </delete>
+   
+</mapper>

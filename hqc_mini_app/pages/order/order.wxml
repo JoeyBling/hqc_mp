@@ -1,0 +1,66 @@
+<scroll-view scroll-y="true" class="scroll-box">
+  <view class="list-view">
+    <block wx:if="{{ordersList.length > 0}}">
+      <view class="list-box" wx:for="{{ordersList}}" wx:for-item="list" wx:key="index" data-id="{{list.orderNo}}" catchtap="lookdetail">
+        <view class="header">
+          <text>{{statueZh[list.status]}}</text>
+          <view wx:if="{{list.status == 3 && wxTimerList[list.orderNo]}}">
+            所剩时间：{{wxTimerList[list.orderNo].wxTimer}}
+          </view>
+
+        </view>
+        <view class="content">
+          <view class="list-images">
+            <image src="{{list.mpTicketEntity.thumbUrl}}" />
+          </view>
+          <view class="list-text">
+            <text class="name">{{list.mpTicketEntity.ticketName}}</text>
+            <view>
+              <text class="price">共有{{list.ticketCount}}张</text>
+            </view>
+            <text>有效期:{{list.startTime}}-{{list.endTime}}</text>
+          </view>
+        </view>
+        <view class="footer">
+          <view>
+            订单总额:
+            <text class="red">￥{{list.totalFee}}</text>
+          </view>
+
+          <view wx:if="{{list.status == '1'}}">
+            <label catchtap="deleteOrder">
+              <text class="cancel-box" catchtap="deleteOrder" data-id="{{list.orderNo}}">删除订单</text>
+            </label>
+          </view>
+          <view wx:elif="{{list.status == '3'}}">
+            <label catchtap="cancelOrder">
+              <text class="cancel-box font-black" data-id="{{list.orderNo}}" catchtap="cancleOrder">取消订单</text>
+            </label>
+            <label>
+              <text class="pay-box" data-id="{{list.orderNo}}">立即支付</text>
+            </label>
+          </view>
+          <view wx:else>
+            <view catchtap="deleteOrder" data-id="{{list.orderNo}}">删除</view>
+          </view>
+        </view>
+
+      </view>
+    </block>
+    <block wx:elif="{{hideLoading}}">
+      <view class="ticket-box">
+        <view></view>
+        <view>没有订单</view>
+        <view>去购票页面看看吧</view>
+        <view class="to-index-btn" bindtap="gotToBuy">
+          立即去
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <loading hidden="{{hideLoading}}">
+        加载中...
+      </loading>
+    </block>
+  </view>
+</scroll-view>

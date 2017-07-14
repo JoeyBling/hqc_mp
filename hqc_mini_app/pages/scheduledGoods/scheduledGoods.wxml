@@ -1,0 +1,98 @@
+<import src="../../utils/wxParse/wxParse">
+</import>
+<view class="detail-box">
+  <scroll-view scroll-y="true" style="overflow:auto;height: 100%;">
+    <view class="scheDuledInfo">
+      <view class="list-box space-between">
+        <text>{{detailTick.ticketName}}</text>
+        <text class="red">￥{{detailTick.price}}</text>
+      </view>
+      <view class="list-box space-between">
+        <text>使用期限</text>
+        <block wx:for="{{useLifeArr}}" wx:key="index">
+          <view class="deadlineView {{item.className}}" bindtap="openCalendar" data-ticketInfo="{{detailTick}}" data-uselife="{{item}}">{{item.showDay}}</view>
+        </block>
+      </view>
+
+      <view class="list-box space-between">
+        <view class="sub-box">
+          <text>购买数量</text>
+          <text class="tipText">（同一用户每日限购5张）</text>
+        </view>
+        <view class="sub-box">
+          <view bindtap="reduceTickNum" class="button-box {{ticketNum == 1 ? 'gray-color':''}}">
+            -
+          </view>
+          <view>
+            <text class="text-box">{{ticketNum}}</text>
+          </view>
+          <view bindtap="addTicketNum" class="button-box {{ticketNum == 5 ? 'gray-color':''}}">
+            +
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="border-line section">
+      <text>手机号</text>
+      <input type="number" placeholder="接收凭证短信" style="padding-left:5px" maxlength="11" bindblur="checkTel" />
+    </view>
+
+    <view class="border-line space-between section">
+      <text>优惠劵</text>
+      <text class="gray-color">暂无可用劵</text>
+    </view>
+
+    <view class="list-tab border-line">
+      <ul>
+        <li class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">预定须知</li>
+        <li class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">商品详情</li>
+      </ul>
+    </view>
+
+    <swiper class="swiper-box" current="{{current}}" indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" bindchange="changeSlider">
+      <block>
+        <!-- 预定须知 -->
+        <swiper-item>
+          <scroll-view scroll-y="true" class="scroll-box">
+            <view class="list-view">
+              <template is="wxParse" data="{{wxParseData:about.nodes}}"></template>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <!--商品详情 -->
+        <swiper-item>
+          <scroll-view scroll-y="true" class="scroll-box">
+            <view class="list-view">
+              <template is="wxParse" data="{{wxParseData:ticketContent.nodes}}"></template>
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </scroll-view>
+
+  <view class="fixedArea">
+    <view class="agreeSection">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for-items="{{items}}">
+          <checkbox value="{{item.value}}" />{{item.agreeContent}}
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="detail-footer">
+      <view class="detail-3">
+        <text>￥{{detailTick.price*ticketNum}}</text>
+        <text>({{ticketNum}})张</text>
+      </view>
+      <!-- 提示信息 -->
+      <modal class="moda" hidden="{{modalHidden}}" no-cancel bindconfirm="modalChange">
+        <view class="text-center">温馨提示</view>
+        <view class="text-center">{{checkInfo}}</view>
+      </modal>
+      <view class="detail-4" bindtap="modalTap">
+        <label>提交订单</label>
+      </view>
+    </view>
+  </view>
+</view>

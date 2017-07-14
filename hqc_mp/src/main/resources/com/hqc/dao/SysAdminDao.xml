@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.SysAdminDao">
+
+	<select id="queryObject" resultType="SysAdminEntity">
+		select * from sys_user
+		where
+		user_id = #{value}
+	</select>
+
+	<select id="queryList" resultType="SysAdminEntity">
+		select * from sys_user
+		<where>
+			<if test="username != null and username.trim() != ''">
+				and `username` like concat('%',#{username},'%')
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from sys_user
+		<where>
+			<if test="username != null and username.trim() != ''">
+				and `username` like concat('%',#{username},'%')
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询用户的所有权限 -->
+	<select id="queryAllPerms" resultType="String">
+		SELECT m.perms FROM
+		sys_user_role ur
+		LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+		LEFT JOIN sys_menu m ON rm.menu_id = m.menu_id
+		where ur.user_id =
+		#{userId}
+	</select>
+
+	<!-- 查询用户的所有菜单ID -->
+	<select id="queryAllMenuId" resultType="Long">
+		SELECT m.menu_id FROM
+		sys_user_role ur
+		LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+		LEFT JOIN sys_menu m ON rm.menu_id = m.menu_id
+		where ur.user_id =
+		#{userId}
+	</select>
+
+	<select id="queryByUserName" resultType="SysAdminEntity">
+		select * from sys_user
+		where username = #{username}
+	</select>
+
+	<insert id="save" parameterType="SysAdminEntity"
+		useGeneratedKeys="true" keyProperty="userId">
+		insert into sys_user
+		(
+		`user_id`,
+		`username`,
+		`password`,
+		`email`,
+		`mobile`,
+		`status`,
+		`create_time`
+		)
+		values
+		(
+		#{userId},
+		#{username},
+		#{password},
+		#{email},
+		#{mobile},
+		#{status},
+		#{createTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="SysAdminEntity">
+		update sys_user
+		<set>
+			<if test="username != null">`username` = #{username}, </if>
+			<if test="password != null">`password` = #{password}, </if>
+			<if test="email != null">`email` = #{email}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+		</set>
+		where user_id = #{userId}
+	</update>
+
+	<update id="updatePassword" parameterType="map">
+		update sys_user set
+		`password` = #{newPassword}
+		where user_id = #{userId} and password =
+		#{password}
+	</update>
+
+	<delete id="deleteBatch">
+		delete from sys_user where user_id in
+		<foreach item="userId" collection="array" open="(" separator=","
+			close=")">
+			#{userId}
+		</foreach>
+		;
+		delete from sys_user_role where user_id in
+		<foreach item="userId" collection="array" open="(" separator=","
+			close=")">
+			#{userId}
+		</foreach>
+	</delete>
+
+</mapper>

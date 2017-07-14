@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.GoodsExchangeDao">
+
+	<resultMap type="com.hqc.entity.MpGoodsExchangeRecordEntity"
+		id="MpGoodsExchangeRecordEntity">
+		<id column="id" property="id"></id>
+		<result property="orderNo" column="order_no" />
+		<result property="goodsId" column="goods_id" />
+		<result property="memberId" column="member_id" />
+		<result property="goodsNo" column="goods_no" />
+		<result property="integral" column="integral" />
+		<result property="goodsNos" column="goods_nos" />
+		<result property="exchangeCount" column="exchange_count" />
+		<result property="exchangeCode" column="exchange_code" />
+		<result property="personPhone" column="person_phone" />
+		<result property="useTime" column="use_time" />
+		<result property="useStatus" column="use_status" />
+		<result property="createTime" column="create_time" />
+		<association property="mpGoodsEntity" javaType="com.hqc.entity.MpGoodsEntity">
+			<id column="id" property="id"></id>
+			<result property="goodsName" column="goods_name" />
+			<result property="goodsThumb" column="goods_thumb" />
+			<result property="goodsNo" column="goods_no" />
+			<result property="categoryId" column="category_id" />
+			<result property="daysLimit" column="days_limit" />
+			<result property="endTime" column="end_time" />
+			<result property="repertory" column="repertory" />
+			<result property="marketPrice" column="market_price" />
+			<result property="price" column="price" />
+			<result property="integral" column="integral" />
+			<result property="about" column="about" />
+			<result property="notice" column="notice" />
+			<result property="maxExchange" column="max_exchange" />
+			<result property="dayExchange" column="day_exchange" />
+			<result property="status" column="status" />
+			<result property="userId" column="userId" />
+		</association>
+		<association property="mpMemberEntity" javaType="com.hqc.entity.MpMemberEntity">
+			<id column="id" property="id"></id>
+			<result property="cardNo" column="card_no" />
+			<result property="trueName" column="true_name" />
+			<result property="nickName" column="nick_name" />
+			<result property="openId" column="open_id" />
+			<result property="unionid" column="unionid" />
+			<result property="avatar" column="avatar" />
+			<result property="password" column="password" />
+			<result property="lastYearIntegral" column="last_year_integral" />
+			<result property="currentYearIntegral" column="current_year_integral" />
+			<result property="integral" column="integral" />
+			<result property="updateTime" column="update_time" />
+			<result property="status" column="status" />
+			<result property="phone" column="phone" />
+			<result property="vipLevel" column="vip_level" />
+			<result property="createTime" column="create_time" />
+		</association>
+	</resultMap>
+
+	<select id="queryList1" resultType="java.util.HashMap">
+		select h.* FROM(
+		SELECT
+		a.*, b.true_name,
+		c.goods_name
+		FROM
+		mp_goods_exchange_record a,
+		mp_member b,
+		mp_goods c
+		WHERE
+		a.member_id = b.id
+		AND a.goods_id = c.id
+		AND a.goods_type = 2
+		UNION
+		SELECT
+		a1.*, b1.true_name,
+		c1.cash_coupon_name
+		FROM
+		mp_goods_exchange_record a1,
+		mp_member b1,
+		mp_cash_coupon c1
+		WHERE
+		a1.member_id = b1.id
+		AND a1.goods_id = c1.id
+		AND a1.goods_type = 1
+		) h
+		<where>
+			<if test="goodsName != null and  goodsName != ''">
+				and h.goods_name like concat('%',#{goodsName},'%')
+			</if>
+			<if test="trueName != null and  trueName != ''">
+				and h.true_name like concat('%',#{trueName},'%')
+			</if>
+			<if test="useStatus != null and  useStatus != ''">
+				and h.use_status =#{useStatus}
+			</if>
+			<if test="member_id != null and  member_id != ''">
+			    and H.member_id=#{memberId}
+			</if>
+			<if test="personPhone != null and  personPhone != ''">
+			    and H.person_phone like concat('%',#{personPhone},'%')
+			</if>
+		</where>
+		<if test="orderby != null">order by ${orderby}</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) FROM(
+		SELECT
+		a.*, b.true_name,
+		c.goods_name
+		FROM
+		mp_goods_exchange_record a,
+		mp_member b,
+		mp_goods c
+		WHERE
+		a.member_id = b.id
+		AND a.goods_id = c.id
+		AND a.goods_type = 2
+		UNION
+		SELECT
+		a1.*, b1.true_name,
+		c1.cash_coupon_name
+		FROM
+		mp_goods_exchange_record a1,
+		mp_member b1,
+		mp_cash_coupon c1
+		WHERE
+		a1.member_id = b1.id
+		AND a1.goods_id = c1.id
+		AND a1.goods_type = 1
+		) h
+		<where>
+			<if test="goodsName != null and  goodsName != ''">
+				and h.goods_name like concat('%',#{goodsName},'%')
+			</if>
+			<if test="trueName != null and  trueName != ''">
+				and h.true_name like concat('%',#{trueName},'%')
+			</if>
+			<if test="useStatus != null and  useStatus != ''">
+				and h.use_status =#{useStatus}
+			</if>
+			<if test="member_id != null and  member_id != ''">
+			    and H.member_id=#{memberId}
+			</if>
+			<if test="personPhone != null and  personPhone != ''">
+			    and H.person_phone like concat('%',#{personPhone},'%')
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteBatch">
+		delete from mp_goods_exchange_record where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<select id="queryByMemberId" resultType="java.util.HashMap">
+	select h.* FROM(
+	SELECT
+	a.*, b.true_name,
+	c.goods_name,
+	c.goods_thumb ,
+	c.end_time
+	FROM
+	mp_goods_exchange_record a,
+	mp_member b,
+	mp_goods c
+	WHERE
+	a.member_id = b.id
+	AND a.goods_id = c.id
+	AND a.goods_type = 2
+	UNION
+	SELECT
+	a1.*, b1.true_name,
+	c1.cash_coupon_name,
+	c1.cash_thumb,
+	c1.cash_coupon_name
+	FROM
+	mp_goods_exchange_record a1,
+	mp_member b1,
+	mp_cash_coupon c1
+	WHERE
+	a1.member_id = b1.id
+	AND a1.goods_id = c1.id
+	AND a1.goods_type = 1
+	) h
+		<where>
+			<if test="memberId !=null">
+				h.member_id=#{memberId}
+			</if>
+			<if test="goodsType !=null">
+				and h.goods_type=#{goodsType}
+			</if>
+			AND ((h.use_status=1 AND h.create_time>#{time})OR(h.use_status=0)) AND h.use_time>#{time}
+		</where>
+		order by h.use_time asc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+	<select id="recordTotal" resultType="int">
+			select count(*) FROM(
+		SELECT
+		a.*, b.true_name,
+		c.goods_name,
+		c.goods_thumb ,
+		c.end_time 
+		FROM
+		mp_goods_exchange_record a,
+		mp_member b,
+		mp_goods c
+		WHERE
+		a.member_id = b.id
+		AND a.goods_id = c.id
+		AND a.goods_type = 2
+		UNION
+		SELECT
+		a1.*, b1.true_name,
+		c1.cash_coupon_name,
+		c1.cash_thumb,
+		c1.cash_coupon_name
+		FROM
+		mp_goods_exchange_record a1,
+		mp_member b1,
+		mp_cash_coupon c1
+		WHERE
+		a1.member_id = b1.id
+		AND a1.goods_id = c1.id
+		AND a1.goods_type = 1
+		) h
+		<where>
+			<if test="memberId !=null">
+				h.member_id=#{memberId}
+			</if>
+		</where>
+	</select>
+</mapper>

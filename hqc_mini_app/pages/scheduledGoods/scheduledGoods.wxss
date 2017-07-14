@@ -1,0 +1,159 @@
+page {
+  height: 100%;
+  font-size: 14px;
+}
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.detail-footer {
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.detail-3 {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f47920;
+}
+
+.detail-4 {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: limegreen;
+}
+
+.phoneInfo {
+  display: flex;
+}
+
+/*预定须知和商品详情的tab样式*/
+
+.list-tab {
+  height: 106rpx;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+
+.list-tab ul {
+  display: flex;
+  height: 72rpx;
+  border: 1px solid #008842;
+  border-radius: 12rpx;
+}
+
+.list-tab li {
+  flex: 1;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  color: #008842;
+}
+
+.list-tab .active {
+  background: #008842;
+  color: #fff;
+}
+
+.list-box {
+  flex: 1;
+  display: flex;
+  padding: 5px 10px;
+  border-bottom: 1px solid #aaa;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.button-box{
+  width:50rpx;
+  height:50rpx;
+  border: 1px solid #ccc;
+  font-size: 50rpx;
+  border-radius: 5rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-box{
+  padding:0 10rpx;
+  font-size:30rpx;
+}
+.red {
+  color: red;
+}
+
+.tipText {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.scheDuledInfo {
+  font-size: 15px;
+}
+
+.deadlineView {
+  padding: 0 10px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.section {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.sub-box{
+  display: flex;
+  align-items: center;
+}
+
+.border-line {
+  border-top: 30rpx solid #ccc;
+}
+
+.swiper-box {
+  margin-top: 40rpx;
+  padding: 0 10px;
+  height: 80vh;
+}
+
+.agreeSection {
+  padding: 10px;
+  background: black;
+  color: white;
+}
+
+.selectTime {
+  background: #f47920;
+  color: #fff;
+}
+
+.fixedArea {
+    width: 100%;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

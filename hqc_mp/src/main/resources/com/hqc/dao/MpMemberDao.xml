@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpMemberDao">
+
+	<resultMap id="MpMemberEntity" type="com.hqc.entity.MpMemberEntity">
+		<id property="id" column="id" />
+		<result property="phone" column="phone" />
+		<result property="cardNo" column="card_no" />
+		<result property="trueName" column="true_name" />
+		<result property="nickName" column="nick_name" />
+		<result property="openId" column="open_id" />
+		<result property="unionid" column="unionid" />
+		<result property="avatar" column="avatar" />
+		<result property="birthday" column="birthday" />
+		<result property="password" column="password" />
+		<result property="lastYearIntegral" column="last_year_integral" />
+		<result property="currentYearIntegral" column="current_year_integral"></result>
+		<result property="integral" column="integral"></result>
+		<result property="createTime" column="create_time"></result>
+		<result property="updateTime" column="update_time"></result>
+		<result property="status" column="status"></result>
+		<result property="vipLevel" column="vip_level"></result>
+		<association property="vipLevelEntity" javaType="com.hqc.entity.MpVipLevelEntity">
+			<id property="id" column="id"></id>
+			<result property="vipName" column="vip_name"></result>
+			<result property="minIntegral" column="min_integral"></result>
+			<result property="maxIntegral" column="max_integral"></result>
+			<result property="iconUrl" column="icon_url"></result>
+			<result property="about" column="about"></result>
+		</association>
+	</resultMap>
+
+	<insert id="save" parameterType="com.hqc.entity.MpMemberEntity"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into mp_member
+		(
+		`id`,
+		`phone`,
+		`card_no`,
+		`true_name`,
+		`nick_name`,
+		`open_id`,
+		`unionid`,
+		`avatar`,
+		`birthday`,
+		`password`,
+		`last_year_integral`,
+		`current_year_integral`,
+		`integral`,
+		`vip_level`,
+		`create_time`,
+		`update_time`,
+		`status`
+		)
+		values
+		(
+		#{id},
+		#{phone},
+		#{cardNo},
+		#{trueName},
+		#{nickName},
+		#{openId},
+		#{unionid},
+		#{avatar},
+		#{birthday},
+		#{password},
+		#{lastYearIntegral},
+		#{currentYearIntegral},
+		#{integral},
+		#{vipLevel},
+		#{createTime},
+		#{updateTime},
+		#{status}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.hqc.entity.MpMemberEntity">
+		update mp_member
+		<set>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="cardNo != null">`card_no` = #{cardNo}, </if>
+			<if test="trueName != null">`true_name` = #{trueName}, </if>
+			<if test="nickName != null">`nick_name` = #{nickName}, </if>
+			<if test="openId != null">`open_id` = #{openId}, </if>
+			<if test="unionid != null">`unionid` =#{unionid},</if>
+			<if test="avatar != null">`avatar` = #{avatar}, </if>
+			<if test="password != null">`password` = #{password}, </if>
+			<if test="lastYearIntegral != null">`last_year_integral` = #{lastYearIntegral}, </if>
+			<if test="currentYearIntegral != null">`current_year_integral` = #{currentYearIntegral}, </if>
+			<if test="integral != null">`integral` = #{integral}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="vipLevel != null">`vip_level` = #{vipLevel}, </if>
+			<if test="birthday != null">`birthday` = #{birthday}, </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<update id="updateOpenId" parameterType="com.hqc.entity.MpMemberEntity">
+		update mp_member
+		<set>
+			`open_id` = #{openId},
+			`unionid` = #{unionid}
+		</set>
+		where id = #{id}
+	</update>
+
+
+	<select id="queryAllList" resultMap="MpMemberEntity">
+		select m.*,l.vip_name,l.max_integral
+		from
+		mp_member m
+		left join
+		mp_vip_level
+		l on
+		m.`vip_level`=l.`id`
+		<where>
+			<if test="phone != null and phone != ''">
+				and m.phone like concat('%',#{phone},'%')
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and m.card_no = #{cardNo}
+			</if>
+			<if test="status != null and status != ''">
+				and m.status = #{status}
+			</if>
+		</where>
+		ORDER BY m.id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		mp_member m
+		left join mp_vip_level
+		l on
+		m.`vip_level`=l.`id`
+	</select>
+
+	<select id="login" resultType="com.hqc.entity.MpMemberEntity">
+		SELECT * FROM mp_member WHERE
+		(phone=#{phone} AND PASSWORD=#{password})
+	</select>
+
+	<select id="queryByCardNo" resultType="com.hqc.entity.MpMemberEntity">
+		SELECT * FROM mp_member
+		WHERE card_no=#{cardNo}
+	</select>
+
+	<select id="queryByOpenId" resultType="com.hqc.entity.MpMemberEntity">
+		SELECT * FROM mp_member
+		WHERE open_id=#{openId}
+	</select>
+
+	<select id="queryByUnionId" resultType="com.hqc.entity.MpMemberEntity">
+		SELECT * FROM mp_member
+		WHERE unionid=#{unionId}
+	</select>
+
+
+	<select id="queryMpMemberInfoId" resultMap="MpMemberEntity">
+		<!-- select * from mp_member where id = #{value} -->
+		select m.*,l.*
+		from
+		mp_member m
+		left join mp_vip_level
+		l on
+		m.`vip_level`=l.`id`where m.id=#{value}
+	</select>
+
+	<select id="queryMpMemberInfoPhone" resultType="com.hqc.entity.MpMemberEntity">
+		select * from
+		mp_member
+		where phone = #{value}
+	</select>
+
+	<delete id="delete">
+		delete from mp_member where id=#{value}
+	</delete>
+
+	<delete id="deleteBatch">
+		delete from mp_member where id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<update id="updatePassword">
+		UPDATE mp_member SET `password` = #{newPassword}
+		WHERE id=#{id} AND `password` =#{oldPassword}
+	</update>
+</mapper>

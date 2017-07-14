@@ -1,0 +1,11 @@
+首先获取你的http地址
+
+配置config.properties 的 net.address节点，把你的URL地址放进去  要带HTTP
+例如:http\://42fc3e3f.ngrok.io/hqc_mp/
+
+进入微信公众号配置你的网页授权URL
+  注意 不能带HTTP
+  例如:42fc3e3f.ngrok.io
+  
+  
+JS接口安全域名修改

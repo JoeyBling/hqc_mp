@@ -1,0 +1,16 @@
+body{background:#ffffff;}
+a,a:hover{text-decoration:none;}
+ul, li {margin:0px;padding:0px;list-style:none;}
+.recordList{ padding-left:10px;padding-right:0px; margin-top:10px}
+.recordList ul{border-bottom:1px dashed #909290;}
+.recordList li{float:left;}
+.recordList .littleInfo{width:25%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.recordList .middleInfo1{width:13%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.recordList .middleInfo2{width:20%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.recordList .bigInfo{width:41%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.titleRecord {padding-left:10px;padding-right:0px; margin-top:0px;background:#F3F3F3;}
+.titleRecord li{float:left;}
+.titleRecord .titlefirst{width:25%;height:60px;line-height: 60px;font-size:20px;text-align: center;}
+.titleRecord .titleSecond{width:13%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.titleRecord .titleThird{width:20%;height:60px;line-height: 60px;font-size:20px;text-align: center}
+.titleRecord .titleLast{width:41%;height:60px;line-height: 60px;font-size:20px;text-align: center}

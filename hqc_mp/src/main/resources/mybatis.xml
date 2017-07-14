@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 支持驼峰 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<typeAliases>
+		<package name="com.hqc.entity" />
+	</typeAliases>
+
+	<plugins>
+		<!-- 通用Maper -->
+		<plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
+			<!-- 主键自增回写方法,默认值MYSQL,详细说明请看文档 -->
+			<property name="IDENTITY" value="MYSQL" />
+			<!-- 通用Mapper接口，多个通用接口用逗号隔开 -->
+			<property name="mappers" value="com.github.abel533.mapper.Mapper" />
+		</plugin>
+
+		<!-- PageHelper4.1.1 -->
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库 -->
+			<property name="dialect" value="mysql" />
+			<property name="offsetAsPageNum" value="false" />
+			<!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+			<property name="rowBoundsWithCount" value="false" />
+			<property name="pageSizeZero" value="true" />
+			<property name="reasonable" value="false" />
+			<property name="supportMethodsArguments" value="false" />
+			<property name="returnPageInfo" value="none" />
+		</plugin>
+	</plugins>
+	<!--================================================ -->
+	<!--可配置参数说明(一般无需修改) -->
+	<!--================================================ -->
+	<!--UUID生成策略 -->
+	<!--配置UUID生成策略需要使用OGNL表达式 -->
+	<!--默认值32位长度:@java.util.UUID@randomUUID().toString().replace("-", "") -->
+	<!--<property name="UUID" value="@java.util.UUID@randomUUID().toString()"/> -->
+	<!--主键自增回写方法,默认值CALL IDENTITY(),适应于大多数数据库 -->
+	<!--<property name="IDENTITY" value="CALL IDENTITY()"/> -->
+	<!--主键自增回写方法执行顺序,默认AFTER,可选值为(BEFORE|AFTER) -->
+	<!--<property name="ORDER" value="AFTER"/> -->
+</configuration>

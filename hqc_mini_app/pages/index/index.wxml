@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<scroll-view class="container" scroll-y="true" scroll-into-view="{{toView}}"  scroll-top="{{scrollTop}}" bindscroll="scroll">
+
+<swiper indicator-dots="{{topSwiper.indicatorDots}}"
+  autoplay="{{topSwiper.autoplay}}" interval="{{topSwiper.interval}}" duration="{{topSwiper.duration}}" class="top-swiper-box" id="top">
+  <block wx:for-items="{{banner}}" wx:key="index">
+    <swiper-item >
+      <image class="slide-image" src="{{item.thumbUrl}}"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="list-tab">
+    <ul>
+        <li class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">门票</li>
+    </ul>
+</view>
+<swiper class="swiper-box"  current="{{current}}" indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" bindchange="changeSlider">
+  <block> 
+<!-- 门票 -->
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll-box">
+         <view class="list-view" >
+           <view class="list-box" wx:for="{{tickList}}" wx:for-item="list" wx:key="index" data-id="{{list.id}}" bindtap="scheduledGoods" data-ticketinfo="{{list}}">
+              <view class="list-images" style="position:relative">
+                      <text class="discount-box">{{list.discount*100/10}}折</text>
+                      <image src="{{list.thumbUrl}}"/></view>
+              <view class="list-text">
+                  <text class="name">{{list.ticketName}}</text>
+                   <view wx:if="{{list.advance}}">
+                      <text class="buy-tip">提前购票</text>
+                  </view>
+                  <view class="txt">
+                      <text class="price">￥{{list.price}}</text>
+                      <text class="origPrice">￥{{list.marketPrice}}</text>
+                      <text>已售{{list.saleCount}}</text>
+                  </view>
+              </view>
+           </view>
+          </view>
+      </scroll-view>
+    </swiper-item>
+  </block>
+</swiper>
+</scroll-view>

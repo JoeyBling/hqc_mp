@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用leaflet.js实现地图功能</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="keywords" content="使用leaflet.js实现地图功能" />
+		<meta name="description" content="使用leaflet.js实现地图功能" />
+		<link href="leaflet.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+		 [#include "/wx/common_js.ftl"]
+		<script src="leaflet-src.js"></script>
+		<script src="js/jquery.1.9.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<style>
+			html,body{height:100%;}
+			.right-top {
+			  right: 1rem;
+			  top: 8%;
+			  position: fixed;
+			}
+			.right-bottom {
+			  right: 1rem;
+			  bottom: 4%;
+			  position: absolute;
+			}
+			.list-nav {
+			  position: relative;
+			  width: 3.38rem;
+			  height: 3.38rem;
+			  border-radius: .6rem;
+			  background-color: rgba(0, 0, 0, 0.6); 
+			}
+			.list-nav i,.list-nav i:before {
+			  height: .3rem;
+			  background-color: #fff;
+			  display: block; 
+			}
+
+			.list-nav i {
+			  width: 1.35rem;
+			  margin: 0 auto .5rem;
+			  border-radius: .2rem;
+			  -webkit-transform: translateX(0.25rem);
+			  transform: translateX(0.25rem);
+			  -webkit-transition: all .1s linear;
+			  transition: all 0.1s linear; }
+
+			.list-nav .inner {
+			  position: relative;
+			  top: 0.75rem; }
+
+			.list-nav i:before {
+			  content: " ";
+			  width: .3rem;
+			  border-radius: 50%;
+			  -webkit-transform: translateX(-0.5rem);
+			  transform: translateX(-0.5rem); }
+
+			.VR,.VR img {
+			  display: block;
+			  width: 3.5rem;
+			  height: 3.5rem;
+			 }
+			 
+			 
+			 .modal{position:fixed;bottom:5%;top:auto;right:2%;left:auto;width:96%;height:90%;}
+			 .modal-content{width:100%;height:90%;max-height:; overflow:auto}
+			 .thumbnail{border:0;padding:0;padding-top:5px;}
+			 img.img-circle {border:0;width:80px;height:80px;}
+			 .list-group-item-heading{line-height:25px;margin-top:0px;font-weight:bold;}
+			 .list-group-item-text{padding:5px 0;}
+			 .line{border-bottom:1px solid #efefef;padding-top:7px;}
+			 .biaoji_icon{
+				font-size:20px;
+				color:#20BE8C;
+				text-shadow: 0px 0px 3px #ffffff;
+				min-width:200px;
+				height:40px;overflow:hidden;
+				background: url(images/icon.png) no-repeat 90px 0px;
+				padding:15px 5px 5px;
+				margin-left:-90px;
+				margin-top:-22px;
+				text-align:center;
+				font-family:Tahoma;
+			}
+			.leaflet-marker-icon.leaflet-div-icon.leaflet-zoom-animated.leaflet-interactive{background:url();border:0;}
+			.leaflet-popup{}
+			.popup-heading{padding:5px;margin:15px 0 5px;line-height:25px;font-size:18px;font-weight:bold;}
+			.popup-body{}
+			.popup-footer{line-height:35px;background:#efefef;}
+			.popup-footer p{text-indent:10px;}
+			.popup-thumbnail img{width:220px;}
+			.f_right{float:right;}
+			.list-group-item-text span{float:right;}
+		</style>
+	</head>
+	<body class="gb">
+
+	<div id="mapcontainer" style="height: 100%; position: relative;" class="leaflet-container leaflet-fade-anim" tabindex="0">
+		<div class="leaflet-map-pane" style="transform: translate3d(-438px, 205px, 0px);">
+			<div class="leaflet-tile-pane">
+				<div class="leaflet-layer">
+					<div class="leaflet-tile-container"></div>
+					<div class="leaflet-tile-container leaflet-zoom-animated"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="right-top">
+      <a class="VR" href="#">
+        <img src="http://happyvalleysz.smartoct.com/plus_map/images/360.png">
+      </a>
+	</div>
+	<div class="right-bottom">
+		<div class="list-nav" id="list-nav">
+			<div class="inner" onclick="show_model()">
+			  <i></i>
+			  <i></i>
+			  <i></i>
+			</div>
+		  </div>
+	</div>
+
+	
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row line">
+					<a href="#">
+					  <div class="col-xs-4">
+						<a class="thumbnail">
+						  <img src="images/1.png" alt="" class="img-circle">
+						</a>
+					  </div>
+					  <div class="col-xs-8">
+						<h5 class="list-group-item-heading">因特拉根兰花园</h5>
+						<p class="list-group-item-text">两万平方米戏水世界，水公园、震撼三米巨浪</p>
+						<p class="list-group-item-text"><span><a href="javascript:leftclick(22.633364,114.280715,1,1);">到这里去</a></span>等候 <b>5</b> 分钟</p>
+					  </div>
+					</a>
+				</div>
+				<div class="row line">
+					<a href="#">
+					  <div class="col-xs-4">
+						<a href="#" class="thumbnail">
+						  <img src="images/2.png" alt="" class="img-circle">
+						</a>
+					  </div>
+					  <div class="col-xs-8">
+						<h5 class="list-group-item-heading">西峡回廊</h5>
+						<p class="list-group-item-text">两万平方米戏水世界，水公园、震撼三米巨浪</p>
+						<p class="list-group-item-text"><span><a href="javascript:leftclick(22.636088,114.268184,2,1);">到这里去</a></span></p>
+					  </div>
+					</a>
+				</div>
+				<div class="row line">
+					<a href="#">
+					  <div class="col-xs-4">
+						<a class="thumbnail">
+						  <img src="images/1.png" alt="" class="img-circle">
+						</a>
+					  </div>
+					  <div class="col-xs-8">
+						<h5 class="list-group-item-heading">九曲十八弯</h5>
+						<p class="list-group-item-text">两万平方米戏水世界，水公园、震撼三米巨浪</p>
+						<p class="list-group-item-text"><span><a href="javascript:leftclick(22.631374,114.282174,3,1);">到这里去</a></span>等候 <b>5</b> 分钟</p>
+					  </div>
+					</a>
+				</div>
+				<div class="row line">
+					<a href="#">
+					  <div class="col-xs-4">
+						<a href="#" class="thumbnail">
+						  <img src="images/2.png" alt="" class="img-circle">
+						</a>
+					  </div>
+					  <div class="col-xs-8">
+						<h5 class="list-group-item-heading">大剧院</h5>
+						<p class="list-group-item-text">两万平方米戏水世界，水公园、震撼三米巨浪</p>
+						<p class="list-group-item-text"><span><a href="javascript:leftclick(22.633493,114.275737,4,1);">到这里去</a></span></p>
+					  </div>
+					</a>
+				</div>
+				<div class="row line">
+					<a href="#">
+					  <div class="col-xs-4">
+						<a class="thumbnail">
+						  <img src="images/1.png" alt="" class="img-circle">
+						</a>
+					  </div>
+					  <div class="col-xs-8">
+						<h5 class="list-group-item-heading">西峡谷</h5>
+						<p class="list-group-item-text">两万平方米戏水世界，水公园、震撼三米巨浪</p>
+						<p class="list-group-item-text"><span><a href="javascript:leftclick(22.631374,114.282174,5,1);">到这里去</a></span>等候 <b>5</b> 分钟</p>
+					  </div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+		<script type="text/javascript">
+			var southWest = L.latLng(22.6020463673827,114.267425537109),
+				northEast = L.latLng(22.6468088856252,114.313044548035),
+				bounds = L.latLngBounds(southWest, northEast);
+			var markers;
+			var map = L.map('mapcontainer', {
+				scrollWheelZoom: true,
+				zoomControl: false,
+				attributionControl: false,
+				doubleClickZoom:true,
+				worldCopyJump: true,
+				maxBounds: bounds
+			}).setView(bounds.getCenter(), 14);
+
+			$(".zoomin").click(function() {
+				map.zoomIn();
+			});
+			$(".zoomout").click(function() {
+				map.zoomOut();
+			});
+			//L.tileLayer('http://young.dpm.org.cn:80/statics/map/lv{z}/{y}{x}.jpg'
+			L.tileLayer('tiles/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				minZoom: 14,
+				tileSize: 256,
+				continuousWorld: true
+			}).addTo(map);
+			map.on("click", function(e) {
+				console && console.log(e);
+			});
+			//起点图标
+			var startIcon = L.icon({
+				iconUrl: 'images/start_icon.png',
+				iconSize: [21, 31],
+				iconAnchor: [21, 31],
+				popupAnchor: [-3, -31],
+				shadowUrl: 'images/start_icon_shadow.png',
+				shadowSize: [21, 31],
+				shadowAnchor: [21, 31]
+			});
+			//地图位置图标
+			var icon = L.icon({
+				iconUrl: 'images/icon.png',
+				iconSize: [21, 31],
+				iconAnchor: [21, 31],
+				popupAnchor: [-3, -31],
+				shadowUrl: 'images/icon_shadow.png',
+				shadowSize: [21, 31],
+				shadowAnchor: [21, 31]
+			});
+			
+			//终点图标
+			var endIcon = L.icon({
+				iconUrl: 'images/end_icon.png',
+				iconSize: [21, 31],
+				iconAnchor: [21, 31],
+				popupAnchor: [-3, -31],
+				shadowUrl: 'images/end_icon_shadow.png',
+				shadowSize: [21, 31],
+				shadowAnchor: [21, 31]
+			});
+			//给对应的景点标点
+			L.marker([22.633364,114.280715],{icon:get_icon('因特拉根兰花园')}).addTo(map).bindPopup(get_about(1,"因特拉根兰花园",22.633364,114.280715,"images\/1.png","",""));
+			L.marker([22.639355,114.272475],{icon:get_icon('西峡回廊')}).addTo(map).bindPopup(get_about(2,"西峡回廊",22.639355,114.272475,"images\/2.png","",""));
+			L.marker([22.636088,114.268184],{icon:get_icon('九曲十八弯')}).addTo(map).bindPopup(get_about(3,"九曲十八弯",22.636088,114.268184,"images\/1.png","",""));
+			L.marker([22.633493,114.275737],{icon:get_icon('大剧院')}).addTo(map).bindPopup(get_about(4,"大剧院",22.633493,114.275737,"images\/2.png","",""));
+			L.marker([22.631374,114.282174],{icon:get_icon('西峡谷')}).addTo(map).bindPopup(get_about(5,"西峡谷",22.631374,114.282174,"images\/1.png","",""));
+			
+			//路线
+			var polyline = null;
+			//路线坐标集合
+			var paths = new Array();
+			//右键选择起点位置
+			var layer_right = null; 
+			map.on('contextmenu', function(ev) {
+				var latlng = ev.latlng;
+				if (!bounds.contains(latlng)){
+					alert('当前不在景区范围！');
+				}
+				else{
+					if(layer_right!=null){
+						layer_right.remove();
+					}
+					if(polyline!=null){
+						polyline.remove();
+					}
+					var lat = ev.latlng.lat,lng = ev.latlng.lng;
+					layer_right = L.marker(latlng,{icon:startIcon}).addTo(map).bindPopup('<div class="text-inner">我在这里</div>').openPopup();
+				}
+			});
+			
+			//景点，项目简介
+			function get_about(id,title,lat,lng,thumb,remark,desc){
+				var str_html="<div class=\"popup-heading\">"+ title +"</div>";
+					str_html+="<div class=\"popup-body\">";
+					str_html+=" <a class=\"popup-thumbnail\"><img src=\""+thumb+"\"></a>";
+					str_html+="</div>";
+					str_html+="<div class=\"popup-footer\">";
+					str_html+="<button class=\"btn btn-warning f_right\" onclick=\"map_polyline()\"><span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span> 到这里去</button>";
+					str_html+="<p id=\"p_"+ id +"\" class=\"f_left\">&nbsp;</p>";
+					str_html+="<input type=\"hidden\" class=\"input_lat\" value=\""+ lat +"\">";
+					str_html+="<input type=\"hidden\" class=\"input_lng\" value=\""+ lng +"\">";
+					str_html+="<input type=\"hidden\" class=\"input_id\" value=\""+ id +"\">";
+					str_html+="</div>";
+				return str_html;
+			}
+			//点击弹窗时
+			map.on('popupopen', function(e) {
+				var lat = $(e.popup._content).find(".input_lat").val();
+				var lng = $(e.popup._content).find(".input_lng").val();
+				var id = $(e.popup._content).find(".input_id").val();
+				if(id!=null && id!="undefined"){
+					leftclick(lat,lng,id,0);
+				}
+			});
+			//设置标记图标
+			function get_icon(title){
+				var icon = L.divIcon({
+					html:"<div class='biaoji_icon'>"+ title +"</div>",
+					iconUrl: 'images/icon.png',
+					shadowUrl: 'images/icon_shadow.png'
+				});
+				return icon
+			}
+			//确认导航动作 ispolyline是否立即画线
+			function leftclick(lat,lng,id,ispolyline){
+				if(layer_right!=null){
+					var start = layer_right.getLatLng().lng+","+layer_right.getLatLng().lat;
+					var end = lng+","+lat;
+					$("#p_"+ id).html("计算距离中…");
+					start_end(start,end,id,ispolyline);
+				}
+				else{
+					if(ispolyline){
+						alert("不在当前景区范围");
+					}
+				}
+			}
+			//导航计算  start=开始位置  end=结束位置
+			function start_end(start,end,id,ispolyline){
+					$.ajax({
+					url: "http://restapi.amap.com/v3/direction/driving?origin="+ start +"&destination="+ end +"&output=json&key=b68a241a46a361551410b26a89844363",
+					type: 'GET',
+					dataType: 'JSONP',//here
+					success: function (data) {
+						if(data.status=='1'){
+							paths = new Array(); 
+							var origin = data.route.origin;//起点
+							var destination = data.route.destination;//终点
+							var distance=data.route.paths[0].distance;//距离 单位米
+							var duration=data.route.paths[0].duration;//预计耗时 单位秒
+							var steps=data.route.paths[0].steps;//所有经过的路线信息
+							$(steps).each(function (i){
+							   var this_path = this.polyline.split(';');
+							   for(j=0;j<this_path.length;j++){
+									this_path[j] = this_path[j].split(',');
+									this_path[j] = [this_path[j][1],this_path[j][0]];
+							   }
+							   paths[i] = this_path;
+							});
+							$("#p_"+ id).html("距离："+distance+"米");
+							if(ispolyline){
+								$('#myModal').modal('hide');
+								map_polyline();
+							}
+						}
+						else{
+							alert(data.message);
+						}
+					}
+				});
+			}
+			//路径规划
+			function map_polyline(){
+				if(paths.length>0){
+					if(polyline!=null){
+						polyline.remove();
+					}
+					polyline = L.polyline(paths,{color:'#4DDC26',weight:6,opacity:0.8}).addTo(map);
+					map.fitBounds(polyline.getBounds());
+				}
+				else{
+					alert("不在当前景区范围");
+				}
+			}
+			//快速导航
+			function show_model(){
+				$('#myModal').modal('show');
+			}
+			
+		</script>
+	</body>
+</html>

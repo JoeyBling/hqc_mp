@@ -1,0 +1,7 @@
+body{background:#ffffff;}
+a,a:hover{text-decoration:none;}
+ul, li {margin:0px;padding:0px;list-style:none;}
+.container{ padding-left:0px;padding-right:0px; margin-top:10px}
+.container .titleInfo{font-size:20px;font-weight:bold;}
+.container .conInfo{font-size:20px;margin-left: 25px;}
+.container .btnInfo{font-size:20px;margin-left: 25px;border-bottom:1px dashed #909290;}

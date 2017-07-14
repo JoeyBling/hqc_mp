@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/scheduledGoods/scheduledGoods",
+    "pages/order/order",
+    "pages/orderDetail/orderDetail",
+    "pages/calendar/calendar"
+  ],
+  
+  "tabBar": {
+    "color": "#858585",
+    "selectedColor": "#008842",
+    "backgroundColor": "#eaecef",
+    "borderStyle": "white",
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icons/btn-tabs_01.png",
+        "selectedIconPath": "images/icons/btn-tabs_07.png",
+        "text": "微信购票"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "images/icons/btn-tabs_05.png",
+        "selectedIconPath": "images/icons/btn-tabs_09.png",
+        "text": "我的订单"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "东部华侨城",
+    "navigationBarTextStyle": "white"
+  },
+  "debug": true
+}

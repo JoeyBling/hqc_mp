@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MemberGoodsIntegralDao">
+    <!-- 查询特别日 -->
+	<select id="getSpecialDay" resultType="int">
+		select count(a.id) from mp_integral_special_day a
+		where
+		 a.begin_date &lt;= #{today} 
+		 and a.end_date &gt;=#{today}
+	</select>
+	<!-- 查找会员 -->
+	<select id="findMpMemberEntity" resultType="com.hqc.entity.MpMemberEntity">
+       select * from mp_vip_level a where a.id=#{id}
+    </select>
+    <!-- 根据会员查找会员等级 -->
+    <select id="getLevelByMember" resultType="com.hqc.entity.MpVipLevelEntity">
+       select * from mp_vip_level a where a.id=#{vipLevel}
+    </select>
+    <!-- 添加积分记录 -->
+     <insert id="addIntegralRecord" parameterType="com.hqc.entity.MpIntegralRecordEntity">
+		INSERT INTO mp_integral_record (
+	     member_id,
+	     integral,
+	     integral_type,
+	     about,
+	     create_time
+         )
+        VALUES
+        (#{memberId},#{integral},#{integralType},#{about},#{createTime})
+	</insert>
+	<!-- 修改会员积分 、级别-->
+	<update id="updateMemberIntegral" parameterType="com.hqc.entity.MpMemberEntity">
+	     UPDATE mp_member a
+          SET a.current_year_integral =#{currentYearIntegral}  ,
+          a.integral =#{integral} ,
+          a.last_year_integral=#{lastYearIntegral},
+          a.vip_level= #{vipLevel}
+          where a.id= #{id}
+	</update>
+	<!-- 查找会员等级 -->
+	<select id="getAllVipLevelList" resultType="com.hqc.entity.MpVipLevelEntity">
+	  select * from mp_vip_level
+	</select>
+	<!--修改门票库存-->
+	<update id="updateGoodsReporty" parameterType="com.hqc.entity.MpGoodsEntity">
+	   update mp_goods a 
+	      <set>
+	         <if test="repertory != null">
+	            a.repertory=#{repertory}
+	         </if>
+	      </set>
+	      where a.id=#{id}
+	</update>
+    <!-- 修改代金卷库存 -->
+    <update id="updateCashReporty" parameterType="com.hqc.entity.MpCashCouponEntity">
+        update mp_cash_coupon a 
+	      <set>
+	         <if test="repertory != null">
+	            a.repertory=#{repertory}
+	         </if>
+	      </set>
+	      where a.id=#{id}
+    </update>
+    <!-- 添加进订单表 -->
+    <insert id="insertMpOrderRecord" parameterType="com.hqc.entity.MpOrderRecordsEntity">
+		INSERT INTO mp_order_records (
+	     type,
+	     coupon_id,
+	     goods_id,
+	     item_code,
+	     item_count,
+	     member_id,
+	     phone,
+	     order_no,
+	     create_time,
+	     integral,
+	     status
+         )
+        VALUES
+        (#{type},#{couponId},#{goodsId},#{itemCode},#{itemCount},#{memberId},#{phone},#{orderNo},#{createTime},#{integral},#{status})
+    </insert>
+    <!-- 查询订单号是否存在 -->
+    <select id="getOrderNoByNewNo" resultType="int">
+        select count(*) from mp_order_records where order_no=#{orderNo}
+    </select>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hqc.dao.ProjectCategoryDao">
+
+ 	<select id="queryList" resultType="MpProjectCategoryEntity">
+ 		SELECT pc.*,ppc.category_name AS parentName FROM mp_project_category pc
+		LEFT JOIN mp_project_category ppc ON pc.parent_id = ppc.id
+ 		<where>	
+ 			<if test="categoryName != null and  categoryName.trim() != ''">
+				and pc.category_name like concat('%',#{categoryName},'%')
+			</if>	
+			<if test="systems != null">
+				and pc.is_system = #{systems}
+			</if>			
+ 		</where>
+ 		<if test="offset != null and limit != null"> limit #{offset}, #{limit} </if>
+ 		
+ 	</select>
+	
+	<select id="queryTotal" resultType="int">
+		select count(*) FROM mp_project_category 		
+		<where>
+			<if test="categoryName != null and  categoryName.trim() != ''">
+				and category_name like concat('%',#{categoryName},'%')
+			</if>
+		</where>			
+	</select>
+	
+	<delete id="deleteBatch">
+		delete from mp_project_category where `is_system` = 0 and id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>		
+		
+	</delete>
+
+	<select id="queryListByIds" resultType="MpProjectCategoryEntity">
+		select * from mp_project_category where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+	
+	<insert id="save" parameterType="MpProjectCategoryEntity">
+		insert into mp_project_category
+		(
+		category_name,
+		parent_id,
+		is_system				
+		)
+		values
+		(
+		#{categoryName},
+		#{parentId},
+		#{isSystem}
+		)			
+	</insert>
+	
+	<update id="update" parameterType="MpProjectCategoryEntity">
+		update mp_project_category set
+		category_name = #{categoryName},
+		is_system = #{isSystem},
+		parent_id = #{parentId}
+		where id = #{id}
+	</update>
+
+	<select id="queryObject" resultType="MpProjectCategoryEntity">
+		select * from mp_project_category where id =#{id}
+	</select>
+	
+	<select id="queryListproCategory" resultType="MpProjectCategoryEntity">
+		select * from mp_project_category where `parent_id` = 0
+	</select>
+	
+	<select id="queryByName" resultType="Integer">
+		select count(*) from mp_project_category where category_name = #{categoryName}									 
+	</select>
+
+
+</mapper>

@@ -1,0 +1,25 @@
+ul  li{list-style: none}
+*{margin:0;padding:0}
+.recordList {font-family: "Microsoft YaHei",SimHei}
+.listItem{margin-bottom:10px;background-color:#f5ebeb;}
+.integralType{float:right}
+.about{margin-left:10px;padding-bottom:5px}
+#pagelist{float:right;margin-right:5px}
+.limit{float:left}
+.totalpage{float:left;}
+.time{float:right;font-size:12px;padding:0px;}
+#pagetotal{margin-top:20px}
+.ticket{margin-left:10px}
+.redeemcode{font-size:12px;padding:0px;padding-left:10px}
+.Gray
+{
+ -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+#ticket{font-size:18px}
+#coupon{font-size:18px}
+.hasuse{}

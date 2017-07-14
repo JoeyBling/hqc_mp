@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqc.dao.MpParkingcChargeDao">
+
+	<!-- 查询列表 -->
+	<select id="queryList" resultType="MpParkingcChargeEntity">
+		SELECT p.*,m.true_name FROM mp_parking_charge p
+		left JOIN mp_member m
+		ON p.member_id = m.id
+		<where>
+			<if test="plate != null and plate.trim() != ''">
+				and p.plate like concat('%',#{plate},'%')
+			</if>
+			<if test="memberId != null and memberId.trim() != ''">
+				and p.memberId = #{memberId}
+			</if>
+			<if test="trueName != null and trueName.trim() != ''">
+				and m.true_name like concat('%',#{trueName},'%')
+			</if>
+			<if test="startTime != null ">
+				AND p.update_time >= #{startTime}
+			</if>
+			<if test="endTime != null ">
+				AND p.update_time &lt;= #{endTime}
+			</if>
+			<if test="status != null and status != 0">
+				and p.status =#{ status}
+			</if>
+		</where>
+		ORDER BY p.create_time desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<!-- 查询总数，分页用 -->
+	<select id="queryTotal" resultType="int">
+		SELECT count(*) FROM mp_parking_charge p
+		left JOIN mp_member m ON
+		p.member_id = m.id
+		<where>
+			<if test="plate != null and plate.trim() != ''">
+				and p.plate like concat('%',#{plate},'%')
+			</if>
+			<if test="memberId != null and memberId.trim() != ''">
+				and p.memberId like concat('%',#{memberId},'%')
+			</if>
+			<if test="trueName != null and trueName.trim() != ''">
+				and m.true_name like concat('%',#{trueName},'%')
+			</if>
+			<if test="startTime != null">
+				AND p.update_time >= #{startTime}
+			</if>
+			<if test="endTime != null ">
+				AND p.update_time &lt;= #{endTime}
+			</if>
+			<if test="status != null and status != 0">
+				and p.status like concat('%',#{status},'%')
+			</if>
+		</where>
+		ORDER BY p.create_time
+	</select>
+
+	<delete id="deleteBatch">
+		delete from mp_parking_charge where `id` in
+		<foreach item="parkingIds" collection="array" open="("
+			separator="," close=")">
+			#{parkingIds}
+		</foreach>
+		AND `status` IN (2,6)
+	</delete>
+
+	<!-- 查询删除数量，防止乱传数据 -->
+	<select id="findDelCount" resultType="int">
+		select count(id) from mp_parking_charge where `id` in
+		<foreach item="parkingIds" collection="array" open="("
+			separator="," close=")">
+			#{parkingIds}
+		</foreach>
+		AND `status` IN (2,6)
+	</select>
+
+	<insert id="save" parameterType="MpParkingcChargeEntity">
+		INSERT
+		INTO mp_parking_charge (
+		`plate`,
+		`order_no`,
+		`bill_no`,
+		`member_id`,
+		`total_fee`,
+		`start_time`,
+		`end_time`,
+		`create_time`,
+		`update_time`,
+		`status`
+		)
+		VALUES (
+		#{plate},
+		#{orderNo},
+		#{billNo},
+		#{memberId},
+		#{totalFee },
+		#{startTime},
+		#{endTime},
+		#{createTime},
+		#{updateTime},
+		#{status}
+		);
+	</insert>
+</mapper>

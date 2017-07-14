@@ -1,0 +1,45 @@
+<view wx:if="{{orderDetail.status == 3}}" class="tip-box">
+    <view wx:if="{{wxTimer}}">
+          <text>支付剩余时间：</text>  
+          <text>{{wxTimer}} </text> 
+    </view>
+</view>
+
+<view class="section-box">
+   <view class="space-between">
+    <text class="remark">{{orderDetail.mpTicketEntity.ticketName}}</text>
+    <text class="orange">{{statueZh[orderDetail.status]}}</text>
+   </view>
+   <view>共有{{orderDetail.ticketCount}}张</view>
+   <view>有效期：{{orderDetail.startTime}}-{{orderDetail.endTime}}</view>
+</view>
+
+<view class="section-box">
+    <view class="tap-line">手机号：<text>{{orderDetail.orderPhone}}</text></view>
+    <view class="tap-line"> 
+      <view class="space-between">
+          <text>商品总额</text>
+          <text>￥{{orderDetail.totalFee}}</text>
+      </view>
+      <view class="space-between">
+          <text>实付款</text>
+          <text class="orange">￥{{orderDetail.totalFee}}</text>
+      </view>
+    </view>
+    <view>
+       <view>
+          <text>订单号：</text>
+          <text>{{orderDetail.orderNo}}</text>
+      </view>
+      <view>
+          <text>下单时间：</text>
+          <text>{{orderDetail.createTime}}</text>
+      </view>
+    </view>
+</view>
+
+<view wx:if="{{orderDetail.status == '3'}}" class="tip-box">
+    <view class="pay-box">
+      <text>立即支付</text>
+    </view>
+</view>

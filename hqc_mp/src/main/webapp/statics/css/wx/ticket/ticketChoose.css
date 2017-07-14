@@ -1,0 +1,19 @@
+ul li{list-style: none}
+*{padding:0;margin:0}
+.titlehead{background-color:#ffffff}
+.title{font-size:20px;color:#282828;font-family:"黑体" }
+.headcenter{color:#656565}
+.chooseTime{background-color:#ffffff;margin-top:20px;padding-left:15px}
+.week{color:#656565;font-size:12px;padding-top:10px;text-align: center;margin-bottom:5px}
+.time{color:#282828;margin-top:-8px;padding-bottom: 10px;font-size:14px;}
+.choosed{background-color:#00c168;border-top-left-radius:1em;border-top-right-radius:1em;}
+.choosetime{background-color:#00c168;border-bottom-left-radius:1em;border-bottom-right-radius:1em;}
+.ticketListTitle{background-color:#ffffff;margin-top:20px;padding-top:10px;padding-left:20px;padding-bottom:10px}
+.listTitle{color:#00c168}
+.ticketList{margin-left:-20px}
+.ticketContent{float:left}
+.contentRight{float:right}
+.pirce,.buyButton{float:left;color:#ff7510;margin-right:5px}
+.buyBtn{color:#ffffff;border-bottom-left-radius:0.3em;border-bottom-right-radius:0.3em;background-color:#ff7510;border-top-left-radius:0.3em;border-top-right-radius:0.3em;}
+.ticketRight{float:right}
+.listul{margin-bottom:20px;border:1px solid #F7F4F6;}
