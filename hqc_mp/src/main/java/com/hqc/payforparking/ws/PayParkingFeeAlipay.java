@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -27,16 +27,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "orderNo",
-    "amount",
-    "discount"
+        "appId",
+        "key",
+        "orderNo",
+        "amount",
+        "discount"
 })
 @XmlRootElement(name = "PayParkingFee_Alipay")
 public class PayParkingFeeAlipay {
@@ -49,7 +47,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -57,7 +54,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -65,11 +61,9 @@ public class PayParkingFeeAlipay {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -77,11 +71,9 @@ public class PayParkingFeeAlipay {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -89,11 +81,9 @@ public class PayParkingFeeAlipay {
 
     /**
      * 获取orderNo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getOrderNo() {
         return orderNo;
@@ -101,11 +91,9 @@ public class PayParkingFeeAlipay {
 
     /**
      * 设置orderNo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setOrderNo(String value) {
         this.orderNo = value;
@@ -113,7 +101,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 获取amount属性的值。
-     * 
      */
     public int getAmount() {
         return amount;
@@ -121,7 +108,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 设置amount属性的值。
-     * 
      */
     public void setAmount(int value) {
         this.amount = value;
@@ -129,7 +115,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 获取discount属性的值。
-     * 
      */
     public int getDiscount() {
         return discount;
@@ -137,7 +122,6 @@ public class PayParkingFeeAlipay {
 
     /**
      * 设置discount属性的值。
-     * 
      */
     public void setDiscount(int value) {
         this.discount = value;

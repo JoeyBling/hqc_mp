@@ -19,7 +19,7 @@
 		</foreach>
 	</insert>
 
-	<delete id="delete">
+	<delete id="deleteById">
 		delete from sys_role_menu where role_id = #{value}
 	</delete>
 

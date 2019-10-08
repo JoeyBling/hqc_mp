@@ -8,18 +8,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the cn.jbit.test package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the cn.jbit.test package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -29,14 +28,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: cn.jbit.test
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link GetSupportCityDatasetResponse }
-     * 
      */
     public GetSupportCityDatasetResponse createGetSupportCityDatasetResponse() {
         return new GetSupportCityDatasetResponse();
@@ -44,7 +41,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionDatasetResponse }
-     * 
      */
     public GetRegionDatasetResponse createGetRegionDatasetResponse() {
         return new GetRegionDatasetResponse();
@@ -52,7 +48,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionCountry }
-     * 
      */
     public GetRegionCountry createGetRegionCountry() {
         return new GetRegionCountry();
@@ -60,7 +55,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DataSet }
-     * 
      */
     public DataSet createDataSet() {
         return new DataSet();
@@ -68,7 +62,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSupportCityDatasetResponse.GetSupportCityDatasetResult }
-     * 
      */
     public GetSupportCityDatasetResponse.GetSupportCityDatasetResult createGetSupportCityDatasetResponseGetSupportCityDatasetResult() {
         return new GetSupportCityDatasetResponse.GetSupportCityDatasetResult();
@@ -76,7 +69,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetWeather }
-     * 
      */
     public GetWeather createGetWeather() {
         return new GetWeather();
@@ -84,7 +76,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionProvince }
-     * 
      */
     public GetRegionProvince createGetRegionProvince() {
         return new GetRegionProvince();
@@ -92,7 +83,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionCountryResponse }
-     * 
      */
     public GetRegionCountryResponse createGetRegionCountryResponse() {
         return new GetRegionCountryResponse();
@@ -100,7 +90,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ArrayOfString }
-     * 
      */
     public ArrayOfString createArrayOfString() {
         return new ArrayOfString();
@@ -108,7 +97,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSupportCityString }
-     * 
      */
     public GetSupportCityString createGetSupportCityString() {
         return new GetSupportCityString();
@@ -116,7 +104,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSupportCityStringResponse }
-     * 
      */
     public GetSupportCityStringResponse createGetSupportCityStringResponse() {
         return new GetSupportCityStringResponse();
@@ -124,7 +111,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionDatasetResponse.GetRegionDatasetResult }
-     * 
      */
     public GetRegionDatasetResponse.GetRegionDatasetResult createGetRegionDatasetResponseGetRegionDatasetResult() {
         return new GetRegionDatasetResponse.GetRegionDatasetResult();
@@ -132,7 +118,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetWeatherResponse }
-     * 
      */
     public GetWeatherResponse createGetWeatherResponse() {
         return new GetWeatherResponse();
@@ -140,7 +125,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionDataset }
-     * 
      */
     public GetRegionDataset createGetRegionDataset() {
         return new GetRegionDataset();
@@ -148,7 +132,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSupportCityDataset }
-     * 
      */
     public GetSupportCityDataset createGetSupportCityDataset() {
         return new GetSupportCityDataset();
@@ -156,7 +139,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetRegionProvinceResponse }
-     * 
      */
     public GetRegionProvinceResponse createGetRegionProvinceResponse() {
         return new GetRegionProvinceResponse();
@@ -164,7 +146,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://WebXml.com.cn/", name = "DataSet")
     public JAXBElement<DataSet> createDataSet(DataSet value) {
@@ -173,7 +154,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfString }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://WebXml.com.cn/", name = "ArrayOfString")
     public JAXBElement<ArrayOfString> createArrayOfString(ArrayOfString value) {

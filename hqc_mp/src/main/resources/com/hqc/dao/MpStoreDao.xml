@@ -25,7 +25,7 @@
 		</where>
 	</select>
 
-	<delete id="delete">
+	<delete id="deleteById">
 		delete from mp_store where poi_id = #{value}
 	</delete>
 

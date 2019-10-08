@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -25,14 +25,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "parkId"
+        "appId",
+        "key",
+        "parkId"
 })
 @XmlRootElement(name = "GetAreaFreeSpace")
 public class GetAreaFreeSpace {
@@ -43,7 +41,6 @@ public class GetAreaFreeSpace {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -51,7 +48,6 @@ public class GetAreaFreeSpace {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -59,11 +55,9 @@ public class GetAreaFreeSpace {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -71,11 +65,9 @@ public class GetAreaFreeSpace {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -83,7 +75,6 @@ public class GetAreaFreeSpace {
 
     /**
      * 获取parkId属性的值。
-     * 
      */
     public int getParkId() {
         return parkId;
@@ -91,7 +82,6 @@ public class GetAreaFreeSpace {
 
     /**
      * 设置parkId属性的值。
-     * 
      */
     public void setParkId(int value) {
         this.parkId = value;

@@ -4,7 +4,7 @@ import com.hqc.entity.MpScenicSpotEntity;
 
 /**
  * 景区管理Dao
- * 
+ *
  * @author Administrator
  * @项目hqc_mp
  * @创建人
@@ -12,18 +12,19 @@ import com.hqc.entity.MpScenicSpotEntity;
  */
 public interface ScenicSpotDao extends BaseDao<MpScenicSpotEntity> {
 
-	/**
-	 * 为判断重复查询
-	 * 
-	 * @param scenicName
-	 */
-	MpScenicSpotEntity queryEntity(String scenicName);
+    /**
+     * 为判断重复查询
+     *
+     * @param scenicName
+     */
+    MpScenicSpotEntity queryEntity(String scenicName);
 
-	/**
-	 * 验证景区名称是否存在
-	 * @param scenicName
-	 * @return
-	 */
-	Integer queryByName(String scenicName);
+    /**
+     * 验证景区名称是否存在
+     *
+     * @param scenicName
+     * @return
+     */
+    Integer queryByName(String scenicName);
 
 }

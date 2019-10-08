@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -24,13 +24,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "theCityCode",
-    "theUserID"
+        "theCityCode",
+        "theUserID"
 })
 @XmlRootElement(name = "getWeather")
 public class GetWeather {
@@ -40,11 +38,9 @@ public class GetWeather {
 
     /**
      * 获取theCityCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTheCityCode() {
         return theCityCode;
@@ -52,11 +48,9 @@ public class GetWeather {
 
     /**
      * 设置theCityCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTheCityCode(String value) {
         this.theCityCode = value;
@@ -64,11 +58,9 @@ public class GetWeather {
 
     /**
      * 获取theUserID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTheUserID() {
         return theUserID;
@@ -76,11 +68,9 @@ public class GetWeather {
 
     /**
      * 设置theUserID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTheUserID(String value) {
         this.theUserID = value;

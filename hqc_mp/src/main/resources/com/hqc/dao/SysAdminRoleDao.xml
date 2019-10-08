@@ -28,7 +28,7 @@
 		</foreach>
 	</insert>
 
-	<delete id="delete">
+	<delete id="deleteById">
 		delete from sys_user_role where user_id = #{value}
 	</delete>
 

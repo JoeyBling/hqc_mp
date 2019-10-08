@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -29,18 +29,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "parkId",
-    "cardId",
-    "ruleId",
-    "chargeFrom",
-    "chargeCount"
+        "appId",
+        "key",
+        "parkId",
+        "cardId",
+        "ruleId",
+        "chargeFrom",
+        "chargeCount"
 })
 @XmlRootElement(name = "GetCarCardFee")
 public class GetCarCardFee {
@@ -55,7 +53,6 @@ public class GetCarCardFee {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -63,7 +60,6 @@ public class GetCarCardFee {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -71,11 +67,9 @@ public class GetCarCardFee {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -83,11 +77,9 @@ public class GetCarCardFee {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -95,7 +87,6 @@ public class GetCarCardFee {
 
     /**
      * 获取parkId属性的值。
-     * 
      */
     public int getParkId() {
         return parkId;
@@ -103,7 +94,6 @@ public class GetCarCardFee {
 
     /**
      * 设置parkId属性的值。
-     * 
      */
     public void setParkId(int value) {
         this.parkId = value;
@@ -111,7 +101,6 @@ public class GetCarCardFee {
 
     /**
      * 获取cardId属性的值。
-     * 
      */
     public int getCardId() {
         return cardId;
@@ -119,7 +108,6 @@ public class GetCarCardFee {
 
     /**
      * 设置cardId属性的值。
-     * 
      */
     public void setCardId(int value) {
         this.cardId = value;
@@ -127,7 +115,6 @@ public class GetCarCardFee {
 
     /**
      * 获取ruleId属性的值。
-     * 
      */
     public int getRuleId() {
         return ruleId;
@@ -135,7 +122,6 @@ public class GetCarCardFee {
 
     /**
      * 设置ruleId属性的值。
-     * 
      */
     public void setRuleId(int value) {
         this.ruleId = value;
@@ -143,11 +129,9 @@ public class GetCarCardFee {
 
     /**
      * 获取chargeFrom属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getChargeFrom() {
         return chargeFrom;
@@ -155,11 +139,9 @@ public class GetCarCardFee {
 
     /**
      * 设置chargeFrom属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setChargeFrom(String value) {
         this.chargeFrom = value;
@@ -167,7 +149,6 @@ public class GetCarCardFee {
 
     /**
      * 获取chargeCount属性的值。
-     * 
      */
     public int getChargeCount() {
         return chargeCount;
@@ -175,7 +156,6 @@ public class GetCarCardFee {
 
     /**
      * 设置chargeCount属性的值。
-     * 
      */
     public void setChargeCount(int value) {
         this.chargeCount = value;

@@ -22,114 +22,114 @@ import java.util.Collections;
  * method as a cache name use concatenation of specific cache name, separator
  * and expiration e.g.
  * <p/>
- * 
+ *
  * <pre>
  * public class UserDAO {
- * 
+ *
  * 	// cache name: userCache, expiration: 300s
  * 	&#064;Cacheable(&quot;userCache#300&quot;)
  * 	public User getUser(String name) {
- * 
- * 	}
+ *
+ *    }
  * }
  * </pre>
- * 
+ *
  * @author caiya
  * @since 16/3/18
  */
-@SuppressWarnings({ "rawtypes", "unchecked" })
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class ExtendedRedisCacheManager extends RedisCacheManager {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ExtendedRedisCacheManager.class);
+    private static final Logger logger = LoggerFactory
+            .getLogger(ExtendedRedisCacheManager.class);
 
-	private String defaultCacheName;
+    private String defaultCacheName;
 
-	private char separator = '#';
+    private char separator = '#';
 
-	public ExtendedRedisCacheManager(RedisOperations redisOperations) {
-		this(redisOperations, Collections.<String> emptyList());
-	}
+    public ExtendedRedisCacheManager(RedisOperations redisOperations) {
+        this(redisOperations, Collections.<String>emptyList());
+    }
 
-	public ExtendedRedisCacheManager(RedisOperations redisOperations,
-			Collection<String> cacheNames) {
-		super(redisOperations, cacheNames);
-	}
+    public ExtendedRedisCacheManager(RedisOperations redisOperations,
+                                     Collection<String> cacheNames) {
+        super(redisOperations, cacheNames);
+    }
 
-	@Override
-	public Cache getCache(String name) {
-		// try to get cache by name
-		RedisCache cache = (RedisCache) super.getCache(name);
-		if (cache != null) {
-			return cache;
-		}
+    @Override
+    public Cache getCache(String name) {
+        // try to get cache by name
+        RedisCache cache = (RedisCache) super.getCache(name);
+        if (cache != null) {
+            return cache;
+        }
 
-		// there's no cache which has given name
-		// find separator in cache name
-		int index = name.lastIndexOf(getSeparator());
-		if (index < 0) {
-			return null;
-		}
+        // there's no cache which has given name
+        // find separator in cache name
+        int index = name.lastIndexOf(getSeparator());
+        if (index < 0) {
+            return null;
+        }
 
-		// split name by the separator
-		String cacheName = name.substring(0, index);
-		if (StringUtils.isBlank(cacheName)) {
-			cacheName = defaultCacheName;
-		}
-		cache = (RedisCache) super.getCache(cacheName);
-		if (cache == null) {
-			return null;
-		}
+        // split name by the separator
+        String cacheName = name.substring(0, index);
+        if (StringUtils.isBlank(cacheName)) {
+            cacheName = defaultCacheName;
+        }
+        cache = (RedisCache) super.getCache(cacheName);
+        if (cache == null) {
+            return null;
+        }
 
-		// get expiration from name
-		Integer expiration = getExpiration(name, index);
-		if (expiration == null || expiration < 0) {
-			logger.warn("Default expiration time will be used for cache '{}' because cannot parse '{}', cacheName : "
-					+ cacheName + ", name : " + name);
-			return cache;
-		}
-		return new RedisCache(cacheName, (isUsePrefix() ? getCachePrefix()
-				.prefix(cacheName) : null), getRedisOperations(), expiration);
-	}
+        // get expiration from name
+        Integer expiration = getExpiration(name, index);
+        if (expiration == null || expiration < 0) {
+            logger.warn("Default expiration time will be used for cache '{}' because cannot parse '{}', cacheName : "
+                    + cacheName + ", name : " + name);
+            return cache;
+        }
+        return new RedisCache(cacheName, (isUsePrefix() ? getCachePrefix()
+                .prefix(cacheName) : null), getRedisOperations(), expiration);
+    }
 
-	public char getSeparator() {
-		return separator;
-	}
+    public char getSeparator() {
+        return separator;
+    }
 
-	/**
-	 * Char that separates cache name and expiration time, default: #.
-	 * 
-	 * @param separator
-	 */
-	public void setSeparator(char separator) {
-		this.separator = separator;
-	}
+    /**
+     * Char that separates cache name and expiration time, default: #.
+     *
+     * @param separator
+     */
+    public void setSeparator(char separator) {
+        this.separator = separator;
+    }
 
-	private Integer getExpiration(final String name, final int separatorIndex) {
-		Integer expiration = null;
-		String expirationAsString = name.substring(separatorIndex + 1);
-		try {
-			expiration = Integer.parseInt(expirationAsString);
-		} catch (NumberFormatException ex) {
-			logger.error(String.format(
-					"Cannnot separate expiration time from cache: '%s'", name),
-					ex);
-		}
+    private Integer getExpiration(final String name, final int separatorIndex) {
+        Integer expiration = null;
+        String expirationAsString = name.substring(separatorIndex + 1);
+        try {
+            expiration = Integer.parseInt(expirationAsString);
+        } catch (NumberFormatException ex) {
+            logger.error(String.format(
+                    "Cannnot separate expiration time from cache: '%s'", name),
+                    ex);
+        }
 
-		return expiration;
-	}
+        return expiration;
+    }
 
-	@Override
-	public void setUsePrefix(boolean usePrefix) {
-		super.setUsePrefix(usePrefix);
-	}
+    @Override
+    public void setUsePrefix(boolean usePrefix) {
+        super.setUsePrefix(usePrefix);
+    }
 
-	@Override
-	public void setCachePrefix(RedisCachePrefix cachePrefix) {
-		super.setCachePrefix(cachePrefix);
-	}
+    @Override
+    public void setCachePrefix(RedisCachePrefix cachePrefix) {
+        super.setCachePrefix(cachePrefix);
+    }
 
-	public void setDefaultCacheName(String defaultCacheName) {
-		this.defaultCacheName = defaultCacheName;
-	}
+    public void setDefaultCacheName(String defaultCacheName) {
+        this.defaultCacheName = defaultCacheName;
+    }
 }

@@ -1,4 +1,5 @@
 package com.hqc.payforparking.ws;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -24,15 +25,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "orderNo",
-    "amount"
+        "appId",
+        "key",
+        "orderNo",
+        "amount"
 })
 @XmlRootElement(name = "PayCarCardFee")
 public class PayCarCardFee {
@@ -44,7 +43,6 @@ public class PayCarCardFee {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -52,7 +50,6 @@ public class PayCarCardFee {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -60,11 +57,9 @@ public class PayCarCardFee {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -72,11 +67,9 @@ public class PayCarCardFee {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -84,11 +77,9 @@ public class PayCarCardFee {
 
     /**
      * 获取orderNo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getOrderNo() {
         return orderNo;
@@ -96,11 +87,9 @@ public class PayCarCardFee {
 
     /**
      * 设置orderNo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setOrderNo(String value) {
         this.orderNo = value;
@@ -108,7 +97,6 @@ public class PayCarCardFee {
 
     /**
      * 获取amount属性的值。
-     * 
      */
     public int getAmount() {
         return amount;
@@ -116,7 +104,6 @@ public class PayCarCardFee {
 
     /**
      * 设置amount属性的值。
-     * 
      */
     public void setAmount(int value) {
         this.amount = value;

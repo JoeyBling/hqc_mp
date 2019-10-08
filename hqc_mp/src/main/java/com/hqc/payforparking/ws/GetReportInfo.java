@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -26,16 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "parkId",
-    "startTime",
-    "endTime"
+        "appId",
+        "key",
+        "parkId",
+        "startTime",
+        "endTime"
 })
 @XmlRootElement(name = "GetReportInfo")
 public class GetReportInfo {
@@ -48,7 +46,6 @@ public class GetReportInfo {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -56,7 +53,6 @@ public class GetReportInfo {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -64,11 +60,9 @@ public class GetReportInfo {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -76,11 +70,9 @@ public class GetReportInfo {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -88,7 +80,6 @@ public class GetReportInfo {
 
     /**
      * 获取parkId属性的值。
-     * 
      */
     public int getParkId() {
         return parkId;
@@ -96,7 +87,6 @@ public class GetReportInfo {
 
     /**
      * 设置parkId属性的值。
-     * 
      */
     public void setParkId(int value) {
         this.parkId = value;
@@ -104,11 +94,9 @@ public class GetReportInfo {
 
     /**
      * 获取startTime属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getStartTime() {
         return startTime;
@@ -116,11 +104,9 @@ public class GetReportInfo {
 
     /**
      * 设置startTime属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setStartTime(String value) {
         this.startTime = value;
@@ -128,11 +114,9 @@ public class GetReportInfo {
 
     /**
      * 获取endTime属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getEndTime() {
         return endTime;
@@ -140,11 +124,9 @@ public class GetReportInfo {
 
     /**
      * 设置endTime属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEndTime(String value) {
         this.endTime = value;

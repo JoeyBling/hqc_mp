@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,12 +32,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getSupportCityDatasetResult"
+        "getSupportCityDatasetResult"
 })
 @XmlRootElement(name = "getSupportCityDatasetResponse")
 public class GetSupportCityDatasetResponse {
@@ -46,11 +44,9 @@ public class GetSupportCityDatasetResponse {
 
     /**
      * 获取getSupportCityDatasetResult属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link GetSupportCityDatasetResponse.GetSupportCityDatasetResult }
-     *     
+     *
+     * @return possible object is
+     * {@link GetSupportCityDatasetResponse.GetSupportCityDatasetResult }
      */
     public GetSupportCityDatasetResponse.GetSupportCityDatasetResult getGetSupportCityDatasetResult() {
         return getSupportCityDatasetResult;
@@ -58,11 +54,9 @@ public class GetSupportCityDatasetResponse {
 
     /**
      * 设置getSupportCityDatasetResult属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GetSupportCityDatasetResponse.GetSupportCityDatasetResult }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link GetSupportCityDatasetResponse.GetSupportCityDatasetResult }
      */
     public void setGetSupportCityDatasetResult(GetSupportCityDatasetResponse.GetSupportCityDatasetResult value) {
         this.getSupportCityDatasetResult = value;
@@ -71,9 +65,9 @@ public class GetSupportCityDatasetResponse {
 
     /**
      * <p>anonymous complex type的 Java 类。
-     * 
+     *
      * <p>以下模式片段指定包含在此类中的预期内容。
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -84,8 +78,6 @@ public class GetSupportCityDatasetResponse {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")

@@ -1,20 +1,17 @@
 package com.hqc.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Resource;
-
+import com.hqc.dao.SysAdminDao;
+import com.hqc.entity.MpAutoReplyEntity;
+import com.hqc.entity.SysAdminEntity;
+import com.hqc.util.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.hqc.dao.SysAdminDao;
-import com.hqc.entity.MpAutoReplyEntity;
-import com.hqc.entity.SysAdminEntity;
-import com.hqc.service.SysAdminService;
-import com.hqc.util.DateUtils;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:/spring-hqc.xml" })

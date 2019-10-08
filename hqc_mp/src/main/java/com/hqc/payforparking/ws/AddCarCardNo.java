@@ -1,18 +1,14 @@
 
 package com.hqc.payforparking.ws;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -31,19 +27,17 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "parkId",
-    "plateNo",
-    "etcNo",
-    "carType",
-    "validFrom",
-    "validTo"
+        "appId",
+        "key",
+        "parkId",
+        "plateNo",
+        "etcNo",
+        "carType",
+        "validFrom",
+        "validTo"
 })
 @XmlRootElement(name = "AddCarCardNo")
 public class AddCarCardNo {
@@ -61,7 +55,6 @@ public class AddCarCardNo {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -69,7 +62,6 @@ public class AddCarCardNo {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -77,11 +69,9 @@ public class AddCarCardNo {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -89,11 +79,9 @@ public class AddCarCardNo {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -101,7 +89,6 @@ public class AddCarCardNo {
 
     /**
      * 获取parkId属性的值。
-     * 
      */
     public int getParkId() {
         return parkId;
@@ -109,7 +96,6 @@ public class AddCarCardNo {
 
     /**
      * 设置parkId属性的值。
-     * 
      */
     public void setParkId(int value) {
         this.parkId = value;
@@ -117,11 +103,9 @@ public class AddCarCardNo {
 
     /**
      * 获取plateNo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPlateNo() {
         return plateNo;
@@ -129,11 +113,9 @@ public class AddCarCardNo {
 
     /**
      * 设置plateNo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPlateNo(String value) {
         this.plateNo = value;
@@ -141,11 +123,9 @@ public class AddCarCardNo {
 
     /**
      * 获取etcNo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getEtcNo() {
         return etcNo;
@@ -153,11 +133,9 @@ public class AddCarCardNo {
 
     /**
      * 设置etcNo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEtcNo(String value) {
         this.etcNo = value;
@@ -165,7 +143,6 @@ public class AddCarCardNo {
 
     /**
      * 获取carType属性的值。
-     * 
      */
     public int getCarType() {
         return carType;
@@ -173,7 +150,6 @@ public class AddCarCardNo {
 
     /**
      * 设置carType属性的值。
-     * 
      */
     public void setCarType(int value) {
         this.carType = value;
@@ -181,11 +157,9 @@ public class AddCarCardNo {
 
     /**
      * 获取validFrom属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getValidFrom() {
         return validFrom;
@@ -193,11 +167,9 @@ public class AddCarCardNo {
 
     /**
      * 设置validFrom属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setValidFrom(String value) {
         this.validFrom = value;
@@ -205,11 +177,9 @@ public class AddCarCardNo {
 
     /**
      * 获取validTo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getValidTo() {
         return validTo;
@@ -217,11 +187,9 @@ public class AddCarCardNo {
 
     /**
      * 设置validTo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setValidTo(String value) {
         this.validTo = value;

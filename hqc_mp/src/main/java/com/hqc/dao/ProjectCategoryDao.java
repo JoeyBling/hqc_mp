@@ -1,8 +1,8 @@
 package com.hqc.dao;
 
-import java.util.List;
-
 import com.hqc.entity.MpProjectCategoryEntity;
+
+import java.util.List;
 
 /**
  * @author Administrator
@@ -12,24 +12,27 @@ import com.hqc.entity.MpProjectCategoryEntity;
  */
 public interface ProjectCategoryDao extends BaseDao<MpProjectCategoryEntity> {
 
-	/**
-	 * 根据id查询修改
-	 * @param id
-	 * @return
-	 */
-	List<MpProjectCategoryEntity> queryListByIds(long[] id);
+    /**
+     * 根据id查询修改
+     *
+     * @param id
+     * @return
+     */
+    List<MpProjectCategoryEntity> queryListByIds(long[] id);
 
-	/**
-	 * 查询父类项目
-	 * @return
-	 */
-	List<MpProjectCategoryEntity> queryListproCategory();
+    /**
+     * 查询父类项目
+     *
+     * @return
+     */
+    List<MpProjectCategoryEntity> queryListproCategory();
 
-	/**
-	 * 验证项目类型是否已存在
-	 * @param categoryName
-	 * @return
-	 */
-	Integer queryByName(String categoryName);
+    /**
+     * 验证项目类型是否已存在
+     *
+     * @param categoryName
+     * @return
+     */
+    Integer queryByName(String categoryName);
 
 }

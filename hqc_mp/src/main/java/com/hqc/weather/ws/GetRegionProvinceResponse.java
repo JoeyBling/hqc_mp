@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -23,12 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getRegionProvinceResult"
+        "getRegionProvinceResult"
 })
 @XmlRootElement(name = "getRegionProvinceResponse")
 public class GetRegionProvinceResponse {
@@ -37,11 +35,9 @@ public class GetRegionProvinceResponse {
 
     /**
      * 获取getRegionProvinceResult属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfString }
-     *     
+     *
+     * @return possible object is
+     * {@link ArrayOfString }
      */
     public ArrayOfString getGetRegionProvinceResult() {
         return getRegionProvinceResult;
@@ -49,11 +45,9 @@ public class GetRegionProvinceResponse {
 
     /**
      * 设置getRegionProvinceResult属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfString }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ArrayOfString }
      */
     public void setGetRegionProvinceResult(ArrayOfString value) {
         this.getRegionProvinceResult = value;

@@ -12,7 +12,7 @@
 
 **&#160;&#160;&#160;&#160;微信小程序：开发一款用于门票销售的小程序，让用户无需关注，直接一键购票，提供快捷、便利的线上购票服务。**
 
-### 项目结构：
+## 项目结构
 ```lua
 hqc_mini_app 微信小程序相关文件
 
@@ -77,14 +77,16 @@ hqc_mp
 - 修改**db.properties**，更新MySQL账号和密码
 - 修改**redis.properties**,更改Redis连接信息
 - Eclipse、IDEA部署Tomcat，则可启动项目
-- 项目访问路径：http://localhost:8080/hqc_mp
+- 项目访问路径：http://localhost:8080/octopus
 - 后台登陆账号密码：**admin/admin**
 - 前台登录用户: **13647910412/123**
 
-### 启动说明:
-> 项目依赖mysql、Redis服务。
+## 启动说明
+
+> 项目依赖`mysql`、`Redis`服务.
 
 ## 演示效果图
-![在线购票](./screenshots/在线购票.png)![会员中心](./screenshots/会员中心.png)
-![积分商城](./screenshots/积分商城.png)![WIFI连接](./screenshots/WIFI连接.png)![停车付费](./screenshots/停车付费.png)
-
+| ![在线购票](./screenshots/在线购票.png) | ![会员中心](./screenshots/会员中心.png) |
+| :---: | :---: |
+| ![积分商城](./screenshots/积分商城.png) | ![WIFI连接](./screenshots/WIFI连接.png) |
+| ![停车付费](./screenshots/停车付费.png) |  |

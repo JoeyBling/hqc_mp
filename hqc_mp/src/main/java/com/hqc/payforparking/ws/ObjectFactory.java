@@ -7,18 +7,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the cn.jbit.test package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the cn.jbit.test package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -27,14 +26,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: cn.jbit.test
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link GetPaymentRechargeResponse }
-     * 
      */
     public GetPaymentRechargeResponse createGetPaymentRechargeResponse() {
         return new GetPaymentRechargeResponse();
@@ -42,7 +39,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingCarInfoResponse }
-     * 
      */
     public GetParkingCarInfoResponse createGetParkingCarInfoResponse() {
         return new GetParkingCarInfoResponse();
@@ -50,7 +46,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetFreeSpaceNum }
-     * 
      */
     public GetFreeSpaceNum createGetFreeSpaceNum() {
         return new GetFreeSpaceNum();
@@ -58,7 +53,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetReportInfoResponse }
-     * 
      */
     public GetReportInfoResponse createGetReportInfoResponse() {
         return new GetReportInfoResponse();
@@ -66,7 +60,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayCarCardFeeResponse }
-     * 
      */
     public PayCarCardFeeResponse createPayCarCardFeeResponse() {
         return new PayCarCardFeeResponse();
@@ -74,7 +67,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotByCarResponse }
-     * 
      */
     public GetParkingLotByCarResponse createGetParkingLotByCarResponse() {
         return new GetParkingLotByCarResponse();
@@ -82,7 +74,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayCarCardFee }
-     * 
      */
     public PayCarCardFee createPayCarCardFee() {
         return new PayCarCardFee();
@@ -90,7 +81,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotByCar }
-     * 
      */
     public GetParkingLotByCar createGetParkingLotByCar() {
         return new GetParkingLotByCar();
@@ -98,7 +88,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardInfo }
-     * 
      */
     public GetCarCardInfo createGetCarCardInfo() {
         return new GetCarCardInfo();
@@ -106,7 +95,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardFee }
-     * 
      */
     public GetCarCardFee createGetCarCardFee() {
         return new GetCarCardFee();
@@ -114,7 +102,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetDeviceStatusListResponse }
-     * 
      */
     public GetDeviceStatusListResponse createGetDeviceStatusListResponse() {
         return new GetDeviceStatusListResponse();
@@ -122,7 +109,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MemberDeductionResponse }
-     * 
      */
     public MemberDeductionResponse createMemberDeductionResponse() {
         return new MemberDeductionResponse();
@@ -130,7 +116,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddCarCardNoResponse }
-     * 
      */
     public AddCarCardNoResponse createAddCarCardNoResponse() {
         return new AddCarCardNoResponse();
@@ -138,7 +123,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardFeeResponse }
-     * 
      */
     public GetCarCardFeeResponse createGetCarCardFeeResponse() {
         return new GetCarCardFeeResponse();
@@ -146,7 +130,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardRule2Response }
-     * 
      */
     public GetCarCardRule2Response createGetCarCardRule2Response() {
         return new GetCarCardRule2Response();
@@ -154,7 +137,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardRule2 }
-     * 
      */
     public GetCarCardRule2 createGetCarCardRule2() {
         return new GetCarCardRule2();
@@ -162,7 +144,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotInfoResponse }
-     * 
      */
     public GetParkingLotInfoResponse createGetParkingLotInfoResponse() {
         return new GetParkingLotInfoResponse();
@@ -170,7 +151,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetPaymentRecharge }
-     * 
      */
     public GetPaymentRecharge createGetPaymentRecharge() {
         return new GetPaymentRecharge();
@@ -178,7 +158,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFeeResponse }
-     * 
      */
     public PayParkingFeeResponse createPayParkingFeeResponse() {
         return new PayParkingFeeResponse();
@@ -186,7 +165,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetReportInfo }
-     * 
      */
     public GetReportInfo createGetReportInfo() {
         return new GetReportInfo();
@@ -194,7 +172,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFee2 }
-     * 
      */
     public PayParkingFee2 createPayParkingFee2() {
         return new PayParkingFee2();
@@ -202,7 +179,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingPaymentInfo2Response }
-     * 
      */
     public GetParkingPaymentInfo2Response createGetParkingPaymentInfo2Response() {
         return new GetParkingPaymentInfo2Response();
@@ -210,7 +186,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFee2Response }
-     * 
      */
     public PayParkingFee2Response createPayParkingFee2Response() {
         return new PayParkingFee2Response();
@@ -218,7 +193,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardInfoResponse }
-     * 
      */
     public GetCarCardInfoResponse createGetCarCardInfoResponse() {
         return new GetCarCardInfoResponse();
@@ -226,7 +200,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddCarCardNo }
-     * 
      */
     public AddCarCardNo createAddCarCardNo() {
         return new AddCarCardNo();
@@ -234,7 +207,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetDeviceStatusList }
-     * 
      */
     public GetDeviceStatusList createGetDeviceStatusList() {
         return new GetDeviceStatusList();
@@ -242,7 +214,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFeeWecResponse }
-     * 
      */
     public PayParkingFeeWecResponse createPayParkingFeeWecResponse() {
         return new PayParkingFeeWecResponse();
@@ -250,7 +221,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFeeAlipay }
-     * 
      */
     public PayParkingFeeAlipay createPayParkingFeeAlipay() {
         return new PayParkingFeeAlipay();
@@ -258,7 +228,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotList }
-     * 
      */
     public GetParkingLotList createGetParkingLotList() {
         return new GetParkingLotList();
@@ -266,7 +235,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFeeWec }
-     * 
      */
     public PayParkingFeeWec createPayParkingFeeWec() {
         return new PayParkingFeeWec();
@@ -274,7 +242,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetTrafficNum }
-     * 
      */
     public GetTrafficNum createGetTrafficNum() {
         return new GetTrafficNum();
@@ -282,7 +249,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingCarInfo }
-     * 
      */
     public GetParkingCarInfo createGetParkingCarInfo() {
         return new GetParkingCarInfo();
@@ -290,7 +256,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetFreeSpaceNumResponse }
-     * 
      */
     public GetFreeSpaceNumResponse createGetFreeSpaceNumResponse() {
         return new GetFreeSpaceNumResponse();
@@ -298,7 +263,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardRuleResponse }
-     * 
      */
     public GetCarCardRuleResponse createGetCarCardRuleResponse() {
         return new GetCarCardRuleResponse();
@@ -306,7 +270,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetTrafficNumResponse }
-     * 
      */
     public GetTrafficNumResponse createGetTrafficNumResponse() {
         return new GetTrafficNumResponse();
@@ -314,7 +277,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFee }
-     * 
      */
     public PayParkingFee createPayParkingFee() {
         return new PayParkingFee();
@@ -322,7 +284,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAreaFreeSpace }
-     * 
      */
     public GetAreaFreeSpace createGetAreaFreeSpace() {
         return new GetAreaFreeSpace();
@@ -330,7 +291,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAreaFreeSpaceResponse }
-     * 
      */
     public GetAreaFreeSpaceResponse createGetAreaFreeSpaceResponse() {
         return new GetAreaFreeSpaceResponse();
@@ -338,7 +298,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PayParkingFeeAlipayResponse }
-     * 
      */
     public PayParkingFeeAlipayResponse createPayParkingFeeAlipayResponse() {
         return new PayParkingFeeAlipayResponse();
@@ -346,7 +305,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MemberDeduction }
-     * 
      */
     public MemberDeduction createMemberDeduction() {
         return new MemberDeduction();
@@ -354,7 +312,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingPaymentInfoResponse }
-     * 
      */
     public GetParkingPaymentInfoResponse createGetParkingPaymentInfoResponse() {
         return new GetParkingPaymentInfoResponse();
@@ -362,7 +319,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotInfo }
-     * 
      */
     public GetParkingLotInfo createGetParkingLotInfo() {
         return new GetParkingLotInfo();
@@ -370,7 +326,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingPaymentInfo }
-     * 
      */
     public GetParkingPaymentInfo createGetParkingPaymentInfo() {
         return new GetParkingPaymentInfo();
@@ -378,7 +333,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingPaymentInfo2 }
-     * 
      */
     public GetParkingPaymentInfo2 createGetParkingPaymentInfo2() {
         return new GetParkingPaymentInfo2();
@@ -386,7 +340,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetCarCardRule }
-     * 
      */
     public GetCarCardRule createGetCarCardRule() {
         return new GetCarCardRule();
@@ -394,7 +347,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetParkingLotListResponse }
-     * 
      */
     public GetParkingLotListResponse createGetParkingLotListResponse() {
         return new GetParkingLotListResponse();
@@ -402,7 +354,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://www.keytop.com.cn/", name = "string")
     public JAXBElement<String> createString(String value) {

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 系统管理员页面视图
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2016年11月24日 下午11:05:27
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SysPageController {
 
-	@RequestMapping("octopus/{path}/{url}.html")
-	public String page(@PathVariable("path") String path,
-			@PathVariable("url") String url) {
-		return "octopus/" + path + "/" + url + ".ftl";
-	}
+    @RequestMapping("octopus/{path}/{url}.html")
+    public String page(@PathVariable("path") String path,
+                       @PathVariable("url") String url) {
+        return "octopus/" + path + "/" + url + ".ftl";
+    }
 
 }

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -27,17 +27,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "orderNo",
-    "points",
-    "dType",
-    "dValue"
+        "appId",
+        "key",
+        "orderNo",
+        "points",
+        "dType",
+        "dValue"
 })
 @XmlRootElement(name = "MemberDeduction")
 public class MemberDeduction {
@@ -51,7 +49,6 @@ public class MemberDeduction {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -59,7 +56,6 @@ public class MemberDeduction {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -67,11 +63,9 @@ public class MemberDeduction {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -79,11 +73,9 @@ public class MemberDeduction {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -91,11 +83,9 @@ public class MemberDeduction {
 
     /**
      * 获取orderNo属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getOrderNo() {
         return orderNo;
@@ -103,11 +93,9 @@ public class MemberDeduction {
 
     /**
      * 设置orderNo属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setOrderNo(String value) {
         this.orderNo = value;
@@ -115,7 +103,6 @@ public class MemberDeduction {
 
     /**
      * 获取points属性的值。
-     * 
      */
     public int getPoints() {
         return points;
@@ -123,7 +110,6 @@ public class MemberDeduction {
 
     /**
      * 设置points属性的值。
-     * 
      */
     public void setPoints(int value) {
         this.points = value;
@@ -131,7 +117,6 @@ public class MemberDeduction {
 
     /**
      * 获取dType属性的值。
-     * 
      */
     public int getDType() {
         return dType;
@@ -139,7 +124,6 @@ public class MemberDeduction {
 
     /**
      * 设置dType属性的值。
-     * 
      */
     public void setDType(int value) {
         this.dType = value;
@@ -147,7 +131,6 @@ public class MemberDeduction {
 
     /**
      * 获取dValue属性的值。
-     * 
      */
     public int getDValue() {
         return dValue;
@@ -155,7 +138,6 @@ public class MemberDeduction {
 
     /**
      * 设置dValue属性的值。
-     * 
      */
     public void setDValue(int value) {
         this.dValue = value;

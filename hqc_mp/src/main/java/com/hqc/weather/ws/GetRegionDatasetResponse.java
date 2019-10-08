@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,12 +32,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getRegionDatasetResult"
+        "getRegionDatasetResult"
 })
 @XmlRootElement(name = "getRegionDatasetResponse")
 public class GetRegionDatasetResponse {
@@ -46,11 +44,9 @@ public class GetRegionDatasetResponse {
 
     /**
      * 获取getRegionDatasetResult属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link GetRegionDatasetResponse.GetRegionDatasetResult }
-     *     
+     *
+     * @return possible object is
+     * {@link GetRegionDatasetResponse.GetRegionDatasetResult }
      */
     public GetRegionDatasetResponse.GetRegionDatasetResult getGetRegionDatasetResult() {
         return getRegionDatasetResult;
@@ -58,11 +54,9 @@ public class GetRegionDatasetResponse {
 
     /**
      * 设置getRegionDatasetResult属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GetRegionDatasetResponse.GetRegionDatasetResult }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link GetRegionDatasetResponse.GetRegionDatasetResult }
      */
     public void setGetRegionDatasetResult(GetRegionDatasetResponse.GetRegionDatasetResult value) {
         this.getRegionDatasetResult = value;
@@ -71,9 +65,9 @@ public class GetRegionDatasetResponse {
 
     /**
      * <p>anonymous complex type的 Java 类。
-     * 
+     *
      * <p>以下模式片段指定包含在此类中的预期内容。
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -84,8 +78,6 @@ public class GetRegionDatasetResponse {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")

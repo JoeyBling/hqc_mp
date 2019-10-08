@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -23,12 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getSupportCityStringResult"
+        "getSupportCityStringResult"
 })
 @XmlRootElement(name = "getSupportCityStringResponse")
 public class GetSupportCityStringResponse {
@@ -37,11 +35,9 @@ public class GetSupportCityStringResponse {
 
     /**
      * 获取getSupportCityStringResult属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfString }
-     *     
+     *
+     * @return possible object is
+     * {@link ArrayOfString }
      */
     public ArrayOfString getGetSupportCityStringResult() {
         return getSupportCityStringResult;
@@ -49,11 +45,9 @@ public class GetSupportCityStringResponse {
 
     /**
      * 设置getSupportCityStringResult属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfString }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ArrayOfString }
      */
     public void setGetSupportCityStringResult(ArrayOfString value) {
         this.getSupportCityStringResult = value;

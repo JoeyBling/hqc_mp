@@ -1,19 +1,18 @@
 package com.hqc.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import com.hqc.dao.ScenerySpotDao;
 import com.hqc.entity.MpScenerySpotEntity;
 import com.hqc.entity.MpScenicSpotEntity;
 import com.hqc.service.ScenerySpotService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 景点后台业务实现类
+ *
  * @author Administrator
  * @项目hqc_mp
  * @创建人
@@ -22,65 +21,65 @@ import com.hqc.service.ScenerySpotService;
 @Service
 public class ScenerySpotServiceImp implements ScenerySpotService {
 
-	@Resource
-	private ScenerySpotDao scenerySpotDao;
-	
-	@Override
-	public List<MpScenerySpotEntity> queryList(Map<String, Object> map) {
-		
-		return scenerySpotDao.queryList(map);
-	}
+    @Resource
+    private ScenerySpotDao scenerySpotDao;
 
-	@Override
-	public int querytoAll(Map<String, Object> map) {
-		return scenerySpotDao.queryTotal(map);
-	}
+    @Override
+    public List<MpScenerySpotEntity> queryList(Map<String, Object> map) {
 
-	@Override
-	public void deletePath(long[] id) {
-		scenerySpotDao.deleteBatch(id);
-	}
+        return scenerySpotDao.queryList(map);
+    }
 
-	@Override
-	public void update(MpScenerySpotEntity sceneryEntity) {
-		 scenerySpotDao.update(sceneryEntity);
-	}
+    @Override
+    public int querytoAll(Map<String, Object> map) {
+        return scenerySpotDao.queryTotal(map);
+    }
 
-	@Override
-	public List<MpScenicSpotEntity> queryListscenic() {
-		return scenerySpotDao.queryListscenic();
-	}
+    @Override
+    public void deletePath(long[] id) {
+        scenerySpotDao.deleteBatch(id);
+    }
 
-	@Override
-	public void save(MpScenerySpotEntity sceneryEntity) {
-		scenerySpotDao.save(sceneryEntity);
-	}
+    @Override
+    public void update(MpScenerySpotEntity sceneryEntity) {
+        scenerySpotDao.update(sceneryEntity);
+    }
 
-	@Override
-	public MpScenerySpotEntity queryObject(long id) {
-		return scenerySpotDao.queryObject(id);
-	}
+    @Override
+    public List<MpScenicSpotEntity> queryListscenic() {
+        return scenerySpotDao.queryListscenic();
+    }
 
-	@Override
-	public MpScenicSpotEntity queryscenicById(Long scenicId) {
-		
-		return scenerySpotDao.queryscenicById(scenicId);
-	}
+    @Override
+    public void save(MpScenerySpotEntity sceneryEntity) {
+        scenerySpotDao.save(sceneryEntity);
+    }
 
-	@Override
-	public Integer queryByName(String scenicName) {
-		return scenerySpotDao.queryByName(scenicName);
-	}
+    @Override
+    public MpScenerySpotEntity queryObject(long id) {
+        return scenerySpotDao.queryObject(id);
+    }
 
-	@Override
-	public List<MpScenerySpotEntity> queryObjectList(long[] id) {
-		return scenerySpotDao.queryObjectList(id);
-	}
+    @Override
+    public MpScenicSpotEntity queryscenicById(Long scenicId) {
 
-	@Override
-	public int queryObjectAll(long[] ids) {
-		return scenerySpotDao.queryObjectAll(ids);
-	}
+        return scenerySpotDao.queryscenicById(scenicId);
+    }
+
+    @Override
+    public Integer queryByName(String scenicName) {
+        return scenerySpotDao.queryByName(scenicName);
+    }
+
+    @Override
+    public List<MpScenerySpotEntity> queryObjectList(long[] id) {
+        return scenerySpotDao.queryObjectList(id);
+    }
+
+    @Override
+    public int queryObjectAll(long[] ids) {
+        return scenerySpotDao.queryObjectAll(ids);
+    }
 
 
 }

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>anonymous complex type的 Java 类。
- * 
+ *
  * <p>以下模式片段指定包含在此类中的预期内容。
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -26,16 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "appId",
-    "key",
-    "orderId",
-    "freeMoney",
-    "freeTime"
+        "appId",
+        "key",
+        "orderId",
+        "freeMoney",
+        "freeTime"
 })
 @XmlRootElement(name = "GetPaymentRecharge")
 public class GetPaymentRecharge {
@@ -48,7 +46,6 @@ public class GetPaymentRecharge {
 
     /**
      * 获取appId属性的值。
-     * 
      */
     public int getAppId() {
         return appId;
@@ -56,7 +53,6 @@ public class GetPaymentRecharge {
 
     /**
      * 设置appId属性的值。
-     * 
      */
     public void setAppId(int value) {
         this.appId = value;
@@ -64,11 +60,9 @@ public class GetPaymentRecharge {
 
     /**
      * 获取key属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getKey() {
         return key;
@@ -76,11 +70,9 @@ public class GetPaymentRecharge {
 
     /**
      * 设置key属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setKey(String value) {
         this.key = value;
@@ -88,11 +80,9 @@ public class GetPaymentRecharge {
 
     /**
      * 获取orderId属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getOrderId() {
         return orderId;
@@ -100,11 +90,9 @@ public class GetPaymentRecharge {
 
     /**
      * 设置orderId属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setOrderId(String value) {
         this.orderId = value;
@@ -112,7 +100,6 @@ public class GetPaymentRecharge {
 
     /**
      * 获取freeMoney属性的值。
-     * 
      */
     public int getFreeMoney() {
         return freeMoney;
@@ -120,7 +107,6 @@ public class GetPaymentRecharge {
 
     /**
      * 设置freeMoney属性的值。
-     * 
      */
     public void setFreeMoney(int value) {
         this.freeMoney = value;
@@ -128,7 +114,6 @@ public class GetPaymentRecharge {
 
     /**
      * 获取freeTime属性的值。
-     * 
      */
     public int getFreeTime() {
         return freeTime;
@@ -137,7 +122,6 @@ public class GetPaymentRecharge {
 
     /**
      * 设置freeTime属性的值。
-     * 
      */
     public void setFreeTime(int value) {
         this.freeTime = value;
