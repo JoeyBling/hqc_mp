@@ -35,7 +35,7 @@
         <jstl-version>1.2</jstl-version>
         <taglibs-version>1.1.2</taglibs-version>
         <freemarker-version>2.3.23</freemarker-version>
-        <poi-version>3.9</poi-version>
+        <poi-version>4.1.1</poi-version>
         <jackson-version>1.9.13</jackson-version>
         <pagehelper-version>4.1.1</pagehelper-version>
         <tk-mybatis-version>3.3.9</tk-mybatis-version>
